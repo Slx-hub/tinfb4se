@@ -1,0 +1,148 @@
+#######################################
+### Java
+#######################################
+*.class
+.mtj.tmp/
+hs_err_pid*
+
+*.jar
+*.war
+*.ear
+
+#######################################
+### Build tools
+#######################################
+### Gradle
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+### Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+### SBT
+target/
+lib_managed/
+src_managed/
+project/boot/
+.history
+.cache
+
+
+#######################################
+### Systems
+#######################################
+### Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+### Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Linux
+.directory
+.Trash-*
+
+
+#######################################
+### IDEs/Editors
+#######################################
+### Eclipse
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.project
+.externalToolBuilders/
+*.launch
+.cproject
+.classpath
+.factorypath
+.buildpath
+.target
+.texlipse
+
+### NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+
+### JetBrains
+*.iml
+.idea/
+*.ipr
+*.iws
+/out/
+.idea_modules/
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+
+### Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+
+#######################################
+### General
+#######################################
+### Do not push log files
+*.log
+
+### Do not push file locks
+.~lock.*
+
+### Do not push archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+/nbproject/
