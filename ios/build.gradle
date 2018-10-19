@@ -4,7 +4,7 @@ sourceCompatibility = '1.7'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 ext {
-	mainClassName = "de.dhbw.codecrunch.IOSLauncher"
+	mainClassName = "de.codecrunch.IOSLauncher"
 }
 
 launchIPhoneSimulator.dependsOn build
@@ -12,9 +12,6 @@ launchIPadSimulator.dependsOn build
 launchIOSDevice.dependsOn build
 createIPA.dependsOn build
 
-robovm {
-	archs = "thumbv7:arm64"
-}
 
 eclipse.project {
     name = appName + "-ios"
