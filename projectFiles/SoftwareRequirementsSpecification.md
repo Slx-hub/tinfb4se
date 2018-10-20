@@ -222,15 +222,15 @@ This SRS describes the Android game “Tower Attack”. It contains a comprehens
 ## <a name="1.3     Definitions, Acronyms and Abbreviations">1.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Definitions, Acronyms and Abbreviations</a>
 
 n/a: Not Applicable
-Play Store: Google Play Store 
-tbd: to be determined
+<br/>Play Store: Google Play Store 
+<br/>tbd: to be determined
 
 ## <a name="1.4     References">1.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span> References</a>
 
 Android Studio: https://developer.android.com/studio/
-GIT: https://git-scm.com/
-GitHub: https://github.com/
-Google Play Store: https://play.google.com/store
+<br/>GIT: https://git-scm.com/
+<br/>GitHub: https://github.com/
+<br/>Google Play Store: https://play.google.com/store
 
 ## <a name="1.5     Overview">1.5<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Overview</a>
 
@@ -246,71 +246,67 @@ Tower Attack will be a game in the Tower-Defense genre. In contrast to other gam
 
 ## <a name="3.1     Functionality">3.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Functionality</a>
 
-### <a name="3.1.1     <Functional Requirement One>">3.1.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Working Main Menu</a>
+### <a name="3.1.1     <Functional Requirement One>">3.1.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Working Main Menu</a>
 
 There should be a main menu where the player can choose between different options like “play” or “options”.
 
-### <a name="3.1.2     <Functional Requirement Two>">3.1.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Start and load games<Functional Requirement Two></a>
+### <a name="3.1.2     <Functional Requirement Two>">3.1.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Start and load games<Functional Requirement Two></a>
 
 The game itself should start after the player chooses “play” in the main menu.
 
-### <a name="3.1.3     <Functional Requirement Three>">3.1.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Send and upgrade units<Functional Requirement Three></a>
+### <a name="3.1.3     <Functional Requirement Three>">3.1.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Send and upgrade units<Functional Requirement Three></a>
 
 The player should be able to send units and upgrade them.
 
-### <a name="3.1.4     <Functional Requirement Four>">3.1.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Choose between different unit types<Functional Requirement Four></a>
+### <a name="3.1.4     <Functional Requirement Four>">3.1.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Choose between different unit types<Functional Requirement Four></a>
 
 The player should be able to choose between different types of units to send.
 
-### <a name="3.1.5     <Functional Requirement Four>">3.1.5<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Use special abilities and spells<Functional Requirement Four></a>
+### <a name="3.1.5     <Functional Requirement Four>">3.1.5<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Use special abilities and spells<Functional Requirement Four></a>
 
 The player should be able to use special abilities and spells.
 
-### <a name="3.1.6     <Functional Requirement Six>">3.1.6<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Damage the enemy base<Functional Requirement Six></a>
+### <a name="3.1.6     <Functional Requirement Six>">3.1.6<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Damage the enemy base<Functional Requirement Six></a>
 
 Units that reach the enemy base should damage it.
 
 ## <a name="3.2               Usability">3.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Usability</a>
 
-### <a name="3.2.1          <Usability Requirement One>">3.2.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Easy to understand <Usability Requirement One></a>
+### <a name="3.2.1          <Usability Requirement One>">3.2.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Easy to understand <Usability Requirement One></a>
 
 The Player should understand what he is doing and how the game is played by just looking at the game and short explanations.
 
-### <a name="3.2.2          <Usability Requirement One>">3.2.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Easy to use <Usability Requirement One></a>
+### <a name="3.2.2          <Usability Requirement One>">3.2.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Easy to use <Usability Requirement One></a>
 
 The app should be easy to use. The player should not be distracted by unnecessary information while playing. There should just be the right amount of information, so the player is able to understand what is going on while enjoying the game.
 
 ## <a name="3.3     Reliability">3.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Reliability</a>
 
-### <a name="3.3.1          <Reliability Requirement One>">3.3.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Stable Android App <Reliability Requirement One></a>
+### <a name="3.3.1          <Reliability Requirement One>">3.3.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Stable Android App <Reliability Requirement One></a>
 
 The Android App should not crash at any point in a running game.
 
 ## <a name="3.4     Performance">3.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Performance</a>
 
-### <a name="3.4.1          <Performance Requirement One>">3.4.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Justifiable Loading-Time <Performance Requirement One></a>
+### <a name="3.4.1          <Performance Requirement One>">3.4.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Justifiable Loading-Time <Performance Requirement One></a>
 
 The time needed to start the game and to load in the game should be justifiable considering given hardware.
 
-### <a name="3.4.2          <Performance Requirement One>">3.4.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Smooth gameplay <Performance Requirement One></a>
+### <a name="3.4.2          <Performance Requirement One>">3.4.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Smooth gameplay <Performance Requirement One></a>
 
 The game should run smoothly without lags on not only the latest devices.
 
 ## <a name="3.5     Supportability">3.5<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Supportability</a>
 
-### <a name="3.5.1          <Supportability Requirement One>">3.5.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span>Android <Supportability Requirement One></a>
+### <a name="3.5.1          <Supportability Requirement One>">3.5.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Android <Supportability Requirement One></a>
 
 Android is a commonly used OS primarily for mobile devices.
 
-### <a name="3.5.2          <Supportability Requirement One>">3.5.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span>PC <Supportability Requirement One></a>
+### <a name="3.5.2          <Supportability Requirement One>">3.5.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> PC <Supportability Requirement One></a>
 
 Any OS that is capable of running a Java Runtime Environment
 
 ## <a name="3.6     Design Constraints">3.6<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Design Constraints</a>
-
-[This section should indicate any design constraints on the system being built. Design constraints represent design decisions that have been mandated and must be adhered to. Examples include software languages, software process requirements, prescribed use of developmental tools, architectural and design constraints, purchased components, class libraries, etc.]
-
-### <a name="3.6.1          <Design Constraint One>">3.6.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> <Design Constraint One></a>
 
 tbd
 
