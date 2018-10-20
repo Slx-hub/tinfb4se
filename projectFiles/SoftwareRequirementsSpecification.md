@@ -1,28 +1,11 @@
-<font face="Arial" size="1">![](../../../applet/images/artfc_w.gif) [Artifacts](../../../process/artifact/ovu_arts.htm) > ![](../../../applet/images/artfc_y.gif) [Requirements Artifact Set](../../../process/artifact/ars_req.htm) > ![](../../../applet/images/additional.gif) [{More Requirements Artifacts}](../../../process/artifact/arp_req_add.htm) > ![](../../../applet/images/ar_srs.gif) [Software Requirements Specification](../../../process/artifact/ar_srs.htm) > ![](../../../applet/images/ie.gif) SRS traditional</font>
+# Software Requirements Specification
 
-<div class="Section1">
+# For Tower Attack
 
-<Project Name>
+### By CodeCrunch
+#### Version <1.0>
 
-Software Requirements Specification
-
-For <Subsystem or Feature>
-
-<span style="font-size:
-14.0pt;">Version <1.0></span>
-
-<span style="font-size:14.0pt;"> </span>
-
-[Note: The following template is provided for use with the Rational Unified Process. Text enclosed in square brackets and displayed in blue italics (style=InfoBlue) is included to provide guidance to the author and should be deleted before publishing the document. A paragraph entered following this style will automatically be set to normal (style=Body Text).]
-
-</div>
-
-<span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;">  
-</span>
-
-<div class="Section2">
-
-Revision History
+### Revision History
 
 <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;
  border:none;">
