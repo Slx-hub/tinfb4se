@@ -65,7 +65,7 @@
   border-bottom:solid windowtext .75pt;border-right:solid windowtext .75pt;
   padding:0in 5.4pt 0in 5.4pt">
 
-<details>
+First version
 
 </td>
 
@@ -143,214 +143,232 @@ Kai Schwark
 **<span style="font-size:18.0pt;font-family:Arial;">  
 </span>**
 
-Table of Contents
+### Table of Contents
 
-[1. <span style="font-size:12.0pt"></span> Introduction](#1\.                  Introduction)         
+1. [Introduction](#1. )         
 
-[1.1 <span style="font-size:12.0pt"></span> Purpose](#1.1     Purpose)     
+1.1 [Purpose](#1.1 )     
 
-[1.2 <span style="font-size:12.0pt"></span> Scope](#1.2     Scope)     
+1.2 [Scope](#1.2 )     
 
-[1.3 <span style="font-size:12.0pt"></span> Definitions, Acronyms and Abbreviations](#1.3     Definitions, Acronyms and Abbreviations)     
+1.3 [Definitions, Acronyms and Abbreviations](#1.3 )     
 
-[1.4 <span style="font-size:12.0pt"></span> References](#1.4     References)     
+1.4 [References](#1.4 )     
 
-[1.5 <span style="font-size:12.0pt"></span> Overview](#1.5     Overview)     
+1.5 [Overview](#1.5 )     
 
-[2. <span style="font-size:12.0pt"></span> Overall Description](#2\.                  Overall Description)    
+2. [Overall Description](#2. )    
 
-[3. <span style="font-size:12.0pt"></span> Specific Requirements](#3\.                  Specific Requirements)
+3. [Specific Requirements](#3. )
 
-[3.1 <span style="font-size:12.0pt"></span> Functionality](#3.1     Functionality)
+3.1 [Functionality](#3.1 )
 
-[3.1.1 <span style="font-size:12.0pt"></span> <Functional Requirement One>](#3.1.1     <Functional Requirement One>)        
+3.1.1 [Working main menu](#3.1.1 )        
 
-[3.2 <span style="font-size:12.0pt"></span> Usability  ](#3.2               Usability)   
+3.1.2 [Start and load games](#3.1.2 )
 
-[3.2.1 <span style="font-size:12.0pt"></span> <Usability Requirement One>](#3.2.1          <Usability Requirement One>)
+3.1.3 [Send and upgrade units](#3.1.3 )
 
-[3.3 <span style="font-size:12.0pt"></span> Reliability](#3.3     Reliability)     
+3.1.4 [Choose between different unit types](#3.1.4 )
 
-[3.3.1 <span style="font-size:12.0pt"></span> <Reliability Requirement One>](#3.3.1          <Reliability Requirement One>)
+3.1.5 [Use special abilities and spells](#3.1.5 )
 
-[3.4 <span style="font-size:12.0pt"></span> Performance](#3.4     Performance)     
+3.1.6 [Damage the enemy base](#3.1.6 )
 
-[3.4.1 <span style="font-size:12.0pt"></span> <Performance Requirement One>](#3.4.1          <Performance Requirement One>)
+3.2 [Usability](#3.2 )   
 
-[3.5 <span style="font-size:12.0pt"></span> Supportability](#3.5     Supportability)     
+3.2.1 [Easy to understand](#3.2.1 )
 
-[3.5.1 <span style="font-size:12.0pt"></span> <Supportability Requirement One>](#3.5.1          <Supportability Requirement One>)
+3.2.2 [Easy to use](#3.2.2 )
 
-[3.6 <span style="font-size:12.0pt"></span> Design Constraints](#3.6     Design Constraints)     
+3.3 [Reliability](#3.3 )     
 
-[3.6.1 <span style="font-size:12.0pt"></span> <Design Constraint One>](#3.6.1          <Design Constraint One>)
+3.3.1 [Stable Android App](#3.3.1 )
 
-[3.7 <span style="font-size:12.0pt"></span> Online User Documentation and Help System Requirements](#3.7     On-line User Documentation and Help System Requirements)     
+3.4 [Performance](#3.4 )     
 
-[3.8<span style="font-size:12.0pt"></span> Purchased Components](#3.8     Purchased Components)     
+3.4.1 [Justifiable Loading-Time](#3.4.1 )
 
-[3.9 <span style="font-size:12.0pt"></span> Interfaces](#3.9     Interfaces)     
+3.4.2 [Smooth gameplay](#3.4.2 )
 
-[3.9.1 <span style="font-size:12.0pt"></span> User Interfaces ](#3.9.1          User Interfaces)          
+3.5 [Supportability](#3.5 )     
 
-[3.9.2 <span style="font-size:12.0pt"></span> Hardware Interfaces](#3.9.2          Hardware Interfaces)           
+3.5.1 [Android](#3.5.1 )
 
-[3.9.3 <span style="font-size:12.0pt"></span> Software Interfaces](#3.9.3          Software Interfaces)           
+3.5.2 [PC](#3.5.2 )
 
-[3.9.4 <span style="font-size:12.0pt"></span> Communications Interfaces](#3.9.4          Communications Interfaces)           
+3.6 [Design Constraints](#3.6 )     
 
-[3.10 <span style="font-size:12.0pt"></span> Licensing Requirements ](#3.10     Licensing Requirements)    
+3.6.1 [Design Constraint One](#3.6.1 )
 
-[3.11 <span style="font-size:12.0pt"></span> Legal, Copyright and Other Notices](#3.11     Legal, Copyright, and Other Notices)     
+3.7 [On-line User Documentation and Help System Requirements](#3.7 )     
 
-[3.12 <span style="font-size:12.0pt"></span> Applicable Standards](#3.12     Applicable Standards)     
+3.8 [Purchased Components](#3.8 )     
 
-[4. <span style="font-size:12.0pt"></span> Supporting Information](#4\.                  Supporting Information)    
+3.9 [Interfaces](#3.9 )     
+
+3.9.1 [User Interfaces](#3.9.1 )          
+
+3.9.2 [Hardware Interfaces](#3.9.2 )           
+
+3.9.3 [Software Interfaces](#3.9.3 )           
+
+3.9.4 [Communications Interfaces](#3.9.4 )           
+
+3.10 [Licensing Requirements](#3.10 )    
+
+3.11 [Legal, Copyright and Other Notices](#3.11 )     
+
+3.12 [Applicable Standards](#3.12 )     
+
+4. [Supporting Information](#4. )    
 
 Software Requirements Specification
 
-# <a name="1\.                  Introduction">1.<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Introduction</a>
+# <a name="1. ">1. Introduction</a>
 
-## <a name="1.1     Purpose">1.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Purpose</a>
+## <a name="1.1 ">1.1 Purpose</a>
 
 This SRS describes the Android game “Tower Attack”. It contains a comprehensive list of all its requirements. This includes both requirements for the listed functionalities but also internal, nonfunctional requirements of the project.
 
-## <a name="1.2     Scope">1.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Scope</a>
+## <a name="1.2 ">1.2 Scope</a>
 
 “Tower Attack” will be an inverted single-player tower-defense game which means it’s a tower-defense game where you take the role of the attacker, not the tower-building defender. 
 
-## <a name="1.3     Definitions, Acronyms and Abbreviations">1.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Definitions, Acronyms and Abbreviations</a>
+## <a name="1.3 ">1.3 Definitions, Acronyms and Abbreviations</a>
 
 n/a: Not Applicable
 <br/>Play Store: Google Play Store 
 <br/>tbd: to be determined
 
-## <a name="1.4     References">1.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span> References</a>
+## <a name="1.4 ">1.4 References</a>
 
 Android Studio: https://developer.android.com/studio/
 <br/>GIT: https://git-scm.com/
 <br/>GitHub: https://github.com/
 <br/>Google Play Store: https://play.google.com/store
 
-## <a name="1.5     Overview">1.5<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Overview</a>
+## <a name="1.5 ">1.5 Overview</a>
 
 The following Chapters describe our vision for the project, the requirements for it, the conventions we want to develop it with and the technical realization of this project.
 
-# <a name="2\.                  Overall Description">2.<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Overall Description</a>
+# <a name="2. ">2. Overall Description</a>
 
 Tower Attack will be a game in the Tower-Defense genre. In contrast to other games of the Tower-Defense genre you won’t place the turrets to hold your base against incoming enemy waves but try to carry your minions through the towers placed by the computer enemy. The goal is to traverse the enemy base by manipulating the preset path and upgrading the capabilities of your pawns.
 
-#diagram here -------------------------
+![alt text][logo]
 
-# <a name="3\.                  Specific Requirements">3.<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Specific Requirements</a>
+[logo]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/UseCase.png "Use Case Diagram"
 
-## <a name="3.1     Functionality">3.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Functionality</a>
+# <a name="3. ">3. Specific Requirements</a>
 
-### <a name="3.1.1     <Functional Requirement One>">3.1.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Working Main Menu</a>
+## <a name="3.1 ">3.1 Functionality</a>
+
+### <a name="3.1.1 ">3.1.1 Working Main Menu</a>
 
 There should be a main menu where the player can choose between different options like “play” or “options”.
 
-### <a name="3.1.2     <Functional Requirement Two>">3.1.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Start and load games<Functional Requirement Two></a>
+### <a name="3.1.2 ">3.1.2 Start and load games</a>
 
 The game itself should start after the player chooses “play” in the main menu.
 
-### <a name="3.1.3     <Functional Requirement Three>">3.1.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Send and upgrade units<Functional Requirement Three></a>
+### <a name="3.1.3 ">3.1.3 Send and upgrade units</a>
 
 The player should be able to send units and upgrade them.
 
-### <a name="3.1.4     <Functional Requirement Four>">3.1.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Choose between different unit types<Functional Requirement Four></a>
+### <a name="3.1.4 ">3.1.4 Choose between different unit types</a>
 
 The player should be able to choose between different types of units to send.
 
-### <a name="3.1.5     <Functional Requirement Four>">3.1.5<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Use special abilities and spells<Functional Requirement Four></a>
+### <a name="3.1.5 ">3.1.5 Use special abilities and spells</a>
 
 The player should be able to use special abilities and spells.
 
-### <a name="3.1.6     <Functional Requirement Six>">3.1.6<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Damage the enemy base<Functional Requirement Six></a>
+### <a name="3.1.6 ">3.1.6 Damage the enemy base</a>
 
 Units that reach the enemy base should damage it.
 
-## <a name="3.2               Usability">3.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Usability</a>
+## <a name="3.2 ">3.2 Usability</a>
 
-### <a name="3.2.1          <Usability Requirement One>">3.2.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Easy to understand <Usability Requirement One></a>
+### <a name="3.2.1 ">3.2.1 Easy to understand</a>
 
 The Player should understand what he is doing and how the game is played by just looking at the game and short explanations.
 
-### <a name="3.2.2          <Usability Requirement One>">3.2.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Easy to use <Usability Requirement One></a>
+### <a name="3.2.2 ">3.2.2 Easy to use</a>
 
 The app should be easy to use. The player should not be distracted by unnecessary information while playing. There should just be the right amount of information, so the player is able to understand what is going on while enjoying the game.
 
-## <a name="3.3     Reliability">3.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Reliability</a>
+## <a name="3.3 ">3.3 Reliability</a>
 
-### <a name="3.3.1          <Reliability Requirement One>">3.3.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Stable Android App <Reliability Requirement One></a>
+### <a name="3.3.1 ">3.3.1 Stable Android App</a>
 
 The Android App should not crash at any point in a running game.
 
-## <a name="3.4     Performance">3.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Performance</a>
+## <a name="3.4 ">3.4 Performance</a>
 
-### <a name="3.4.1          <Performance Requirement One>">3.4.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Justifiable Loading-Time <Performance Requirement One></a>
+### <a name="3.4.1 ">3.4.1 Justifiable Loading-Time</a>
 
 The time needed to start the game and to load in the game should be justifiable considering given hardware.
 
-### <a name="3.4.2          <Performance Requirement One>">3.4.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Smooth gameplay <Performance Requirement One></a>
+### <a name="3.4.2 ">3.4.2 Smooth gameplay</a>
 
 The game should run smoothly without lags on not only the latest devices.
 
-## <a name="3.5     Supportability">3.5<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Supportability</a>
+## <a name="3.5 ">3.5 Supportability</a>
 
-### <a name="3.5.1          <Supportability Requirement One>">3.5.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Android <Supportability Requirement One></a>
+### <a name="3.5.1 ">3.5.1 Android</a>
 
 Android is a commonly used OS primarily for mobile devices.
 
-### <a name="3.5.2          <Supportability Requirement One>">3.5.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> PC <Supportability Requirement One></a>
+### <a name="3.5.2 ">3.5.2 PC</a>
 
 Any OS that is capable of running a Java Runtime Environment
 
-## <a name="3.6     Design Constraints">3.6<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Design Constraints</a>
+## <a name="3.6 ">3.6 Design Constraints</a>
 
 tbd
 
-## <a name="3.7     On-line User Documentation and Help System Requirements">3.7<span style="font:7.0pt &quot;Times New Roman&quot;"></span> On-line User Documentation and Help System Requirements</a>
+## <a name="3.7 ">3.7 On-line User Documentation and Help System Requirements</a>
 
 tbd
 
-## <a name="3.8     Purchased Components">3.8<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Purchased Components</a>
+## <a name="3.8 ">3.8 Purchased Components</a>
 
 tbd
 
-## <a name="3.9     Interfaces">3.9<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Interfaces</a>
+## <a name="3.9 ">3.9 Interfaces</a>
 
 tbd
 
-### <a name="3.9.1          User Interfaces">3.9.1<span style="font:7.0pt &quot;Times New Roman&quot;"></span> User Interfaces</a>
+### <a name="3.9.1 ">3.9.1 User Interfaces</a>
 
 tbd
 
-### <a name="3.9.2          Hardware Interfaces">3.9.2<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Hardware Interfaces</a>
+### <a name="3.9.2 ">3.9.2 Hardware Interfaces</a>
 
 tbd
 
-### <a name="3.9.3          Software Interfaces">3.9.3<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Software Interfaces</a>
+### <a name="3.9.3 ">3.9.3 Software Interfaces</a>
 
 tbd
 
-### <a name="3.9.4          Communications Interfaces">3.9.4<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Communications Interfaces</a>
+### <a name="3.9.4 ">3.9.4 Communications Interfaces</a>
 
 tbd
 
-## <a name="3.10     Licensing Requirements">3.10<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Licensing Requirements</a>
+## <a name="3.10 ">3.10 Licensing Requirements</a>
 
 tbd
 
-## <a name="3.11     Legal, Copyright, and Other Notices">3.11<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Legal, Copyright, and Other Notices</a>
+## <a name="3.11 ">3.11 Legal, Copyright, and Other Notices</a>
 
 tbd
 
-## <a name="3.12     Applicable Standards">3.12<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Applicable Standards</a>
+## <a name="3.12 ">3.12 Applicable Standards</a>
 
 tbd
 
-# <a name="4\.                  Supporting Information">4.<span style="font:7.0pt &quot;Times New Roman&quot;"></span> Supporting Information</a>
+# <a name="4. ">4. Supporting Information</a>
 
 n/a
 
