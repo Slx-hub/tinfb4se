@@ -235,6 +235,7 @@ This SRS describes the Android game “Tower Attack”. It contains a comprehens
 
 “Tower Attack” will be an inverted single-player tower-defense game which means it’s a tower-defense game where you take the role of the attacker, not the tower-building defender. 
 
+The subsytems can be categorized into the following scopes defined by the Overall Use Case Diagram which is presented in 3. [Specific Requirements](#3. )
 ## <a name="1.3 ">1.3 Definitions, Acronyms and Abbreviations</a>
 
 n/a: Not Applicable
@@ -254,13 +255,15 @@ The following Chapters describe our vision for the project, the requirements for
 
 # <a name="2. ">2. Overall Description</a>
 
-Tower Attack will be a game in the Tower-Defense genre. In contrast to other games of the Tower-Defense genre you won’t place the turrets to hold your base against incoming enemy waves but try to carry your minions through the towers placed by the computer enemy. The goal is to traverse the enemy base by manipulating the preset path and upgrading the capabilities of your pawns.
-
-![alt text][logo]
-
-[logo]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/UseCase.png "Use Case Diagram"
+Tower Attack will be a game in the Tower-Defense genre. In contrast to other games of the Tower-Defense genre you won’t place the turrets to hold your base against incoming enemy waves but try to carry your minions through the towers placed by the computer enemy. The goal is to traverse the enemy base by manipulating the preset path and upgrading the capabilities of your pawns. Tower Attack will be developed in Java as an application that can run on both, Android and any desktop-based Java runtime environment. 
 
 # <a name="3. ">3. Specific Requirements</a>
+
+The requirements are modeled in a use-case based system. The Overall Use Case Diagram as follows contains all requirements that are set between the user and the application.
+
+![alt text][UCD]
+
+[UCD]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/UseCase.png "Use Case Diagram"
 
 ## <a name="3.1 ">3.1 Functionality</a>
 
@@ -270,23 +273,19 @@ There should be a main menu where the player can choose between different option
 
 ### <a name="3.1.2 ">3.1.2 Start and load games</a>
 
-The game itself should start after the player chooses “play” in the main menu.
+The game itself should start after the player has chosen a level from the selection.
 
 ### <a name="3.1.3 ">3.1.3 Send and upgrade units</a>
 
-The player should be able to send units and upgrade them.
+The player should be able to send units onto the field and upgrade them for better health or special abilities.
 
 ### <a name="3.1.4 ">3.1.4 Choose between different unit types</a>
 
 The player should be able to choose between different types of units to send.
 
-### <a name="3.1.5 ">3.1.5 Use special abilities and spells</a>
+### <a name="3.1.5 ">3.1.5 Use special abilities and special items</a>
 
-The player should be able to use special abilities and spells.
-
-### <a name="3.1.6 ">3.1.6 Damage the enemy base</a>
-
-Units that reach the enemy base should damage it.
+The player should be able to use special abilities and special items that can help the player.
 
 ## <a name="3.2 ">3.2 Usability</a>
 
@@ -302,7 +301,7 @@ The app should be easy to use. The player should not be distracted by unnecessar
 
 ### <a name="3.3.1 ">3.3.1 Stable Android App</a>
 
-The Android App should not crash at any point in a running game.
+The application should not crash at any point in a running game.
 
 ## <a name="3.4 ">3.4 Performance</a>
 
@@ -312,7 +311,7 @@ The time needed to start the game and to load in the game should be justifiable 
 
 ### <a name="3.4.2 ">3.4.2 Smooth gameplay</a>
 
-The game should run smoothly without lags on not only the latest devices.
+The game should run smoothly without stuttering on not only the latest devices.
 
 ## <a name="3.5 ">3.5 Supportability</a>
 
@@ -322,11 +321,11 @@ Android is a commonly used OS primarily for mobile devices.
 
 ### <a name="3.5.2 ">3.5.2 PC</a>
 
-Any OS that is capable of running a Java Runtime Environment
+Any OS that is capable of running a Java Runtime Environment.
 
 ## <a name="3.6 ">3.6 Design Constraints</a>
 
-tbd
+The application has to be developed in Java as an application that can run on both, Android and any desktop-based Java runtime environment. 
 
 ## <a name="3.7 ">3.7 On-line User Documentation and Help System Requirements</a>
 
@@ -334,7 +333,7 @@ tbd
 
 ## <a name="3.8 ">3.8 Purchased Components</a>
 
-tbd
+n/a
 
 ## <a name="3.9 ">3.9 Interfaces</a>
 
