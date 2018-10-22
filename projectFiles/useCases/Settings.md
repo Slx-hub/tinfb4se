@@ -4,14 +4,15 @@ Settings
 
 ## 1.1 Brief Description
 
-Description Text
+The user can change the volume of sound effects and background music. In addition to that he can deactivate th push-notifications of the app.
 
 # 2 Flow of Events
 
 ## 2.1 Basic Flow
 
-+ Action Step 1
-+ Action Step 2
++ User clicks on "Settings" button.
++ User changes the settings. The altered settings screen will be shown.
++ User clicks on "Back" to get back to main menu.
 
 ### 2.1.1 Activity Diagram
 
