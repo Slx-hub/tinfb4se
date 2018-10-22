@@ -4,14 +4,16 @@ Select Level
 
 ## 1.1 Brief Description
 
-Description Text
+The user can choose from different levels and can select the one he wants to play. After he selected a level that is unlocked for playing, the level will start.
 
 # 2 Flow of Events
 
 ## 2.1 Basic Flow
 
-+ Action Step 1
-+ Action Step 2
++ User clicks on "Select Level" button.
++ User chooses the level he wants to play in the level selection screen.
++ User clicks on the level he wants to play. The game will start.
++ User clicks on "Back" to get back to main menu.
 
 ### 2.1.1 Activity Diagram
 
@@ -35,7 +37,7 @@ n/a
 
 # 3 Special Requirements
 
-n/a
+The chosen level has to be unlocked by completing the previous level.
 
 # 4 Preconditions
 
