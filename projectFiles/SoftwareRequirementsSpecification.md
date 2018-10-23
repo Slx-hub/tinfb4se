@@ -42,7 +42,7 @@ Tower Attack will be a game in the Tower-Defense genre. In contrast to other gam
 
 # <a name="3. Specific Requirements">3. Specific Requirements</a>
 
-The requirements are modeled in a use-case based system. The Overall Use Case Diagram as follows contains all requirements that are set between the user and the application.
+The requirements are modeled in a use-case based system. The Overall Use Case Diagram as shown in the overall description contains all requirements that are set between the user and the application.
 
 ## <a name="3.1 Functionality">3.1 Functionality</a>
 
