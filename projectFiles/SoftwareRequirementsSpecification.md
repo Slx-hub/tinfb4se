@@ -38,7 +38,7 @@ Tower Attack will be a game in the Tower-Defense genre. In contrast to other gam
 
 ![alt text][UCD]
 
-[UCD]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/UseCase.png "Use Case Diagram"
+[UCD]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/OverallUseCaseDiagram.png "Use Case Diagram"
 
 # <a name="3. Specific Requirements">3. Specific Requirements</a>
 
@@ -46,43 +46,47 @@ The requirements are modeled in a use-case based system. The Overall Use Case Di
 
 ## <a name="3.1 Functionality">3.1 Functionality</a>
 
-### <a name="3.1.1 Run app">3.1.1 Run app</a>
+### <a name="3.1.1 Run game">3.1.1 Run game</a>
 
-The User should be able to run the application on his device.
+The user should be able to run the game. When clicked, the level selection screen should open.
 
 ### <a name="3.1.2 Alter settings">3.1.2 Alter settings</a>
 
-The User should be able to alter the settings.
+The user should be able to alter the settings.
 </br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Settings.md)
 
 ### <a name="3.1.3 Close app">3.1.3 Close app</a>
 
-The User should be able to close the application.
+The user should be able to close the application. When closed, the game should save it's settings and optionally the game's state.
 
-### <a name="3.1.4 Run game">3.1.4 Run game</a>
+### <a name="3.1.4 Select level">3.1.4 Select level</a>
 
-The User should be able to run the game.
-
-### <a name="3.1.5 Select level">3.1.5 Select level</a>
-
-The User should be able to select the level he wants to play.
+The user should be able to select the level he wants to play.
 </br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Settings.md)
 
-### <a name="3.1.6 Start level">3.1.6 Start level</a>
+### <a name="3.1.5 Start level">3.1.5 Start level</a>
 
-The User should be able to start a specific level.
+The user should be able to start a specific level that was selected in the use case above.
 
-### <a name="3.1.7 Return to menu">3.1.7 Return to menu</a>
+### <a name="3.1.6 Return to menu">3.1.6 Return to menu</a>
 
-The User should be able to return to menu.
+The user should be able to return to menu.
+
+### <a name="3.1.7 Place unit">3.1.7 Place unit</a>
+
+The use should be able to send units onto the field.
 
 ### <a name="3.1.8 Move camera">3.1.8 Move camera</a>
 
-The User should be able to move the in-game camera.
+The user should be able to move the in-game camera.
 
 ### <a name="3.1.9 Close game">3.1.9 Close game</a>
 
-The user should be able to close a game.
+The user should be able to close a game and return to the menu.
+
+### <a name="3.1.10 Place turret">3.1.9 Place turret</a>
+
+The computer enemy should be able to place turrets on free spaces.
 
 ## <a name="3.2 Usability">3.2 Usability</a>
 
