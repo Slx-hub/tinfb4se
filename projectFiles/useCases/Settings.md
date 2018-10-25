@@ -1,10 +1,10 @@
 # 1 Use-Case Name
 
-Settings
+Alter Settings
 
 ## 1.1 Brief Description
 
-The user can change the volume of sound effects and background music. In addition to that he can deactivate th push-notifications of the app.
+The user can change the volume of sound effects and background music. In addition to that he can deactivate the push-notifications of the app.
 
 # 2 Flow of Events
 
@@ -40,11 +40,11 @@ n/a
 
 # 4 Preconditions
 
-n/a
+User clicked on "Settings" in the main menu
 
 # 5 Postconditions
 
-n/a
+Settings the user changes get saved
 
 # 6 Extention Points
 
