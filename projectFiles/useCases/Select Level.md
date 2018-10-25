@@ -41,7 +41,7 @@ The chosen level has to be unlocked by completing the previous level.
 
 # 4 Preconditions
 
-n/a
+User clicked on "Select Level" in the main menu
 
 # 5 Postconditions
 
