@@ -3,8 +3,8 @@ android {
         config {
             keyAlias 'android'
             keyPassword 'android'
-            storeFile file('C:/Users/Informatik/.android/keystore.jks')
-            storePassword 'tinfb4se'
+            storeFile file('./keystore.jks')
+            storePassword 'android'
         }
     }
     buildToolsVersion "28.0.3"
