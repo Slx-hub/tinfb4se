@@ -12,8 +12,10 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.UBJsonReader;
 
 public class TowerAttackGame extends ApplicationAdapter {
@@ -23,6 +25,7 @@ public class TowerAttackGame extends ApplicationAdapter {
 	private ModelInstance modelInstance;
 	private Environment environment;
 	private AnimationController controller;
+	PointLight pointLight;
 
 	@Override
 	public void create() {
@@ -61,7 +64,8 @@ public class TowerAttackGame extends ApplicationAdapter {
 		// Finally we want some light, or we wont see our color.  The environment gets passed in during
 		// the rendering process.  Create one, then create an Ambient ( non-positioned, non-directional ) light.
 		environment = new Environment();
-		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.8f, 0.8f, 0.8f, 1.0f));
+		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.2f, 0.2f, 0.2f, 1.0f));
+		environment.add(pointLight = new PointLight().set(0.8f, 0.8f, 0.8f, 10f, 100f, 0f, 1000f));
 
 		// You use an AnimationController to um, control animations.  Each control is tied to the model instance
 		controller = new AnimationController(modelInstance);
@@ -109,6 +113,8 @@ public class TowerAttackGame extends ApplicationAdapter {
 
 		// You need to call update on the animation controller so it will advance the animation.  Pass in frame delta
 		controller.update(Gdx.graphics.getDeltaTime());
+
+		pointLight.position.rotate(Vector3.Z, Gdx.graphics.getDeltaTime() * 90f);
 		// Like spriteBatch, just with models!  pass in the box Instance and the environment
 		modelBatch.begin(camera);
 		modelBatch.render(modelInstance, environment);
