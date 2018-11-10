@@ -1,11 +1,11 @@
-package de.codecrunch.test;
+package de.codecrunch.test.steps;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-class SelectLevelSteps {
+class SelectLevelSteps{
     @When("^I click on the level I want to play$")
     public void iClickOnTheLevelIWantToPlay() throws Throwable {
         // Write code here that turns the phrase above into concrete actions

@@ -1,4 +1,4 @@
-package de.codecrunch.test;
+package de.codecrunch.teststeps;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
