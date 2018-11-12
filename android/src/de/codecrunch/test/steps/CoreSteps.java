@@ -1,5 +1,7 @@
 package steps;
 
+//import de.codecrunch.<alterSettingsActivity>
+
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
 
@@ -18,37 +20,23 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-class SelectLevelSteps{
 
-    @Rule
-    public final ActivityTestRule<settingsActivity> main = new ActivityTestRule<>(selectLevelActivity.class);
+class CoreSteps {
 
-    @When("^I click on the level I want to play$")
-    public void iClickOnTheLevelIWantToPlay() throws Throwable {
+    @Given("^I \"([^\"]*)\" on the \"([^\"]*)\" screen$")
+    public void i(String arg0)OnTheScreen(String arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
-    @And("^The previous level \"([^\"]*)\" solved or first level$")
-    public void thePreviousLevelSolvedOrFirstLevel(String arg0) throws Throwable {
+    @When("^I click on the \"([^\"]*)\" button$")
+    public void iClickOnTheButton(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
-    @Then("^I the selected level should start$")
-    public void iTheSelectedLevelShouldStart() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^I \"([^\"]*)\" at the \"([^\"]*)\" of the List$")
-    public void iAtTheOfTheList(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^I get to see the \"([^\"]*)\" levels$")
-    public void iGetToSeeTheLevels(String arg0) throws Throwable {
+    @Then("^I should see the \"([^\"]*)\" message$")
+    public void iShouldSeeTheMessage(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
