@@ -1,6 +1,9 @@
-package de.codecrunch.Controller;
+package de.codecrunch.controller;
 
-import de.codecrunch.Model.M_Game;
+import de.codecrunch.controller.ca_item.CA_Item;
+import de.codecrunch.controller.ca_turret.CA_Turret;
+import de.codecrunch.controller.cat_unit.CA_Unit;
+import de.codecrunch.model.M_Game;
 
 public class C_Game {
     private M_Game game = new M_Game();
