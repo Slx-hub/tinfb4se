@@ -6,10 +6,27 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.awt.event.ActionEvent;
+
+import de.codecrunch.controller.C_Game;
+import de.codecrunch.view.va_screen.VA_Screen;
+
 public class TowerAttackGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	
+	private String levelSelected;
+	private VA_Screen screen = new VA_Screen() {
+	};
+	private C_Game game = new C_Game();
+
+	private void processButton(ActionEvent e){
+
+	}
+
+	private void startGame(){}
+
+
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
