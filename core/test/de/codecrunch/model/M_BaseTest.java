@@ -1,7 +1,9 @@
 package de.codecrunch.model;
 
+import de.codecrunch.GameTest;
+
 import static org.junit.Assert.*;
 
-public class M_BaseTest {
+public class M_BaseTest extends GameTest {
 
 }
