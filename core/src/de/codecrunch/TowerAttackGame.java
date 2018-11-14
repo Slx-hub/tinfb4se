@@ -5,13 +5,12 @@ import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
@@ -25,7 +24,7 @@ public class TowerAttackGame extends ApplicationAdapter {
 	private ModelInstance modelInstance;
 	private Environment environment;
 	private AnimationController controller;
-	PointLight pointLight;
+	DirectionalLight light;
 
 	@Override
 	public void create() {
@@ -65,7 +64,7 @@ public class TowerAttackGame extends ApplicationAdapter {
 		// the rendering process.  Create one, then create an Ambient ( non-positioned, non-directional ) light.
 		environment = new Environment();
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.2f, 0.2f, 0.2f, 1.0f));
-		environment.add(pointLight = new PointLight().set(0.8f, 0.8f, 0.8f, 10f, 100f, 0f, 1000f));
+		environment.add(light = new DirectionalLight().set(0.8f, 0.8f, 0.8f, 10f, -20f, 0f));
 
 		// You use an AnimationController to um, control animations.  Each control is tied to the model instance
 		controller = new AnimationController(modelInstance);
@@ -114,7 +113,8 @@ public class TowerAttackGame extends ApplicationAdapter {
 		// You need to call update on the animation controller so it will advance the animation.  Pass in frame delta
 		controller.update(Gdx.graphics.getDeltaTime());
 
-		pointLight.position.rotate(Vector3.Z, Gdx.graphics.getDeltaTime() * 90f);
+		modelInstance.transform.rotate(Vector3.Y, Gdx.graphics.getDeltaTime() * 20f);
+
 		// Like spriteBatch, just with models!  pass in the box Instance and the environment
 		modelBatch.begin(camera);
 		modelBatch.render(modelInstance, environment);
