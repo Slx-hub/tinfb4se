@@ -1,4 +1,4 @@
-package de.codecrunch.model.ma_item;
+package de.codecrunch.model.item;
 
 import de.codecrunch.GameTest;
 

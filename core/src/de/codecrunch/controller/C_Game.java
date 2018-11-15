@@ -1,7 +1,7 @@
 package de.codecrunch.controller;
 
-import de.codecrunch.controller.ca_item.CA_Item;
-import de.codecrunch.controller.ca_turret.CA_Turret;
+import de.codecrunch.controller.item.CA_Item;
+import de.codecrunch.controller.turret.CA_Turret;
 import de.codecrunch.controller.ca_unit.CA_Unit;
 import de.codecrunch.model.M_Game;
 

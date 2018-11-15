@@ -1,4 +1,4 @@
-package de.codecrunch.model.ma_unit;
+package de.codecrunch.model.unit;
 
 import de.codecrunch.GameTest;
 

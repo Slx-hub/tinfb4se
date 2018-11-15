@@ -1,4 +1,4 @@
-package de.codecrunch.controller.ca_item;
+package de.codecrunch.controller.item;
 
 import de.codecrunch.GameTest;
 

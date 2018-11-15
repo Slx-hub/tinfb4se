@@ -1,4 +1,4 @@
-package de.codecrunch.model.ma_turret;
+package de.codecrunch.model.turret;
 
 import de.codecrunch.GameTest;
 

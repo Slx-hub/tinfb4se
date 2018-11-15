@@ -1,8 +1,8 @@
 package de.codecrunch.model;
 
-import de.codecrunch.model.ma_item.MA_Item;
-import de.codecrunch.model.ma_turret.MA_Turret;
-import de.codecrunch.model.ma_unit.MA_Unit;
+import de.codecrunch.model.item.MA_Item;
+import de.codecrunch.model.turret.MA_Turret;
+import de.codecrunch.model.unit.MA_Unit;
 
 public class M_Game {
     private M_Map m_map = new M_Map();

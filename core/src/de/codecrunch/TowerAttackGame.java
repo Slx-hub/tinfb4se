@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.awt.event.ActionEvent;
 
 import de.codecrunch.controller.C_Game;
-import de.codecrunch.view.va_screen.VA_Screen;
+import de.codecrunch.view.screen.VA_Screen;
 
 public class TowerAttackGame extends ApplicationAdapter {
 	SpriteBatch batch;

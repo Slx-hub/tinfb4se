@@ -1,4 +1,4 @@
-package de.codecrunch.controller.ca_turret;
+package de.codecrunch.controller.turret;
 
 import de.codecrunch.GameTest;
 

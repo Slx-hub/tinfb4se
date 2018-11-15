@@ -1,4 +1,4 @@
-package de.codecrunch.view.va_screen;
+package de.codecrunch.view.screen;
 
 import java.awt.event.ActionEvent;
 
