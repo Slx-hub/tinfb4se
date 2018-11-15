@@ -1,8 +1,10 @@
 package de.codecrunch.view;
 
-import de.codecrunch.view.va_screen.VA_Screen;
+import de.codecrunch.TowerAttackGame;
 
-public class V_Settings {
-    private VA_Screen screen = new VA_Screen() {
-    };
+public class V_Settings extends VA_Screen {
+
+    public V_Settings(TowerAttackGame game) {
+        super(game);
+    }
 }
