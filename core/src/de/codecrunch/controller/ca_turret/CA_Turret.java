@@ -1,4 +1,4 @@
-package de.codecrunch.controller.turret;
+package de.codecrunch.controller.ca_turret;
 
 import de.codecrunch.controller.C_Bullet;
 

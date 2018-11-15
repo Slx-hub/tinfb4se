@@ -1,4 +1,4 @@
-package de.codecrunch.model.turret;
+package de.codecrunch.model.ma_turret;
 
 import de.codecrunch.model.M_Bullet;
 

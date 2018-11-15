@@ -1,10 +1,8 @@
 package de.codecrunch.view;
 
-import de.codecrunch.TowerAttackGame;
+import de.codecrunch.view.va_screen.VA_Screen;
 
-public class V_LevelSelect extends VA_Screen {
-
-    public V_LevelSelect(TowerAttackGame game) {
-        super(game);
-    }
+public class V_LevelSelect {
+    private VA_Screen screen = new VA_Screen() {
+    };
 }
