@@ -2,7 +2,7 @@ package steps;
 
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
-
+import de.codecrunch.AndroidLauncher;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 import cucumber.api.PendingException;
 
@@ -21,11 +21,10 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
 class SelectLevelSteps{
 
     @Rule
-    public final ActivityTestRule<settingsActivity> main = new ActivityTestRule<>(selectLevelActivity.class);
+    public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
 
     @When("^I click on the level I want to play$")
     public void iClickOnTheLevelIWantToPlay() throws Throwable {

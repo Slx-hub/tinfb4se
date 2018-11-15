@@ -1,10 +1,8 @@
 package steps;
 
-//import de.codecrunch.<alterSettingsActivity>
-
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
-
+import de.codecrunch.AndroidLauncher;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 import cucumber.api.PendingException;
 
@@ -23,17 +21,15 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
 class AlterSettingsSteps {
     @Rule
-    public final ActivityTestRule<settingsActivity> main = new ActivityTestRule<>(settingsActivity.class);
+    public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
     
     @And("^The \"([^\"]*)\" volume \"([^\"]*)\" at \"([^\"]*)\"$")
     public void theVolumeAt(String arg0, String arg1, String arg2) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
-
 
     @When("^I drag the \"([^\"]*)\" volume slider to the \"([^\"]*)\"$")
     public void iDragTheVolumeSliderToThe(String arg0, String arg1) throws Throwable {

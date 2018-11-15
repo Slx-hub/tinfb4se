@@ -4,7 +4,6 @@ package steps;
 
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
-
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 import cucumber.api.PendingException;
 
@@ -22,7 +21,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 
 class CoreSteps {
 
