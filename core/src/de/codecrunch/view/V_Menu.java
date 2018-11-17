@@ -22,11 +22,15 @@ public class V_Menu extends VA_Screen {
         stage.addActor(table);
 
         TextButton newGame = new TextButton("New Game", skin);
+        TextButton levelSelect = new TextButton("Level Select", skin);
         TextButton settings = new TextButton("Settings", skin);
         TextButton exit = new TextButton("Exit", skin);
 
         table.add(newGame).fillX().uniformX();
         table.row().pad(10, 0, 10, 0);
+
+        table.add(levelSelect).fillX().uniformX();
+        table.row();
         table.add(settings).fillX().uniformX();
         table.row();
         table.add(exit).fillX().uniformX();
