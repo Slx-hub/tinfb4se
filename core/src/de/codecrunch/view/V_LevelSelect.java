@@ -32,6 +32,6 @@ public class V_LevelSelect extends VA_Screen {
         table.add(back);
         table.add(down);
 
-        //table.add(back).fillX().uniformX();
+        table.add(back).fillX().uniformX();
     }
 }
