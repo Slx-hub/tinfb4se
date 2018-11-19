@@ -23,36 +23,61 @@ import cucumber.api.java.en.When;
 
 class SelectLevelSteps{
 
+    // "is" or "is not"
+    private String solverd;
+    // "am" or "am not"
+    private String toBe;
+    // "top" or "bottom"
+    private String position;
+    // "next higher" or next lower" or "same"
+    private String direction;
+
     @Rule
     public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
 
     @When("^I click on the level I want to play$")
     public void iClickOnTheLevelIWantToPlay() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+
+
+
         throw new PendingException();
     }
 
     @And("^The previous level \"([^\"]*)\" solved or first level$")
     public void thePreviousLevelSolvedOrFirstLevel(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+
+        solved = arg0;
+
         throw new PendingException();
     }
 
     @Then("^I the selected level should start$")
     public void iTheSelectedLevelShouldStart() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+
+
+
         throw new PendingException();
     }
 
     @And("^I \"([^\"]*)\" at the \"([^\"]*)\" of the List$")
     public void iAtTheOfTheList(String arg0, String arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+
+        toBe = arg0;
+        position = arg1;
+
         throw new PendingException();
     }
 
     @And("^I get to see the \"([^\"]*)\" levels$")
     public void iGetToSeeTheLevels(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+
+        direction = arg0;
+
         throw new PendingException();
     }
 }

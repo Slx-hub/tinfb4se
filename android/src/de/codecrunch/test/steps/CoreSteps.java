@@ -5,6 +5,9 @@ package steps;
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
+
+import java.sql.Driver;
+
 import cucumber.api.PendingException;
 
 //uncomment for running tests, comment for autocorrection in .feature files
@@ -27,18 +30,27 @@ class CoreSteps {
     @Given("^I \"([^\"]*)\" on the \"([^\"]*)\" screen$")
     public void iOnTheScreen(String arg0, String arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        String action = arg0;
+        String screenName = arg1;
+
+
+
         throw new PendingException();
     }
 
     @When("^I click on the \"([^\"]*)\" button$")
     public void iClickOnTheButton(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        String buttonName = arg0;
+
         throw new PendingException();
     }
 
     @Then("^I should see the \"([^\"]*)\" message$")
     public void iShouldSeeTheMessage(String arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        String messageText = arg0;
+
         throw new PendingException();
     }
 }
