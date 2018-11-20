@@ -4,7 +4,5 @@ import de.codecrunch.TowerAttackGame;
 
 public class V_Game extends VA_Screen {
 
-    public V_Game(TowerAttackGame game) {
-        super(game);
-    }
+    public V_Game(TowerAttackGame game) {super(game);}
 }
