@@ -6,31 +6,21 @@ import com.badlogic.gdx.Preferences;
 
 public class C_Settings {
     private static final String PREF_MUSIC_VOLUME = "volume";
-    private static final String PREF_MUSIC_ENABLED = "music.enabled";
-    private static final String PREF_SOUND_ENABLED = "sound.enabled";
+    private static final String PREF_PUSH_ENABLED = "push.enabled";
     private static final String PREF_SOUND_VOL = "sound";
-    private static final String PREFS_NAME = "b2dtut";
+    private static final String PREFS_NAME = "code_crunch.tower_attack";
 
-/*
-    //protected Preferences getPrefs() {
-      //  return Gdx.app.getPreferences(PREFS_NAME);
-    //}
 
-    public boolean isSoundEffectsEnabled() {
-        return getPrefs().getBoolean(PREF_SOUND_ENABLED, true);
+    protected Preferences getPrefs() {
+        return Gdx.app.getPreferences(PREFS_NAME);
     }
 
-    public void setSoundEffectsEnabled(boolean soundEffectsEnabled) {
-        getPrefs().putBoolean(PREF_SOUND_ENABLED, soundEffectsEnabled);
-        getPrefs().flush();
+    public boolean isPushEnabled() {
+        return getPrefs().getBoolean(PREF_PUSH_ENABLED, true);
     }
 
-    public boolean isMusicEnabled() {
-        return getPrefs().getBoolean(PREF_MUSIC_ENABLED, true);
-    }
-
-    public void setMusicEnabled(boolean musicEnabled) {
-        getPrefs().putBoolean(PREF_MUSIC_ENABLED, musicEnabled);
+    public void setPushEnabled(boolean pushEnabled) {
+        getPrefs().putBoolean(PREF_PUSH_ENABLED, pushEnabled);
         getPrefs().flush();
     }
 
@@ -51,5 +41,4 @@ public class C_Settings {
         getPrefs().putFloat(PREF_SOUND_VOL, volume);
         getPrefs().flush();
     }
-    */
 }

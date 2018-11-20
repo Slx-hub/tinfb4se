@@ -46,5 +46,12 @@ public class V_EditorLevelSelect extends VA_Screen {
                 towerAttackGame.startEditor(null);
             }
         });
+
+        back.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                towerAttackGame.changeScreen(TowerAttackGame.SCREENID_MENU);
+            }
+        });
     }
 }

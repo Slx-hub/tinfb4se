@@ -61,7 +61,8 @@ public class TowerAttackGame extends Game {
                 this.setScreen(editorScreen);
                 break;
             case SCREENID_EDITORLVLSELECT:
-                if (editorLevelSelectScreen == null) editorLevelSelectScreen = new V_EditorLevelSelect(this);
+                if (editorLevelSelectScreen == null)
+                    editorLevelSelectScreen = new V_EditorLevelSelect(this);
                 this.setScreen(editorLevelSelectScreen);
                 break;
         }
@@ -70,6 +71,8 @@ public class TowerAttackGame extends Game {
     public void startEditor(M_Map map) {
         editor = new C_Editor(map);
         changeScreen(SCREENID_EDITOR);
+        editor.setView(editorScreen);
+        editorScreen.setController(editor);
     }
 
     public void startGame(M_Map map) {
