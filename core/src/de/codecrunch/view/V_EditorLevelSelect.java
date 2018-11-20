@@ -1,7 +1,9 @@
 package de.codecrunch.view;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import java.util.List;
 
@@ -37,5 +39,12 @@ public class V_EditorLevelSelect extends VA_Screen {
         });
         table.add(back);
         table.add(down);
+
+        newLevel.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                towerAttackGame.startEditor(null);
+            }
+        });
     }
 }

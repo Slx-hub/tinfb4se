@@ -1,4 +1,39 @@
 package de.codecrunch.model;
 
-public class M_Tile {
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
+
+import java.io.Serializable;
+
+public class M_Tile implements Serializable {
+    public final ME_TileState state;
+    public final int x_pos,y_pos;
+    public final int rotation;
+
+    private transient ModelInstance gameModel;
+    private transient Sprite editorSprite;
+
+    public M_Tile(ME_TileState state, int x_pos,int y_pos, int rotation) {
+        this.state = state;
+        this.x_pos = x_pos;
+        this.y_pos = y_pos;
+        this.rotation = rotation;
+    }
+
+    public ModelInstance getGameModel() {
+        return gameModel;
+    }
+
+    public void setGameModel(ModelInstance gameModel) {
+        this.gameModel = gameModel;
+    }
+
+    public Sprite getEditorSprite() {
+        return editorSprite;
+    }
+
+    public void setEditorSprite(Sprite editorSprite) {
+        this.editorSprite = editorSprite;
+    }
 }
+

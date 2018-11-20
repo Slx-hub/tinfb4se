@@ -39,7 +39,7 @@ public class V_Menu extends VA_Screen {
         editor.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(towerAttackGame.EDITORLVLSELECTID);
+                game.changeScreen(TowerAttackGame.SCREENID_EDITORLVLSELECT);
 		    }
         });
 		
@@ -53,14 +53,14 @@ public class V_Menu extends VA_Screen {
         settings.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(towerAttackGame.SETTINGSID);
+                game.changeScreen(TowerAttackGame.SCREENID_SETTINGS);
             }
         });
 
         newGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(towerAttackGame.LEVELSELECTID);
+                game.changeScreen(TowerAttackGame.SCREENID_LEVELSELECT);
 		    }
         });
     }

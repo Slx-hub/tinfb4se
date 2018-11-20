@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import de.codecrunch.model.M_LevelSelect;
+import de.codecrunch.model.M_Map;
 
 public class C_LevelSelect {
     M_LevelSelect model = new M_LevelSelect();
@@ -36,5 +37,9 @@ public class C_LevelSelect {
 
     public List<String> getLevels() {
         return model.getLevels().subList(model.getIndex(), Math.min(model.getDisplayCount() + model.getIndex() + 1, model.getLevels().size()));
+    }
+
+    public M_Map getLevel(String name) {
+        return null;
     }
 }

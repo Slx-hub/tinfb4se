@@ -96,7 +96,7 @@ public class V_Settings extends VA_Screen {
         back.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(towerAttackGame. MENUID);
+                game.changeScreen(TowerAttackGame.SCREENID_MENU);
             }
         });
     }
