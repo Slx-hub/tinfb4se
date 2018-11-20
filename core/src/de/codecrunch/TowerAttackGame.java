@@ -3,6 +3,7 @@ package de.codecrunch;
 import com.badlogic.gdx.Game;
 
 import de.codecrunch.controller.C_Game;
+import de.codecrunch.controller.C_Settings;
 import de.codecrunch.view.VA_Screen;
 import de.codecrunch.view.V_Game;
 import de.codecrunch.view.V_LevelSelect;
@@ -52,6 +53,10 @@ public class TowerAttackGame extends Game {
 		}
 
 	}
+
+
+
+
 
 
 
