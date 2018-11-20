@@ -1,30 +1,31 @@
 package steps;
 
-import org.junit.Rule;
-import android.support.test.rule.ActivityTestRule;
+//import org.junit.Rule;
+//import android.support.test.rule.ActivityTestRule;
 import de.codecrunch.AndroidLauncher;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
-import cucumber.api.PendingException;
+//import cucumber.api.PendingException;
 
 //uncomment for running tests, comment for autocorrection in .feature files
-/*
+
 import com.mauriciotogneri.greencoffee.annotations.And;
 import com.mauriciotogneri.greencoffee.annotations.Given;
 import com.mauriciotogneri.greencoffee.annotations.Then;
 import com.mauriciotogneri.greencoffee.annotations.When;
-*/
+
 
 //comment for running tests, uncomment for autocorrection in .feature files
-
+/*
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+*/
 
 class SelectLevelSteps{
 
     // "is" or "is not"
-    private String solverd;
+    private String solved;
     // "am" or "am not"
     private String toBe;
     // "top" or "bottom"
@@ -32,8 +33,8 @@ class SelectLevelSteps{
     // "next higher" or next lower" or "same"
     private String direction;
 
-    @Rule
-    public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
+    //@Rule
+    //public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
 
     @When("^I click on the level I want to play$")
     public void iClickOnTheLevelIWantToPlay() throws Throwable {
@@ -41,7 +42,7 @@ class SelectLevelSteps{
 
 
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @And("^The previous level \"([^\"]*)\" solved or first level$")
@@ -50,7 +51,7 @@ class SelectLevelSteps{
 
         solved = arg0;
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @Then("^I the selected level should start$")
@@ -59,7 +60,7 @@ class SelectLevelSteps{
 
 
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @And("^I \"([^\"]*)\" at the \"([^\"]*)\" of the List$")
@@ -69,7 +70,7 @@ class SelectLevelSteps{
         toBe = arg0;
         position = arg1;
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @And("^I get to see the \"([^\"]*)\" levels$")
@@ -78,6 +79,6 @@ class SelectLevelSteps{
 
         direction = arg0;
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 }

@@ -2,28 +2,29 @@ package steps;
 
 //import de.codecrunch.<alterSettingsActivity>
 
-import org.junit.Rule;
-import android.support.test.rule.ActivityTestRule;
+//import org.junit.Rule;
+//import android.support.test.rule.ActivityTestRule;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 
 import java.sql.Driver;
 
-import cucumber.api.PendingException;
+//import cucumber.api.PendingException;
 
 //uncomment for running tests, comment for autocorrection in .feature files
-/*
+
 import com.mauriciotogneri.greencoffee.annotations.And;
 import com.mauriciotogneri.greencoffee.annotations.Given;
 import com.mauriciotogneri.greencoffee.annotations.Then;
 import com.mauriciotogneri.greencoffee.annotations.When;
-*/
+
 
 //comment for running tests, uncomment for autocorrection in .feature files
-
+/*
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+*/
 
 class CoreSteps {
 
@@ -35,7 +36,7 @@ class CoreSteps {
 
 
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @When("^I click on the \"([^\"]*)\" button$")
@@ -43,7 +44,7 @@ class CoreSteps {
         // Write code here that turns the phrase above into concrete actions
         String buttonName = arg0;
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     @Then("^I should see the \"([^\"]*)\" message$")
@@ -51,6 +52,6 @@ class CoreSteps {
         // Write code here that turns the phrase above into concrete actions
         String messageText = arg0;
 
-        throw new PendingException();
+        //throw new PendingException();
     }
 }
