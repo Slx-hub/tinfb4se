@@ -4,7 +4,7 @@ Feature: Alter settings
 
   Scenario: alter settings aborted
     Given I "am" on the "/settings" screen
-    When I click on the "back" button
+    When I click on the "save" button
     Then I "get" on the "/menu" screen
 
   Scenario: alter settings change music volume right successful
