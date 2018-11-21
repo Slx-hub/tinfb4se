@@ -2,13 +2,13 @@ package steps;
 
 //import de.codecrunch.<alterSettingsActivity>
 
-//import org.junit.Rule;
-//import android.support.test.rule.ActivityTestRule;
+//import org.junit.Rule; //does not exist??
+//import android.support.test.rule.ActivityTestRule; // does not exist??
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 
 import java.sql.Driver;
 
-//import cucumber.api.PendingException;
+//import cucumber.api.PendingException;  // does not exist??
 
 //uncomment for running tests, comment for autocorrection in .feature files
 
