@@ -27,4 +27,20 @@ public class TowerAttackGameTest extends GameTest{
     @Test
     public void dispose() {
     }
+
+    @Test
+    public void create1() {
+    }
+
+    @Test
+    public void changeScreen() {
+    }
+
+    @Test
+    public void startEditor() {
+    }
+
+    @Test
+    public void startGame() {
+    }
 }
