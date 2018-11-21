@@ -6,13 +6,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import java.util.List;
+
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_LevelSelect;
 
-public class V_LevelSelect extends VA_Screen {
+public class V_EditorLevelSelect extends VA_Screen {
     C_LevelSelect selectController = new C_LevelSelect();
 
-    public V_LevelSelect(TowerAttackGame game) {
+    public V_EditorLevelSelect(TowerAttackGame game) {
         super(game);
     }
 
@@ -23,11 +24,13 @@ public class V_LevelSelect extends VA_Screen {
         stage.addActor(table);
         selectController.load();
 
+        TextButton newLevel = new TextButton("New Level", skin);
         TextButton up = new TextButton("^", skin);
         List<TextButton> levels = selectController.getLevelButtons(skin);
         TextButton down = new TextButton("v", skin);
         TextButton back = new TextButton("Back", skin);
 
+        table.add(newLevel).fillX().uniformX();
         table.add(up).fillX().uniformX();
         table.row().pad(10, 0, 10, 0);
         levels.forEach(level -> {
@@ -36,6 +39,13 @@ public class V_LevelSelect extends VA_Screen {
         });
         table.add(back);
         table.add(down);
+
+        newLevel.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                towerAttackGame.startEditor(null);
+            }
+        });
 
         back.addListener(new ChangeListener() {
             @Override

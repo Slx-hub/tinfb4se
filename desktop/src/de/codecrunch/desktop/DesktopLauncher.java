@@ -7,6 +7,9 @@ import de.codecrunch.TowerAttackGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "Tower Attack";
+		config.height = 768;
+		config.width = 1366;
 		new LwjglApplication(new TowerAttackGame(), config);
 	}
 }
