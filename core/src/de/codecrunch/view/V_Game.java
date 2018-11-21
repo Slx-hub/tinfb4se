@@ -1,6 +1,6 @@
 package de.codecrunch.view;
 
-import de.codecrunch.view.screen.VA_Screen;
+import de.codecrunch.TowerAttackGame;
 
 public class V_Game extends VA_Screen {
 
