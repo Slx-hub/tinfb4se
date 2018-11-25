@@ -1,10 +1,12 @@
 package de.codecrunch;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 
 import de.codecrunch.controller.C_Editor;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_Map;
+import de.codecrunch.view.VA_Screen;
 import de.codecrunch.view.V_Editor;
 import de.codecrunch.view.V_EditorLevelSelect;
 import de.codecrunch.view.V_Game;
@@ -17,6 +19,7 @@ public class TowerAttackGame extends Game {
     private C_Game game;
     private C_Editor editor;
 
+    private VA_Screen currentScreen;
     private V_Game gameScreen;
     private V_LevelSelect levelSelectScreen;
     private V_Menu menuScreen;
@@ -34,45 +37,62 @@ public class TowerAttackGame extends Game {
 
     @Override
     public void create() {
-        screen = new V_Menu(this);
-        this.setScreen(screen);
+        changeScreen(SCREENID_MENU);
     }
 
+    /**
+     * DON'T CHANGE SCREENS OVER ANY OTHER METHOD
+     *
+     * @param screenid ID of the screen you're switching to. see this classes final integers
+     */
     public void changeScreen(int screenid) {
+        modifyScreen(screenid, true);
+    }
+
+    private void setupScreen(int screenid) {
+        modifyScreen(screenid, false);
+    }
+
+    private void modifyScreen(int screenid, boolean changeTo) {
         switch (screenid) {
             case SCREENID_GAME:
                 if (gameScreen == null) gameScreen = new V_Game(this);
-                this.setScreen(gameScreen);
+                currentScreen = gameScreen;
                 break;
             case SCREENID_LEVELSELECT:
                 if (levelSelectScreen == null) levelSelectScreen = new V_LevelSelect(this);
-                this.setScreen(levelSelectScreen);
+                currentScreen = levelSelectScreen;
                 break;
             case SCREENID_MENU:
                 if (menuScreen == null) menuScreen = new V_Menu(this);
-                this.setScreen(menuScreen);
+                currentScreen = menuScreen;
                 break;
             case SCREENID_SETTINGS:
                 if (settingsScreen == null) settingsScreen = new V_Settings(this);
-                this.setScreen(settingsScreen);
+                currentScreen = settingsScreen;
                 break;
             case SCREENID_EDITOR:
                 if (editorScreen == null) editorScreen = new V_Editor(this);
-                this.setScreen(editorScreen);
+                currentScreen = editorScreen;
                 break;
             case SCREENID_EDITORLVLSELECT:
                 if (editorLevelSelectScreen == null)
                     editorLevelSelectScreen = new V_EditorLevelSelect(this);
-                this.setScreen(editorLevelSelectScreen);
+                currentScreen = editorLevelSelectScreen;
                 break;
+        }
+        if (changeTo) {
+            this.setScreen(currentScreen);
+            Gdx.input.setInputProcessor(currentScreen.getStage());
         }
     }
 
     public void startEditor(M_Map map) {
         editor = new C_Editor(map);
-        changeScreen(SCREENID_EDITOR);
+        setupScreen(SCREENID_EDITOR);
         editor.setView(editorScreen);
         editorScreen.setController(editor);
+        changeScreen(SCREENID_EDITOR);
     }
 
     public void startGame(M_Map map) {
@@ -81,7 +101,6 @@ public class TowerAttackGame extends Game {
 
         changeScreen(SCREENID_GAME);
     }
-
 
 }
 

@@ -26,9 +26,8 @@ public class Model3DFactory {
         path_split_left = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_left.g3db", Files.FileType.Internal));
     }
 
-    public static ModelInstance instantiate(Model model, int rotation) {
+    public static ModelInstance instantiate(Model model) {
         ModelInstance instance = new ModelInstance(model);
-        instance.transform.rotate(0, 0, 1, rotation);
         return instance;
     }
 }

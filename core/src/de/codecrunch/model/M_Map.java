@@ -29,6 +29,10 @@ public class M_Map implements Serializable {
         return tiles[x][y];
     }
 
+    public M_Tile[][] getAllTiles() {
+        return tiles;
+    }
+
     public void setTile(M_Tile tile, int x, int y) {
         tiles[x][y] = tile;
     }

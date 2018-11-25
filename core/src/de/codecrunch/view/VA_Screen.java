@@ -62,4 +62,8 @@ public abstract class VA_Screen implements Screen {
     public void dispose() {
         stage.dispose();
     }
+
+    public Stage getStage() {
+        return stage;
+    }
 }
