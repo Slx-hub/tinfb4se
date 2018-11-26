@@ -43,11 +43,11 @@ public class C_Editor {
         M_Tile tail = path.tail().get();
         if (neighbour(head, tile)) {
             path.addFront(tile);
-            update(path.head().getNext());
+            update(path.head().next());
         }
         if (neighbour(tail, tile)) {
             path.addBack(tile);
-            update(path.tail().getPrev());
+            update(path.tail().prev());
         }
     }
 
@@ -55,9 +55,31 @@ public class C_Editor {
         return Math.abs(t1.x_pos - t2.x_pos) <= 1 && t1.y_pos == t2.y_pos || Math.abs(t1.y_pos - t2.y_pos) <= 1 && t1.x_pos == t2.x_pos;
     }
 
-    private void update(M_Path.Node node) {
+    private void update(M_Path<M_Tile>.Node node) {
         if (!node.hasNext() || !node.hasPrev())
             return;
+        int rotation = 90 * ((2 - node.prev().get().y_pos - node.prev().get().y_pos) - (node.prev().get().x_pos < node.get().y_pos ? 180 : 0));
+        node.get().setTileRotation(rotation);
+        if (node.prev().get().x_pos == node.next().get().x_pos || node.prev().get().y_pos == node.next().get().y_pos) {
+            //node.get().setTileState(ME_TileState.PATH_STRAIGHT);
+            node.get().updateEditorImage();
+            return;
+        }
 
+        //might get refactored later
+        if (node.prev().get().x_pos == node.get().x_pos) {
+            if (node.prev().get().y_pos < node.get().y_pos) {
+                //node.next().get().x_pos < node.get().x_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+            } else {
+                //node.next().get().x_pos > node.get().x_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+            }
+        } else {
+            if (node.prev().get().x_pos < node.get().x_pos) {
+                //node.next().get().y_pos > node.get().y_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+            } else {
+                //node.next().get().y_pos < node.get().y_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+            }
+        }
+        node.get().updateEditorImage();
     }
 }

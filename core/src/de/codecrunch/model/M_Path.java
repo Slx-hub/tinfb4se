@@ -52,11 +52,11 @@ public class M_Path<T> {
             return data;
         }
 
-        public Node getPrev() {
+        public Node prev() {
             return prev;
         }
 
-        public Node getNext() {
+        public Node next() {
             return next;
         }
     }
