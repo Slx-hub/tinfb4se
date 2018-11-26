@@ -10,8 +10,7 @@ public enum ME_TileState {
     EMPTY {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/empty.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/empty.png"));
         }
 
         @Override
@@ -22,8 +21,7 @@ public enum ME_TileState {
     END {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/end.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/end.png"));
         }
 
         @Override
@@ -34,8 +32,7 @@ public enum ME_TileState {
     OCCUPIED {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/occupied.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/occupied.png"));
         }
 
         @Override
@@ -58,8 +55,7 @@ public enum ME_TileState {
     PATH_LEFT {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/path_left.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/path_left.png"));
         }
 
         @Override
@@ -70,8 +66,7 @@ public enum ME_TileState {
     PATH_RIGHT {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/path_right.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/path_right.png"));
         }
 
         @Override
@@ -82,8 +77,7 @@ public enum ME_TileState {
     PATH_CROSS {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/path_cross.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/path_cross.png"));
         }
 
         @Override
@@ -94,8 +88,7 @@ public enum ME_TileState {
     PATH_SPLIT_RIGHT {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/path_split_right.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/path_split_right.png"));
         }
 
         @Override
@@ -106,16 +99,14 @@ public enum ME_TileState {
     PATH_SPLIT_LEFT {
         @Override
         public Image getEditorImage() {
-            Image image = new Image(new Texture("tiles/textures/path_split_left.png"));
-            return image;
+            return new Image(new Texture("tiles/textures/path_split_left.png"));
         }
 
         @Override
         public ModelInstance getGameModel() {
             return Model3DFactory.instantiate(Model3DFactory.path_split_left);
         }
-    },
-    ;
+    };
 
     public abstract Image getEditorImage();
 

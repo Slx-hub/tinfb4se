@@ -51,9 +51,14 @@ public class M_Tile extends Container<Image> implements Serializable {
 
     public void updateEditorImage() {
         editorImage = state.getEditorImage();
+        editorImage.setOrigin(editorImage.getWidth() / 2, editorImage.getHeight() / 2);
         editorImage.setRotation(tileRotation);
         this.setActor(editorImage);
         //editorImage.setPosition(x_pos * 100, (y_pos + 1.5f) * 100);
+    }
+
+    public String toString() {
+        return "[" + x_pos + "," + y_pos + "]";
     }
 }
 

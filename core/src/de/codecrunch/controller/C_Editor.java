@@ -33,6 +33,8 @@ public class C_Editor {
     }
 
     public void addToPath(M_Tile tile) {
+        if (tile.getTileState() != ME_TileState.EMPTY)
+            return;
         if (path.isEmpty()) {
             path.addFront(tile);
             tile.setTileState(ME_TileState.END);
@@ -43,11 +45,16 @@ public class C_Editor {
         M_Tile tail = path.tail().get();
         if (neighbour(head, tile)) {
             path.addFront(tile);
-            update(path.head().next());
+            tile.setTileState(ME_TileState.END);
+            tile.updateEditorImage();
+            update(path.head().prev());
+            return;
         }
         if (neighbour(tail, tile)) {
             path.addBack(tile);
-            update(path.tail().prev());
+            tile.setTileState(ME_TileState.END);
+            tile.updateEditorImage();
+            update(path.tail().next());
         }
     }
 
@@ -58,26 +65,41 @@ public class C_Editor {
     private void update(M_Path<M_Tile>.Node node) {
         if (!node.hasNext() || !node.hasPrev())
             return;
-        int rotation = 90 * ((2 - node.prev().get().y_pos - node.prev().get().y_pos) - (node.prev().get().x_pos < node.get().y_pos ? 180 : 0));
+        int rotation = 90 * (2 - (node.prev().get().y_pos - node.get().y_pos)) - (node.prev().get().x_pos < node.get().x_pos ? 180 : 0);
         node.get().setTileRotation(rotation);
         if (node.prev().get().x_pos == node.next().get().x_pos || node.prev().get().y_pos == node.next().get().y_pos) {
-            //node.get().setTileState(ME_TileState.PATH_STRAIGHT);
+            node.get().setTileState(ME_TileState.PATH_STRAIGHT);
             node.get().updateEditorImage();
             return;
         }
-
         //might get refactored later
         if (node.prev().get().x_pos == node.get().x_pos) {
             if (node.prev().get().y_pos < node.get().y_pos) {
-                //node.next().get().x_pos < node.get().x_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+                if (node.next().get().x_pos < node.get().x_pos) {
+                    node.get().setTileState(ME_TileState.PATH_RIGHT);
+                } else {
+                    node.get().setTileState(ME_TileState.PATH_LEFT);
+                }
             } else {
-                //node.next().get().x_pos > node.get().x_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+                if (node.next().get().x_pos > node.get().x_pos) {
+                    node.get().setTileState(ME_TileState.PATH_RIGHT);
+                } else {
+                    node.get().setTileState(ME_TileState.PATH_LEFT);
+                }
             }
         } else {
             if (node.prev().get().x_pos < node.get().x_pos) {
-                //node.next().get().y_pos > node.get().y_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+                if (node.next().get().y_pos > node.get().y_pos) {
+                    node.get().setTileState(ME_TileState.PATH_RIGHT);
+                } else {
+                    node.get().setTileState(ME_TileState.PATH_LEFT);
+                }
             } else {
-                //node.next().get().y_pos < node.get().y_pos ? node.get().setTileState(ME_TileState.PATH_RIGHT):node.get().setTileState(ME_TileState.PATH_LEFT);
+                if ((node.next().get().y_pos < node.get().y_pos)) {
+                    node.get().setTileState(ME_TileState.PATH_RIGHT);
+                } else {
+                    node.get().setTileState(ME_TileState.PATH_LEFT);
+                }
             }
         }
         node.get().updateEditorImage();

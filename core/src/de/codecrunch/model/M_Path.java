@@ -19,15 +19,26 @@ public class M_Path<T> {
 
     public Node addFront(T d) {
         Node h = new Node(d);
-        head.prev = h;
+        Node old = head;
         head = h;
+        if (old != null) {
+            head.prev = old;
+            old.next = head;
+        } else
+            tail = h;
         return h;
     }
 
     public Node addBack(T d) {
         Node t = new Node(d);
-        tail.next = t;
+        Node old = tail;
         tail = t;
+        if (old != null) {
+            tail.next = old;
+            old.prev = tail;
+        } else {
+            head = t;
+        }
         return t;
     }
 
@@ -41,11 +52,11 @@ public class M_Path<T> {
         }
 
         public boolean hasNext() {
-            return next == null;
+            return next != null;
         }
 
         public boolean hasPrev() {
-            return prev == null;
+            return prev != null;
         }
 
         public T get() {
@@ -58,6 +69,10 @@ public class M_Path<T> {
 
         public Node next() {
             return next;
+        }
+
+        public String toString(){
+            return data.toString();
         }
     }
 }
