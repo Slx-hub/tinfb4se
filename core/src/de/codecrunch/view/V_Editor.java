@@ -1,8 +1,7 @@
 package de.codecrunch.view;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import de.codecrunch.TowerAttackGame;
@@ -22,16 +21,24 @@ public class V_Editor extends VA_Screen {
 
     @Override
     public void show() {
-        for (M_Tile[] m_tiles : controller.getMap().getAllTiles()) {
-            for (M_Tile m_tile : m_tiles) {
-                stage.addActor(m_tile.getEditorImage());
-                m_tile.getEditorImage().addListener(new ClickListener(){
+        Table table = new Table();
+        stage.addActor(table);
+        table.setFillParent(true);
+        table.debug();
+
+        M_Tile[][] tiles = controller.getMap().getAllTiles();
+        for (int y = 0; y < controller.getMap().y_count; y++) {
+            for (int x = 0; x < controller.getMap().x_count; x++) {
+                M_Tile m_tile = tiles[x][y];
+                table.add(m_tile).center();
+                m_tile.addListener(new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
-                        controller.addToPath(event.getRelatedActor());
+                        controller.addToPath(m_tile);
                     }
                 });
             }
+            table.row();
         }
 
     }

@@ -22,19 +22,17 @@ public class V_Menu extends VA_Screen {
         stage.addActor(table);
         table.setFillParent(true);
 
-        TextButton newGame = new TextButton("New Game", skin);
-        TextButton editor = new TextButton("Editor", skin);
-        TextButton settings = new TextButton("Settings", skin);
-        TextButton exit = new TextButton("Exit", skin);
+        TextButton newGame = new TextButton("New Game", buttonSkin);
+        TextButton editor = new TextButton("Editor", buttonSkin);
+        TextButton settings = new TextButton("Settings", buttonSkin);
+        TextButton exit = new TextButton("Exit", buttonSkin);
 
-        table.add(newGame).fillX().uniformX();
-        table.row().pad(10, 0, 0, 0);
-        table.add(editor).fillX().uniformX();
-        table.row().pad(10, 0, 0, 0);
-        table.add(settings).fillX().uniformX();
-        table.row().pad(10, 0, 0, 0);
-        table.add(exit).fillX().uniformX();
+        table.defaults().pad(30,200,30,200).expand().fill();
 
+        table.add(newGame).row();
+        table.add(editor).row();
+        table.add(settings).row();
+        table.add(exit).row();
 
         editor.addListener(new ChangeListener() {
             @Override

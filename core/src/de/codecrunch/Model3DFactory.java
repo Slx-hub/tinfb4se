@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.utils.UBJsonReader;
 
 public class Model3DFactory {
-    public static Model empty,occupied,path_straight,path_left,path_right,path_cross,path_split_right,path_split_left;
+    public static Model empty,end,occupied,path_straight,path_left,path_right,path_cross,path_split_right,path_split_left;
 
     private Model3DFactory(){}
 
@@ -17,6 +17,7 @@ public class Model3DFactory {
         G3dModelLoader modelLoader = new G3dModelLoader(jsonReader);
 
         empty = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/empty.g3db", Files.FileType.Internal));
+        end = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/end.g3db", Files.FileType.Internal));
         occupied = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/occupied.g3db", Files.FileType.Internal));
         path_straight = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_straight.g3db", Files.FileType.Internal));
         path_left = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_left.g3db", Files.FileType.Internal));

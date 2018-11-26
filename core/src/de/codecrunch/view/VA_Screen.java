@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import java.awt.event.ActionEvent;
@@ -18,13 +19,12 @@ public abstract class VA_Screen implements Screen {
 
     TowerAttackGame towerAttackGame;
     Stage stage;
-    Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
+    final static Skin buttonSkin = new Skin(Gdx.files.internal("skins/quantum-horizon/quantum-horizon-ui.json"));
 
     public VA_Screen(TowerAttackGame game) {
         towerAttackGame = game;
-        stage = new Stage(new ScreenViewport());
+        stage = new Stage(new FitViewport(1920, 1080));
         Gdx.input.setInputProcessor(stage);
-
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
     }

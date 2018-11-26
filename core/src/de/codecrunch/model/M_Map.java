@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 
 public class M_Map implements Serializable {
     private M_Tile[][] tiles;
-    public final int x_count = 20;
+    public final int x_count = 18;
     public final int y_count = 9;
 
     public M_Map() {

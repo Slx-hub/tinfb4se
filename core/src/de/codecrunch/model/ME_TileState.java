@@ -1,7 +1,6 @@
 package de.codecrunch.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
@@ -18,6 +17,18 @@ public enum ME_TileState {
         @Override
         public ModelInstance getGameModel() {
             return Model3DFactory.instantiate(Model3DFactory.empty);
+        }
+    },
+    END {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/end.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.end);
         }
     }
     //TODO: implement all enum types

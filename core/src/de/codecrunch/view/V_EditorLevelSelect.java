@@ -24,11 +24,11 @@ public class V_EditorLevelSelect extends VA_Screen {
         stage.addActor(table);
         selectController.load();
 
-        TextButton newLevel = new TextButton("New Level", skin);
-        TextButton up = new TextButton("^", skin);
-        List<TextButton> levels = selectController.getLevelButtons(skin);
-        TextButton down = new TextButton("v", skin);
-        TextButton back = new TextButton("Back", skin);
+        TextButton newLevel = new TextButton("New Level", buttonSkin);
+        TextButton up = new TextButton("^", buttonSkin);
+        List<TextButton> levels = selectController.getLevelButtons(buttonSkin);
+        TextButton down = new TextButton("v", buttonSkin);
+        TextButton back = new TextButton("Back", buttonSkin);
 
         table.add(newLevel).fillX().uniformX();
         table.add(up).fillX().uniformX();
