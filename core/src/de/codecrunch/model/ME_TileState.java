@@ -30,9 +30,91 @@ public enum ME_TileState {
         public ModelInstance getGameModel() {
             return Model3DFactory.instantiate(Model3DFactory.end);
         }
-    }
-    //TODO: implement all enum types
-    //,OCCUPIED,PATH_STRAIGHT,PATH_LEFT,PATH_RIGHT,PATH_CROSS,PATH_SPLIT_RIGHT,PATH_SPLIT_LEFT
+    },
+    OCCUPIED {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/occupied.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.occupied);
+        }
+    },
+    PATH_STRAIGHT {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/path_straight.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.path_straight);
+        }
+    },
+    PATH_LEFT {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/path_left.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.path_left);
+        }
+    },
+    PATH_RIGHT {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/path_right.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.path_right);
+        }
+    },
+    PATH_CROSS {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/path_cross.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.path_cross);
+        }
+    },
+    PATH_SPLIT_RIGHT {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/path_split_right.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.path_split_right);
+        }
+    },
+    PATH_SPLIT_LEFT {
+        @Override
+        public Image getEditorImage() {
+            Image image = new Image(new Texture("tiles/textures/path_split_left.png"));
+            return image;
+        }
+
+        @Override
+        public ModelInstance getGameModel() {
+            return Model3DFactory.instantiate(Model3DFactory.path_split_left);
+        }
+    },
     ;
 
     public abstract Image getEditorImage();
