@@ -1,7 +1,7 @@
 package steps;
 
-//import org.junit.Rule;    // does not exist ???
-//import android.support.test.rule.ActivityTestRule;
+import org.junit.Rule;    // does not exist ???
+import android.support.test.rule.ActivityTestRule;
 import de.codecrunch.AndroidLauncher;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 //import cucumber.api.PendingException;      //does not exist???
@@ -22,7 +22,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 */
 
-class AlterSettingsSteps {
+class AlterSettingsSteps extends CoreSteps{
 
     // "music" or "sound-effects"
     private String volumeType;
@@ -42,8 +42,8 @@ class AlterSettingsSteps {
     private String check;
 
 
-    //@Rule
-    //public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
+    @Rule
+    public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
     
     @And("^The \"([^\"]*)\" volume \"([^\"]*)\" at \"([^\"]*)\"$")
     public void theVolumeAt(String arg0, String arg1, String arg2) throws Throwable {

@@ -1,9 +1,7 @@
 package steps;
 
-//import de.codecrunch.<alterSettingsActivity>
-
-//import org.junit.Rule; //does not exist??
-//import android.support.test.rule.ActivityTestRule; // does not exist??
+import org.junit.Rule; //does not exist??
+import android.support.test.rule.ActivityTestRule; // does not exist??
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 
 import java.sql.Driver;
