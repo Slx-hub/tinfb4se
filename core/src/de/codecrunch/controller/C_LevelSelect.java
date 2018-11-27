@@ -3,43 +3,54 @@ package de.codecrunch.controller;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.M_LevelSelect;
 import de.codecrunch.model.M_Map;
+import de.codecrunch.view.VA_LevelSelect;
 
 public class C_LevelSelect {
-    M_LevelSelect model = new M_LevelSelect();
+    private M_LevelSelect model = new M_LevelSelect();
+    private VA_LevelSelect view;
     public static final int UP = -1;
     public static final int DOWN = 1;
+    private List<TextButton> buttons;
 
-    public void load() {
-        //TODO needs to load all maps from whatever location
+    public void setup(VA_LevelSelect view) {
+        this.view = view;
     }
 
-    public void move(int direction) {
-        if (direction == UP && model.canScrollUp() || direction == DOWN && model.canScrollDown()) {
-            int index = model.getIndex() + direction;
-            model.setIndex(index);
+    public void move(int delta) {
+        if (model.changeIndex(delta))
+            updateButtons();
+    }
 
-            model.setCanScrollUp(index != 0);
-            model.setCanScrollDown(index + model.getDisplayCount() < model.getLevels().size());
+    public List<TextButton> getLevelButtons(Skin uiSkin) {
+        model.load();
+        if (buttons != null) {
+            updateButtons();
+            return buttons;
         }
-    }
-
-    public List<TextButton> getLevelButtons(Skin skin) {
-        List<TextButton> buttons = model.getLevels().subList(model.getIndex(), Math.min(model.getDisplayCount() + model.getIndex() + 1, model.getLevels().size())).stream().map(string -> new TextButton(string, skin)).collect(Collectors.toList());
-        while (buttons.size() < model.getDisplayCount())
-            buttons.add(new TextButton("", skin));
+        List<String> levels = model.getLevels();
+        buttons = new ArrayList<>();
+        for (int i = 0; i < model.getDisplayCount(); i++) {
+            buttons.add(new TextButton(levels.size() > i ? levels.get(i) : "", uiSkin));
+        }
         return buttons;
     }
 
-    public List<String> getLevels() {
-        return model.getLevels().subList(model.getIndex(), Math.min(model.getDisplayCount() + model.getIndex() + 1, model.getLevels().size()));
+    public void updateButtons() {
+        List<String> levels = model.getLevels();
+        for (int i = 0; i < buttons.size(); i++) {
+            buttons.get(i).setText(levels.size() > i ? levels.get(i) : "");
+        }
     }
 
-    public M_Map getLevel(String name) {
-        return null;
+    public void selected(String level) {
+        M_Map loaded = model.loadMap(level);
+        if (loaded != null)
+            view.startMap(loaded);
     }
 }

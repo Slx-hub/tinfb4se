@@ -65,3 +65,6 @@ build/
 
 ## PlantUML
 *.plantuml
+
+## Project Files
+*.map

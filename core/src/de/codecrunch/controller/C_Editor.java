@@ -1,11 +1,23 @@
 package de.codecrunch.controller;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_Path;
 import de.codecrunch.model.M_Tile;
+import de.codecrunch.view.VA_Screen;
 import de.codecrunch.view.V_Editor;
 
 public class C_Editor {
@@ -13,14 +25,18 @@ public class C_Editor {
     private M_Map map;
     private V_Editor view;
     private M_Path<M_Tile> path = new M_Path<>();
+    private boolean additive = true;
+    private TowerAttackGame towerAttackGame;
 
-    public C_Editor(M_Map m) {
-        if (m != null)
+    public C_Editor(TowerAttackGame game, M_Map m) {
+        if (m != null) {
             map = m;
-        else {
+            path.addFromList(map.getPath());
+        } else {
             map = new M_Map();
         }
 
+        towerAttackGame = game;
         map.foreachTile(M_Tile::updateEditorImage);
     }
 
@@ -30,6 +46,17 @@ public class C_Editor {
 
     public M_Map getMap() {
         return map;
+    }
+
+    public void setAdditive(boolean add) {
+        additive = add;
+    }
+
+    public void clickedOnTile(M_Tile tile) {
+        if (additive)
+            addToPath(tile);
+        else
+            removeFromPath(tile);
     }
 
     public void addToPath(M_Tile tile) {
@@ -56,6 +83,10 @@ public class C_Editor {
             tile.updateEditorImage();
             update(path.tail().next());
         }
+    }
+
+    public void removeFromPath(M_Tile tile) {
+
     }
 
     private boolean neighbour(M_Tile t1, M_Tile t2) {
@@ -103,5 +134,47 @@ public class C_Editor {
             }
         }
         node.get().updateEditorImage();
+    }
+
+    public void save() {
+        TextField input = new TextField("", view.uiSkin);
+        input.setMaxLength(9);
+        Dialog dialog = new Dialog("Save Level", view.uiSkin) {
+            @Override
+            public void result(Object obj) {
+                if ((boolean) obj) {
+                    towerAttackGame.changeScreen(TowerAttackGame.SCREENID_EDITORLVLSELECT);
+                    saveLevel(input.getText());
+                }
+            }
+        };
+        dialog.text("Enter a level name:");
+        dialog.getContentTable().row();
+        dialog.getContentTable().add(input);
+        dialog.button("Done", true);
+        dialog.button("Back", false);
+        view.showDialog(dialog);
+    }
+
+    public void saveLevel(String levelName) {
+        File file = Gdx.files.local("maps/" + levelName + ".map").file();
+        if (file.exists()) {
+            Dialog dialog = new Dialog("Lol, nope", view.uiSkin);
+            dialog.text("A level with this name already exists");
+            dialog.button("Okay");
+            view.showDialog(dialog);
+            return;
+        }
+        map.setPath(path.addToList(new ArrayList<>()));
+        try {
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file));
+            map.deflate();
+            stream.writeObject(map);
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

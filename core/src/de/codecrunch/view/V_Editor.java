@@ -2,6 +2,7 @@ package de.codecrunch.view;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import de.codecrunch.TowerAttackGame;
@@ -21,26 +22,63 @@ public class V_Editor extends VA_Screen {
 
     @Override
     public void show() {
-        Table table = new Table();
-        stage.addActor(table);
-        table.setFillParent(true);
-        table.debug();
+        Table uiTable = new Table();
+        Table mapTable = new Table();
+
+        stage.addActor(uiTable);
+        uiTable.setFillParent(true);
+        uiTable.add(mapTable).colspan(4);
 
         M_Tile[][] tiles = controller.getMap().getAllTiles();
         for (int y = 0; y < controller.getMap().y_count; y++) {
             for (int x = 0; x < controller.getMap().x_count; x++) {
                 M_Tile m_tile = tiles[x][y];
-                table.add(m_tile).center();
+                mapTable.add(m_tile).center();
                 m_tile.addListener(new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
-                        controller.addToPath(m_tile);
+                        controller.clickedOnTile(m_tile);
                     }
                 });
             }
-            table.row();
+            mapTable.row();
         }
+        uiTable.row().padTop(20);
 
+        TextButton add = new TextButton("ADD", uiSkin);
+        TextButton remove = new TextButton("REMOVE", uiSkin);
+        TextButton exit = new TextButton("Exit", uiSkin);
+        TextButton save = new TextButton("Save", uiSkin);
+
+        uiTable.add(add).right();
+        uiTable.add(remove).left();
+        uiTable.add(exit).right();
+        uiTable.add(save).left();
+
+        add.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                controller.setAdditive(true);
+            }
+        });
+        remove.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                controller.setAdditive(false);
+            }
+        });
+        exit.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                towerAttackGame.changeScreen(TowerAttackGame.SCREENID_EDITORLVLSELECT);
+            }
+        });
+        save.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                controller.save();
+            }
+        });
     }
 
 }

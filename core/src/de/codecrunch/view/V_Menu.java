@@ -22,12 +22,12 @@ public class V_Menu extends VA_Screen {
         stage.addActor(table);
         table.setFillParent(true);
 
-        TextButton newGame = new TextButton("New Game", buttonSkin);
-        TextButton editor = new TextButton("Editor", buttonSkin);
-        TextButton settings = new TextButton("Settings", buttonSkin);
-        TextButton exit = new TextButton("Exit", buttonSkin);
+        TextButton newGame = new TextButton("New Game", uiSkin);
+        TextButton editor = new TextButton("Editor", uiSkin);
+        TextButton settings = new TextButton("Settings", uiSkin);
+        TextButton exit = new TextButton("Exit", uiSkin);
 
-        table.defaults().pad(30,200,30,200).expand().fill();
+        table.defaults().pad(10,20,10,20).expand().fill();
 
         table.add(newGame).row();
         table.add(editor).row();
@@ -58,7 +58,7 @@ public class V_Menu extends VA_Screen {
         newGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(TowerAttackGame.SCREENID_LEVELSELECT);
+                game.changeScreen(TowerAttackGame.SCREENID_GAMELVLSELECT);
 		    }
         });
     }

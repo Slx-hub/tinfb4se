@@ -29,23 +29,23 @@ public class V_Settings extends VA_Screen {
         table.setFillParent(true);
         stage.addActor(table);
 
-        TextButton save = new TextButton("Save", buttonSkin);
+        TextButton save = new TextButton("Save", uiSkin);
 
-        final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, buttonSkin);
+        final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, uiSkin);
         volumeMusicSlider.setValue(settings.getMusicVolume());
         volumeMusicSlider.addListener(event -> {
             settings.setMusicVolume(volumeMusicSlider.getValue());
             return false;
         });
 
-        final Slider volumeSoundSlider = new Slider(0f, 1f, 0.1f, false, buttonSkin);
+        final Slider volumeSoundSlider = new Slider(0f, 1f, 0.1f, false, uiSkin);
         volumeSoundSlider.setValue(settings.getSoundVolume());
         volumeSoundSlider.addListener(event -> {
             settings.setSoundVolume(volumeSoundSlider.getValue());
             return false;
         });
 
-        final CheckBox pushCheckbox = new CheckBox(null, buttonSkin);
+        final CheckBox pushCheckbox = new CheckBox(null, uiSkin);
         pushCheckbox.setChecked(settings.isPushEnabled());
         pushCheckbox.addListener(event -> {
             boolean enabled = pushCheckbox.isChecked();
@@ -53,10 +53,10 @@ public class V_Settings extends VA_Screen {
             return false;
         });
 
-        titleLabel = new Label("Settings", buttonSkin);
-        volumeMusicLabel = new Label("Music", buttonSkin);
-        volumeSoundLabel = new Label("Sound-Effects", buttonSkin);
-        pushCheckboxLabel = new Label("Push-Notifications", buttonSkin);
+        titleLabel = new Label("Settings", uiSkin);
+        volumeMusicLabel = new Label("Music", uiSkin);
+        volumeSoundLabel = new Label("Sound-Effects", uiSkin);
+        pushCheckboxLabel = new Label("Push-Notifications", uiSkin);
 
         //table.add(titleLabel);
         //table.row();

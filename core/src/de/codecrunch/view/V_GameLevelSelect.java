@@ -8,16 +8,15 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.M_Map;
 
-public class V_EditorLevelSelect extends VA_LevelSelect {
+public class V_GameLevelSelect extends VA_LevelSelect {
 
-
-    public V_EditorLevelSelect(TowerAttackGame game) {
+    public V_GameLevelSelect(TowerAttackGame game) {
         super(game);
     }
 
     @Override
     public void startMap(M_Map map) {
-        towerAttackGame.startEditor(map);
+        towerAttackGame.startGame(map);
     }
 
     @Override
@@ -26,19 +25,10 @@ public class V_EditorLevelSelect extends VA_LevelSelect {
         table.setFillParent(true);
         stage.addActor(table);
 
-        TextButton newLevel = new TextButton("New Level", uiSkin);
         TextButton back = new TextButton("Back", uiSkin);
 
-        table.add(newLevel).row();
         addLevelButtons(table);
         table.add(back);
-
-        newLevel.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                towerAttackGame.startEditor(null);
-            }
-        });
 
         back.addListener(new ChangeListener() {
             @Override
@@ -47,6 +37,4 @@ public class V_EditorLevelSelect extends VA_LevelSelect {
             }
         });
     }
-
-
 }

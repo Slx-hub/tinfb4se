@@ -1,5 +1,7 @@
 package de.codecrunch.model;
 
+import java.util.List;
+
 public class M_Path<T> {
 
     private Node head;
@@ -42,6 +44,24 @@ public class M_Path<T> {
         return t;
     }
 
+    public List<T> addToList(List<T> list) {
+        Node current = tail;
+        if (current == null)
+            return list;
+        list.add(current.data);
+        do {
+            current = current.next;
+            list.add(current.data);
+        } while (current.hasNext());
+        return list;
+    }
+
+    public M_Path<T> addFromList(List<T> list) {
+        if (!list.isEmpty())
+            list.forEach(this::addFront);
+        return this;
+    }
+
     public class Node {
         private T data;
         private Node prev;
@@ -71,7 +91,7 @@ public class M_Path<T> {
             return next;
         }
 
-        public String toString(){
+        public String toString() {
             return data.toString();
         }
     }

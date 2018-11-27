@@ -10,7 +10,7 @@ import de.codecrunch.view.VA_Screen;
 import de.codecrunch.view.V_Editor;
 import de.codecrunch.view.V_EditorLevelSelect;
 import de.codecrunch.view.V_Game;
-import de.codecrunch.view.V_LevelSelect;
+import de.codecrunch.view.V_GameLevelSelect;
 import de.codecrunch.view.V_Menu;
 import de.codecrunch.view.V_Settings;
 
@@ -21,7 +21,7 @@ public class TowerAttackGame extends Game {
 
     private VA_Screen currentScreen;
     private V_Game gameScreen;
-    private V_LevelSelect levelSelectScreen;
+    private V_GameLevelSelect levelSelectScreen;
     private V_Menu menuScreen;
     private V_Settings settingsScreen;
     private V_Editor editorScreen;
@@ -29,7 +29,7 @@ public class TowerAttackGame extends Game {
 
 
     public final static int SCREENID_GAME = 0;
-    public final static int SCREENID_LEVELSELECT = 1;
+    public final static int SCREENID_GAMELVLSELECT = 1;
     public final static int SCREENID_MENU = 2;
     public final static int SCREENID_SETTINGS = 3;
     public final static int SCREENID_EDITORLVLSELECT = 4;
@@ -59,8 +59,8 @@ public class TowerAttackGame extends Game {
                 if (gameScreen == null) gameScreen = new V_Game(this);
                 currentScreen = gameScreen;
                 break;
-            case SCREENID_LEVELSELECT:
-                if (levelSelectScreen == null) levelSelectScreen = new V_LevelSelect(this);
+            case SCREENID_GAMELVLSELECT:
+                if (levelSelectScreen == null) levelSelectScreen = new V_GameLevelSelect(this);
                 currentScreen = levelSelectScreen;
                 break;
             case SCREENID_MENU:
@@ -88,7 +88,7 @@ public class TowerAttackGame extends Game {
     }
 
     public void startEditor(M_Map map) {
-        editor = new C_Editor(map);
+        editor = new C_Editor(this, map);
         setupScreen(SCREENID_EDITOR);
         editor.setView(editorScreen);
         editorScreen.setController(editor);

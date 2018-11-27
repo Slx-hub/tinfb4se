@@ -9,7 +9,9 @@ import java.io.Serializable;
 public class M_Tile extends Container<Image> implements Serializable {
     public final int x_pos, y_pos;
 
-    private ME_TileState state;
+    private transient ME_TileState state;
+    //for serialization
+    private int tileStateOrdinal;
     private int tileRotation;
     private transient ModelInstance gameModel;
     private transient Image editorImage;
@@ -59,6 +61,14 @@ public class M_Tile extends Container<Image> implements Serializable {
 
     public String toString() {
         return "[" + x_pos + "," + y_pos + "]";
+    }
+
+    public void deflate() {
+        tileStateOrdinal = state.ordinal();
+    }
+
+    public void inflate() {
+        state = ME_TileState.values()[tileStateOrdinal];
     }
 }
 

@@ -1,11 +1,13 @@
 package de.codecrunch.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class M_Map implements Serializable {
     private M_Tile[][] tiles;
-    public final int x_count = 18;
+    private List<M_Tile> path;
+    public final int x_count = 20;
     public final int y_count = 9;
 
     public M_Map() {
@@ -35,5 +37,21 @@ public class M_Map implements Serializable {
 
     public void setTile(M_Tile tile, int x, int y) {
         tiles[x][y] = tile;
+    }
+
+    public List<M_Tile> getPath() {
+        return path;
+    }
+
+    public void setPath(List<M_Tile> path) {
+        this.path = path;
+    }
+
+    public void deflate() {
+        foreachTile(M_Tile::deflate);
+    }
+
+    public void inflate() {
+        foreachTile(M_Tile::inflate);
     }
 }
