@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.ME_TileState;
@@ -37,7 +38,12 @@ public class C_Editor {
         }
 
         towerAttackGame = game;
-        map.foreachTile(M_Tile::updateEditorImage);
+        map.foreachTile(new Consumer<M_Tile>() {
+            @Override
+            public void accept(M_Tile m_tile) {
+                m_tile.updateEditorImage();
+            }
+        });
     }
 
     public void setView(V_Editor view) {
@@ -86,7 +92,21 @@ public class C_Editor {
     }
 
     public void removeFromPath(M_Tile tile) {
-
+        if (tile.getTileState() == ME_TileState.EMPTY)
+            return;
+        if (tile == path.head().get()) {
+            path.head().get().setTileState(ME_TileState.EMPTY).updateEditorImage();
+            M_Path<M_Tile>.Node newHead = path.head().prev();
+            path.removeFront();
+            if (newHead != null)
+                newHead.get().setTileState(ME_TileState.END).updateEditorImage();
+        } else if (tile == path.tail().get()) {
+            path.tail().get().setTileState(ME_TileState.EMPTY).updateEditorImage();
+            M_Path<M_Tile>.Node newTail = path.tail().next();
+            path.removeBack();
+            if (newTail != null)
+                newTail.get().setTileState(ME_TileState.END).updateEditorImage();
+        }
     }
 
     private boolean neighbour(M_Tile t1, M_Tile t2) {
@@ -99,8 +119,7 @@ public class C_Editor {
         int rotation = 90 * (2 - (node.prev().get().y_pos - node.get().y_pos)) - (node.prev().get().x_pos < node.get().x_pos ? 180 : 0);
         node.get().setTileRotation(rotation);
         if (node.prev().get().x_pos == node.next().get().x_pos || node.prev().get().y_pos == node.next().get().y_pos) {
-            node.get().setTileState(ME_TileState.PATH_STRAIGHT);
-            node.get().updateEditorImage();
+            node.get().setTileState(ME_TileState.PATH_STRAIGHT).updateEditorImage();
             return;
         }
         //might get refactored later

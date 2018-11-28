@@ -48,10 +48,20 @@ public class M_Map implements Serializable {
     }
 
     public void deflate() {
-        foreachTile(M_Tile::deflate);
+        foreachTile(new Consumer<M_Tile>() {
+            @Override
+            public void accept(M_Tile m_tile) {
+                m_tile.deflate();
+            }
+        });
     }
 
     public void inflate() {
-        foreachTile(M_Tile::inflate);
+        foreachTile(new Consumer<M_Tile>() {
+            @Override
+            public void accept(M_Tile m_tile) {
+                m_tile.inflate();
+            }
+        });
     }
 }

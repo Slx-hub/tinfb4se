@@ -35,8 +35,9 @@ public class M_Tile extends Container<Image> implements Serializable {
         return state;
     }
 
-    public void setTileState(ME_TileState state) {
+    public M_Tile setTileState(ME_TileState state) {
         this.state = state;
+        return this;
     }
 
     public int getTileRotation() {

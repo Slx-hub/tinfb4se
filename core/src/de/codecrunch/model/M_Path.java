@@ -1,6 +1,7 @@
 package de.codecrunch.model;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class M_Path<T> {
 
@@ -31,6 +32,17 @@ public class M_Path<T> {
         return h;
     }
 
+    public void removeFront() {
+        if (head == tail)
+            tail = null;
+        if (!head.hasPrev())
+            head = null;
+        else {
+            head = head.prev;
+            head.next = null;
+        }
+    }
+
     public Node addBack(T d) {
         Node t = new Node(d);
         Node old = tail;
@@ -42,6 +54,17 @@ public class M_Path<T> {
             head = t;
         }
         return t;
+    }
+
+    public void removeBack() {
+        if (head == tail)
+            head = null;
+        if (!tail.hasNext())
+            tail = null;
+        else {
+            tail = tail.next;
+            tail.prev = null;
+        }
     }
 
     public List<T> addToList(List<T> list) {
@@ -58,7 +81,12 @@ public class M_Path<T> {
 
     public M_Path<T> addFromList(List<T> list) {
         if (!list.isEmpty())
-            list.forEach(this::addFront);
+            list.forEach(new Consumer<T>() {
+                @Override
+                public void accept(T d) {
+                    M_Path.this.addFront(d);
+                }
+            });
         return this;
     }
 

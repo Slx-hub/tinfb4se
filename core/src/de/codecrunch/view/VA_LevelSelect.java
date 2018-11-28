@@ -24,7 +24,7 @@ public abstract class VA_LevelSelect extends VA_Screen {
 
         table.add(up).row();
 
-        controller.getLevelButtons(uiSkin).forEach(level -> {
+        for (TextButton level : controller.getLevelButtons(uiSkin)) {
             table.add(level).fillX().uniformX();
             table.row();
             level.addListener(new ChangeListener() {
@@ -33,7 +33,7 @@ public abstract class VA_LevelSelect extends VA_Screen {
                     controller.selected(level.getText().toString());
                 }
             });
-        });
+        }
 
         table.add(down).row();
 
