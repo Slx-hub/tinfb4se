@@ -41,7 +41,12 @@ N.a
 ## 5. Logical View
 
 ### 5.1 Overview
----OUR CLASS DIAGRAM---
+As we started our project with the MVC architecture in mind, we agreed to a naming convention that specifies in which part the class acts.
+For example every class starting with V_ is part of the view etc.
+This "tag" also contains information about the type of class, like A for abstract and E for enum.
+![alt text][ClassDiagram]
+
+[ClassDiagram]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/ClassDiagram.png "Class Diagram"
 
 ### 5.2	Architecturally Significant Design Packages
 N.a
