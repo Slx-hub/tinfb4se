@@ -49,7 +49,7 @@ android {
     }
     sourceSets {
         androidTest {
-            assets.srcDirs = ['src/test']
+            assets.srcDirs = ['src/androidTest']
         }
     }
     compileOptions {
