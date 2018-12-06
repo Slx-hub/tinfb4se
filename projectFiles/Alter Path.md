@@ -9,25 +9,25 @@ The use case allows the user to edit a level.
 
 ## 2.1 Basic Flow
 
-From the editor screen the user can click on buttons and on Tiles:
+From the editor screen the user can click on buttons and on tiles:
 
-Case 1: "Save" Button is clicked
+Case 1: "Save" button is clicked
 
 - User is moved to the level save screen
 
-Case 2: "Back" Button is clicked
+Case 2: "Back" button is clicked
 
 - User is moved to the Display level selection Screen
 
-Case 3: "Add" Button is clicked
+Case 3: "Add" button is clicked
 
 - additive Mode for the editor screen is activated
 
-Case 4: "Remove" Button is clicked 
+Case 4: "Remove" button is clicked 
 
 - additive Mode for the editor screen is deactivated
 
-Case 5: Tile is Clicked
+Case 5: tile is Clicked
 
     Case 5.1 additive mode is activated
 
