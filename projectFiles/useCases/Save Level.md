@@ -22,8 +22,6 @@ The user can save his created Level. Before saving, the created level will be ch
 
 ### 2.1.2 Mock-up
 
-![alt text][Mock]
-
 n/a
 
 ### 2.1.3 Narrative
