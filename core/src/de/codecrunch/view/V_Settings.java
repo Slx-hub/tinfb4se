@@ -77,7 +77,7 @@ public class V_Settings extends VA_Screen {
         table.add(pushCheckbox).fillX().uniformX();
         table.add(pushCheckboxLabel);
         table.row();
-        table.add(save).fillX().uniformX();
+        table.add(save).colspan(2);
 
 
         save.addListener(new ChangeListener() {
