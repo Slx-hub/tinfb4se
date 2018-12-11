@@ -13,15 +13,6 @@ public class V_EditorLevelSelect extends VA_LevelSelect {
 
     public V_EditorLevelSelect(TowerAttackGame game) {
         super(game);
-    }
-
-    @Override
-    public void startMap(M_Map map) {
-        towerAttackGame.startEditor(map);
-    }
-
-    @Override
-    public void show() {
         Table table = new Table();
         table.setFillParent(true);
         stage.addActor(table);
@@ -46,6 +37,16 @@ public class V_EditorLevelSelect extends VA_LevelSelect {
                 towerAttackGame.changeScreen(TowerAttackGame.SCREENID_MENU);
             }
         });
+    }
+
+    @Override
+    public void startMap(M_Map map) {
+        towerAttackGame.startEditor(map);
+    }
+
+    @Override
+    public void show() {
+
     }
 
 
