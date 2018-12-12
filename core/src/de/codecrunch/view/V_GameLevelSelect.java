@@ -12,15 +12,6 @@ public class V_GameLevelSelect extends VA_LevelSelect {
 
     public V_GameLevelSelect(TowerAttackGame game) {
         super(game);
-    }
-
-    @Override
-    public void startMap(M_Map map) {
-        towerAttackGame.startGame(map);
-    }
-
-    @Override
-    public void show() {
         Table table = new Table();
         table.setFillParent(true);
         stage.addActor(table);
@@ -36,5 +27,15 @@ public class V_GameLevelSelect extends VA_LevelSelect {
                 towerAttackGame.changeScreen(TowerAttackGame.SCREENID_MENU);
             }
         });
+    }
+
+    @Override
+    public void startMap(M_Map map) {
+        towerAttackGame.startGame(map);
+    }
+
+    @Override
+    public void show() {
+
     }
 }

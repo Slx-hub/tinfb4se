@@ -35,6 +35,7 @@ public class TowerAttackGame extends Game {
     public final static int SCREENID_EDITORLVLSELECT = 4;
     public final static int SCREENID_EDITOR = 5;
 
+
     @Override
     public void create() {
         changeScreen(SCREENID_MENU);
@@ -46,7 +47,7 @@ public class TowerAttackGame extends Game {
      * @param screenid ID of the screen you're switching to. see this classes final integers
      */
     public void changeScreen(int screenid) {
-        modifyScreen(screenid, true);
+         modifyScreen(screenid, true);
     }
 
     private void setupScreen(int screenid) {
@@ -92,6 +93,7 @@ public class TowerAttackGame extends Game {
         setupScreen(SCREENID_EDITOR);
         editor.setView(editorScreen);
         editorScreen.setController(editor);
+        editorScreen.loadUI();
         changeScreen(SCREENID_EDITOR);
     }
 

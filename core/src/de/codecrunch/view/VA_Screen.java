@@ -38,13 +38,16 @@ public abstract class VA_Screen implements Screen {
     public void hide() {
     }
 
+
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        //Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         stage.act(Math.min(delta, 1 / 30f));
         stage.draw();
     }
+
 
     @Override
     public void resize(int width, int height) {
