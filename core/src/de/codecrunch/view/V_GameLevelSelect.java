@@ -19,7 +19,7 @@ public class V_GameLevelSelect extends VA_LevelSelect {
         TextButton back = new TextButton("Back", uiSkin);
 
         addLevelButtons(table);
-        table.add(back);
+        table.add(back).colspan(2);
 
         back.addListener(new ChangeListener() {
             @Override
@@ -32,10 +32,5 @@ public class V_GameLevelSelect extends VA_LevelSelect {
     @Override
     public void startMap(M_Map map) {
         towerAttackGame.startGame(map);
-    }
-
-    @Override
-    public void show() {
-
     }
 }

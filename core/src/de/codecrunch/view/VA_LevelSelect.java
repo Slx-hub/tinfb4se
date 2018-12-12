@@ -62,5 +62,11 @@ public abstract class VA_LevelSelect extends VA_Screen {
         });
     }
 
+    @Override
+    public void show(){
+        controller.updateButtons();
+        super.render(0);
+    }
+
     public abstract void startMap(M_Map map);
 }
