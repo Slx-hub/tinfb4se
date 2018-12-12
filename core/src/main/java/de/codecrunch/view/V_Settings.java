@@ -13,7 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import javax.xml.soap.Text;
+
 public class V_Settings extends VA_Screen {
+
+    public TextButton save;
 
     private C_Settings settings = new C_Settings();
     private Label volumeMusicLabel;
@@ -30,7 +34,7 @@ public class V_Settings extends VA_Screen {
         table.setFillParent(true);
         stage.addActor(table);
 
-        TextButton save = new TextButton("Save", uiSkin);
+        save = new TextButton("Save", uiSkin);
 
         final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, uiSkin);
         volumeMusicSlider.setValue(settings.getMusicVolume());

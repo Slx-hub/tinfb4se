@@ -2,6 +2,8 @@ package de.codecrunch;
 
 import org.junit.Rule;
 import android.support.test.rule.ActivityTestRule;
+import android.support.v4.view.ViewCompat;
+
 import de.codecrunch.AndroidLauncher;
 import com.mauriciotogneri.greencoffee.GreenCoffeeSteps;
 
@@ -43,6 +45,12 @@ class AlterSettingsSteps extends CoreSteps{
 
     @Rule
     public final ActivityTestRule<AndroidLauncher> main = new ActivityTestRule<>(AndroidLauncher.class);
+
+    @Override
+    @Given("^I \"([^\"]*)\" on the \"([^\"]*)\" screen$")
+    public void iOnTheScreen(String arg0, String arg1) throws Throwable {
+        super.iOnTheScreen(arg0,arg1);
+    }
     
     @And("^The \"([^\"]*)\" volume \"([^\"]*)\" at \"([^\"]*)\"$")
     public void theVolumeAt(String arg0, String arg1, String arg2) throws Throwable {

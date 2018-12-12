@@ -13,7 +13,7 @@ import org.junit.runners.Parameterized;
 
 import java.io.IOException;
 
-import de.codecrunch.AndroidLauncher;
+// not sure if this class is really needed
 
 @RunWith(Parameterized.class)
 public class CoreTests extends GreenCoffeeTest
