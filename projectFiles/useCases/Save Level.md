@@ -22,7 +22,9 @@ The user can save his created Level. Before saving, the created level will be ch
 
 ### 2.1.2 Mock-up
 
-n/a
+![alt text][Mock]
+
+[Mock]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/saveLevel_mock.png "Mock-up"
 
 ### 2.1.3 Narrative
 
