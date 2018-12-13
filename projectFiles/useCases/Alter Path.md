@@ -60,7 +60,7 @@ Case 5: tile is Clicked
 
 ![alt text][Mock]
 
-n/a
+[Mock]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/alterPath_mock.png "Mock-up"
 
 ### 2.1.3 Narrative
 
