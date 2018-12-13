@@ -23,7 +23,9 @@ The user can choose from the navigation menu what he wants to do.
 
 ### 2.1.2 Mock-up
 
-n/a
+![alt text][Mock]
+
+[Mock]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/navigateMenu_mock.png "Mock-up"
 
 ### 2.1.3 Narrative
 
