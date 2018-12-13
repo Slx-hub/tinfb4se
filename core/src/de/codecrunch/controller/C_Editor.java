@@ -156,7 +156,7 @@ public class C_Editor {
     }
 
     public void save() {
-        TextField input = new TextField("", view.uiSkin);
+        TextField input = new TextField(map.getMapName(), view.uiSkin);
         input.setMaxLength(9);
         Dialog dialog = new Dialog("Save Level", view.uiSkin) {
             @Override
@@ -177,13 +177,7 @@ public class C_Editor {
 
     public void saveLevel(String levelName) {
         File file = Gdx.files.local("maps/" + levelName + ".map").file();
-        if (file.exists()) {
-            Dialog dialog = new Dialog("Lol, nope", view.uiSkin);
-            dialog.text("A level with this name already exists");
-            dialog.button("Okay");
-            view.showDialog(dialog);
-            return;
-        }
+        map.setMapName(levelName);
         map.setPath(path.addToList(new ArrayList<>()));
         try {
             file.getParentFile().mkdirs();
