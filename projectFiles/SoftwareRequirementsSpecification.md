@@ -46,45 +46,44 @@ The requirements are modeled in a use-case based system. The Overall Use Case Di
 
 ## <a name="3.1 Functionality">3.1 Functionality</a>
 
-### <a name="3.1.1 Run game">3.1.1 Run game</a>
+### <a name="3.1.1 Navigate menu">3.1.1 Navigate menu</a>
 
-The user should be able to run the game. When clicked, the level selection screen should open.
+The navigation menu ist the first screen of the app. The user can choose from the navigation menu what he wants to do.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Navigate%20Menu.md)
 
 ### <a name="3.1.2 Alter settings">3.1.2 Alter settings</a>
 
-The user should be able to alter the settings.
+The user can change the volume of sound effects and background music. In addition to that he can deactivate the push-notifications of the app.
 </br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Settings.md)
 
-### <a name="3.1.3 Close app">3.1.3 Close app</a>
+### <a name="3.1.3 Select level">3.1.3 Select level</a>
 
-The user should be able to close the application. When closed, the game should save it's settings and optionally the game's state.
+The user can choose from different levels and can select the one he wants to play. After he selected a level that is unlocked for playing, the level will start.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Select%20Level.md)
 
-### <a name="3.1.4 Select level">3.1.4 Select level</a>
+### <a name="3.1.4 Select level">3.1.4 Alter path</a>
 
-The user should be able to select the level he wants to play.
-</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Settings.md)
+The user can edit the path of levels in the editor.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Alter%20Path.md)
 
-### <a name="3.1.5 Start level">3.1.5 Start level</a>
+### <a name="3.1.5 Select level">3.1.5 Save level</a>
 
-The user should be able to start a specific level that was selected in the use case above.
+The user can save his created Level. Before saving, the created level will be checked for correctness.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Save%20Level.md)
 
-### <a name="3.1.6 Return to menu">3.1.6 Return to menu</a>
+### <a name="3.1.6 Place unit">3.1.6 Place unit</a>
 
-The user should be able to return to menu.
+The user should be able to send units onto the field.
 
-### <a name="3.1.7 Place unit">3.1.7 Place unit</a>
-
-The use should be able to send units onto the field.
-
-### <a name="3.1.8 Move camera">3.1.8 Move camera</a>
+### <a name="3.1.7 Move camera">3.1.8 Move camera</a>
 
 The user should be able to move the in-game camera.
 
-### <a name="3.1.9 Close game">3.1.9 Close game</a>
+### <a name="3.1.8 Close game">3.1.9 Close game</a>
 
 The user should be able to close a game and return to the menu.
 
-### <a name="3.1.10 Place turret">3.1.9 Place turret</a>
+### <a name="3.1.9 Place turret">3.1.9 Place turret</a>
 
 The computer enemy should be able to place turrets on free spaces.
 
