@@ -5,6 +5,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import java.awt.BorderLayout;
+
+import javax.swing.plaf.basic.BasicArrowButton;
+
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_LevelSelect;
 import de.codecrunch.model.M_Map;
@@ -21,21 +25,27 @@ public abstract class VA_LevelSelect extends VA_Screen {
     public void addLevelButtons(Table table) {
         TextButton up = new TextButton("^", uiSkin);
         TextButton down = new TextButton("v", uiSkin);
+        int rowcnt = 0;
 
-        table.add(up).row();
+        table.add(up).colspan(2);
+        table.row();
 
         for (TextButton level : controller.getLevelButtons(uiSkin)) {
             table.add(level).fillX().uniformX();
-            table.row();
             level.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     controller.selected(level.getText().toString());
                 }
             });
+            rowcnt++;
+            if (rowcnt == 2) {
+                table.row();
+            }
         }
-
-        table.add(down).row();
+        table.row();
+        table.add(down).colspan(2);
+        table.row();
 
         up.addListener(new ChangeListener() {
             @Override
@@ -50,6 +60,12 @@ public abstract class VA_LevelSelect extends VA_Screen {
                 controller.move(C_LevelSelect.DOWN);
             }
         });
+    }
+
+    @Override
+    public void show(){
+        controller.updateButtons();
+        super.render(0);
     }
 
     public abstract void startMap(M_Map map);

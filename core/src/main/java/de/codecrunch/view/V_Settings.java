@@ -26,10 +26,6 @@ public class V_Settings extends VA_Screen {
 
     public V_Settings(TowerAttackGame game) {
         super(game);
-    }
-
-    @Override
-    public void show() {
         Table table = new Table();
         table.setFillParent(true);
         stage.addActor(table);
@@ -71,7 +67,6 @@ public class V_Settings extends VA_Screen {
         volumeSoundLabel = new Label("Sound-Effects", uiSkin);
         pushCheckboxLabel = new Label("Push-Notifications", uiSkin);
 
-
         table.add(volumeMusicSlider).fillX().uniformX();
         table.add(volumeMusicLabel);
         table.row();
@@ -81,7 +76,7 @@ public class V_Settings extends VA_Screen {
         table.add(pushCheckbox).fillX().uniformX();
         table.add(pushCheckboxLabel);
         table.row();
-        table.add(save).fillX().uniformX();
+        table.add(save).colspan(2);
 
 
         save.addListener(new ChangeListener() {
@@ -90,5 +85,10 @@ public class V_Settings extends VA_Screen {
                 towerAttackGame.changeScreen(TowerAttackGame.SCREENID_MENU);
             }
         });
+    }
+
+    @Override
+    public void show() {
+
     }
 }

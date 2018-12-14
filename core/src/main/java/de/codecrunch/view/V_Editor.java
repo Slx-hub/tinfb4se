@@ -16,12 +16,7 @@ public class V_Editor extends VA_Screen {
         super(game);
     }
 
-    public void setController(C_Editor controller) {
-        this.controller = controller;
-    }
-
-    @Override
-    public void show() {
+    public V_Editor loadUI() {
         Table uiTable = new Table();
         Table mapTable = new Table();
 
@@ -32,7 +27,7 @@ public class V_Editor extends VA_Screen {
         M_Tile[][] tiles = controller.getMap().getAllTiles();
         for (int y = 0; y < controller.getMap().y_count; y++) {
             for (int x = 0; x < controller.getMap().x_count; x++) {
-                M_Tile m_tile = tiles[x][y];
+                final M_Tile m_tile = tiles[x][y];
                 mapTable.add(m_tile).center();
                 m_tile.addListener(new ClickListener() {
                     @Override
@@ -79,6 +74,16 @@ public class V_Editor extends VA_Screen {
                 controller.save();
             }
         });
+        return this;
+    }
+
+    public void setController(C_Editor controller) {
+        this.controller = controller;
+    }
+
+    @Override
+    public void show() {
+
     }
 
 }

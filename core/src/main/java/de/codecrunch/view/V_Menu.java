@@ -15,10 +15,6 @@ public class V_Menu extends VA_Screen {
     public V_Menu(TowerAttackGame game) {
         super(game);
         this.game = game;
-    }
-
-    @Override
-    public void show() {
         Table table = new Table();
         stage.addActor(table);
         table.setFillParent(true);
@@ -28,7 +24,7 @@ public class V_Menu extends VA_Screen {
         settings = new TextButton("Settings", uiSkin);
         TextButton exit = new TextButton("Exit", uiSkin);
 
-        table.defaults().pad(10,20,10,20).expand().fill();
+        table.defaults().pad(10, 20, 10, 20).expand().fill();
 
         table.add(newGame).row();
         table.add(editor).row();
@@ -39,9 +35,9 @@ public class V_Menu extends VA_Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.changeScreen(TowerAttackGame.SCREENID_EDITORLVLSELECT);
-		    }
+            }
         });
-		
+
         exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -60,7 +56,12 @@ public class V_Menu extends VA_Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 game.changeScreen(TowerAttackGame.SCREENID_GAMELVLSELECT);
-		    }
+            }
         });
+    }
+
+    @Override
+    public void show() {
+
     }
 }

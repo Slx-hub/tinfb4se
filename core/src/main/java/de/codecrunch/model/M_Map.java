@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 public class M_Map implements Serializable {
     private M_Tile[][] tiles;
     private List<M_Tile> path;
+    private String mapName = "";
     public final int x_count = 20;
     public final int y_count = 9;
 
@@ -45,6 +46,14 @@ public class M_Map implements Serializable {
 
     public void setPath(List<M_Tile> path) {
         this.path = path;
+    }
+
+    public String getMapName() {
+        return mapName;
+    }
+
+    public void setMapName(String mapName) {
+        this.mapName = mapName;
     }
 
     public void deflate() {

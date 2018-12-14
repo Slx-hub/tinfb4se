@@ -30,6 +30,7 @@ public class M_LevelSelect {
     }
 
     public List<String> getLevels() {
+        load();
         return levels.subList(index, Math.min(displayCount + index + 1, levels.size())).stream().map(new Function<File, String>() {
             @Override
             public String apply(File level) {

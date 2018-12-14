@@ -18,13 +18,13 @@ The user can change the volume of sound effects and background music. In additio
 
 ![alt text][ActivityDiagram]
 
-[ActivityDiagram]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/settingsAD.png "Activity Diagram"
+[ActivityDiagram]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/alterSettingsAD.png "Activity Diagram"
 
 ### 2.1.2 Mock-up
 
 ![alt text][Mock]
 
-[Mock]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/settingsMock.png "Mock-up"
+[Mock]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/alterSettings_mock.png "Mock-up"
 
 ### 2.1.3 Narrative
 

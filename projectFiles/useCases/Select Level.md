@@ -25,7 +25,7 @@ The user can choose from different levels and can select the one he wants to pla
 
 ![alt text][Mock]
 
-[Mock]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/selectLevelMock.png "Mock-up"
+[Mock]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/selectLevel_mock.png "Mock-up"
 
 ### 2.1.3 Narrative
 
