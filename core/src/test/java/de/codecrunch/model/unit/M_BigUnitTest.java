@@ -34,7 +34,7 @@ public class M_BigUnitTest {
     }
 
     @Test
-    public void setSpeed_canBeChanged_shouldBeChanged() {
+    public void setSpeed_canBeChanged_speedShouldBeChanged() {
         int expected = speed+1;
 
         M_BigUnit unit = new M_BigUnit();

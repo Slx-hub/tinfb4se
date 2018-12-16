@@ -33,7 +33,7 @@ public class M_SmallUnitTest {
     }
 
     @Test
-    public void setSpeed_canBeChanged_shouldBeChanged() {
+    public void setSpeed_canBeChanged_speedShouldBeChanged() {
         int expected = speed+1;
 
         M_SmallUnit unit = new M_SmallUnit();

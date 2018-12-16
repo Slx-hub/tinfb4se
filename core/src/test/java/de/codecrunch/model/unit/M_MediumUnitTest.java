@@ -34,7 +34,7 @@ public class M_MediumUnitTest {
     }
 
     @Test
-    public void setSpeed_canBeChanged_shouldBeChanged() {
+    public void setSpeed_canBeChanged_speedShouldBeChanged() {
         int expected = speed+1;
 
         M_MediumUnit unit = new M_MediumUnit();
