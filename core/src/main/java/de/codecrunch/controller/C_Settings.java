@@ -4,6 +4,7 @@ package de.codecrunch.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
+
 public class C_Settings {
     private static final String PREF_MUSIC_VOLUME = "volume";
     private static final String PREF_PUSH_ENABLED = "push.enabled";
@@ -20,11 +21,13 @@ public class C_Settings {
     }
 
     public void setPushEnabled(boolean pushEnabled) {
+
         getPrefs().putBoolean(PREF_PUSH_ENABLED, pushEnabled);
         getPrefs().flush();
     }
 
     public float getMusicVolume() {
+
         return getPrefs().getFloat(PREF_MUSIC_VOLUME, 0.5f);
     }
 

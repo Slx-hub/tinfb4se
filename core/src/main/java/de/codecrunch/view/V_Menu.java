@@ -10,6 +10,7 @@ import de.codecrunch.TowerAttackGame;
 
 public class V_Menu extends VA_Screen {
     private TowerAttackGame game;
+    public TextButton settings;
 
     public V_Menu(TowerAttackGame game) {
         super(game);
@@ -20,7 +21,7 @@ public class V_Menu extends VA_Screen {
 
         TextButton newGame = new TextButton("New Game", uiSkin);
         TextButton editor = new TextButton("Editor", uiSkin);
-        TextButton settings = new TextButton("Settings", uiSkin);
+        settings = new TextButton("Settings", uiSkin);
         TextButton exit = new TextButton("Exit", uiSkin);
 
         table.defaults().pad(10, 20, 10, 20).expand().fill();

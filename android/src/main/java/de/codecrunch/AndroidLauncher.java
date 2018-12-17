@@ -7,10 +7,13 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import de.codecrunch.TowerAttackGame;
 
 public class AndroidLauncher extends AndroidApplication {
+	public TowerAttackGame towerAttackGame;
+
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new TowerAttackGame(), config);
+		towerAttackGame = new TowerAttackGame();
+		initialize(towerAttackGame, config);
 	}
 }
