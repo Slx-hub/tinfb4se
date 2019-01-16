@@ -15,11 +15,6 @@ public class C_Game {
     private TowerAttackGame towerAttackGame;
     private M_Map map;
     
-    public static final float MID_MAP = 25.3f;
-    public static final float LOWER_END = 20.3f;
-    public static final float UPPER_END = 169.6f;
-    
-    
     public C_Game(TowerAttackGame game, M_Map map){
     	towerAttackGame = game;
     	this.map = map;

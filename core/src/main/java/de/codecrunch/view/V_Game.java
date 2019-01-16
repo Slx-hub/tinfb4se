@@ -13,6 +13,11 @@ import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_MapBatch;
 
 public class V_Game extends VA_Screen {
+	
+    private final float CAM_DISTANCE = 25.3f;
+    private final float CAM_LOWER = 20.3f;
+    private final float CAM_UPPER = 169.6f;
+    private final float MAP_MIDDLE = 40f;
 
 	private C_Game controller;
 
@@ -34,7 +39,7 @@ public class V_Game extends VA_Screen {
 				Gdx.graphics.getHeight());
 
 		camera.direction.set(0.001f, -1f, 0f);
-		camera.position.set(controller.LOWER_END, controller.MID_MAP, 40f);
+		camera.position.set(CAM_LOWER, CAM_DISTANCE, MAP_MIDDLE);
 		camera.near = 0.1f;
 		camera.far = 100.0f;
 		camera.update();
@@ -73,13 +78,13 @@ public class V_Game extends VA_Screen {
 
 	private boolean limitCamera() {
 		float x = camera.position.x;
-		if (x > C_Game.UPPER_END) {
-			camera.position.set(C_Game.UPPER_END, camera.position.y, camera.position.z);
+		if (x > CAM_UPPER) {
+			camera.position.set(CAM_UPPER, camera.position.y, camera.position.z);
 			cameraMotion = 0f;
 			return false;
 		}
-		if (x < C_Game.LOWER_END) {
-			camera.position.set(C_Game.LOWER_END, camera.position.y, camera.position.z);
+		if (x < CAM_LOWER) {
+			camera.position.set(CAM_LOWER, camera.position.y, camera.position.z);
 			cameraMotion = 0f;
 			return false;
 		}
@@ -115,8 +120,6 @@ public class V_Game extends VA_Screen {
 
 		@Override
 		public boolean touchDragged(int screenX, int screenY, int pointer) {
-			//camera.translate(Gdx.input.getDeltaY(), 0, 0);
-			//limitCamera();
 			cameraMotion = Gdx.input.getDeltaY() * 0.088f;
 			return true;
 		}
