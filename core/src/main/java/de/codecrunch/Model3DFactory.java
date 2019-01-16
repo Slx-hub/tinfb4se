@@ -13,18 +13,17 @@ public class Model3DFactory {
     private Model3DFactory(){}
 
     public static void setup(){
-        UBJsonReader jsonReader = new UBJsonReader();
-        G3dModelLoader modelLoader = new G3dModelLoader(jsonReader);
+        G3dModelLoader modelLoader = new G3dModelLoader(new UBJsonReader());
 
         empty = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/empty.g3db", Files.FileType.Internal));
         end = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/end.g3db", Files.FileType.Internal));
-        occupied = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/occupied.g3db", Files.FileType.Internal));
+        //occupied = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/occupied.g3db", Files.FileType.Internal));
         path_straight = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_straight.g3db", Files.FileType.Internal));
         path_left = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_left.g3db", Files.FileType.Internal));
         path_right = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_right.g3db", Files.FileType.Internal));
-        path_cross = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_cross.g3db", Files.FileType.Internal));
-        path_split_right = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_right.g3db", Files.FileType.Internal));
-        path_split_left = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_left.g3db", Files.FileType.Internal));
+        //path_cross = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_cross.g3db", Files.FileType.Internal));
+        //path_split_right = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_right.g3db", Files.FileType.Internal));
+        //path_split_left = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_left.g3db", Files.FileType.Internal));
     }
 
     public static ModelInstance instantiate(Model model) {

@@ -101,7 +101,13 @@ public class TowerAttackGame extends Game {
         //Loads 3d Models -> May be put in loading screen later.
         Model3DFactory.setup();
 
+        game = new C_Game(this, map);
+        setupScreen(SCREENID_GAME);
+        game.setView(gameScreen);
+        gameScreen.setController(game);
+        game.start();
         changeScreen(SCREENID_GAME);
+        Gdx.input.setInputProcessor(gameScreen.new GameInputProcessor());
     }
 
 }
