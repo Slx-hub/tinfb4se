@@ -7,23 +7,27 @@ import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.environment.PointLight;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.collision.Ray;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_MapBatch;
 
 public class V_Game extends VA_Screen {
-	
-    private final float CAM_DISTANCE = 25.3f;
-    private final float CAM_LOWER = 20.3f;
-    private final float CAM_UPPER = 169.6f;
-    private final float MAP_MIDDLE = 40f;
+
+	private final float CAM_DISTANCE = 25.3f;
+	private final float CAM_LOWER = 20.3f;
+	private final float CAM_UPPER = 169.6f;
+	private final float MAP_MIDDLE = 40f;
 
 	private C_Game controller;
 
 	private PerspectiveCamera camera;
 	private M_MapBatch mapBatch = new M_MapBatch();
 	private Environment environment = new Environment();
+	private PointLight mouseLight = new PointLight().set(1f, 1f, 1f, 30f, 1f, 40f, 100f);
 
 	private float cameraMotion = 0f;
 
@@ -44,8 +48,8 @@ public class V_Game extends VA_Screen {
 		camera.far = 100.0f;
 		camera.update();
 
-		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.2f, 0.2f, 0.2f, 1.0f));
-		environment.add(new DirectionalLight().set(0.5f, 0.5f, 0.5f, 0f, -1f, 0f));
+		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.9f, 0.9f, 0.9f, 1.0f));
+		//environment.add(mouseLight);
 	}
 
 	public void setController(C_Game game) {
@@ -64,12 +68,13 @@ public class V_Game extends VA_Screen {
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
 		camera.translate(cameraMotion, 0, 0);
 		limitCamera();
-		cameraMotion *= 0.95f;
+		if (cameraMotion != 0)
+			cameraMotion *= 0.95f;
 		camera.update();
 		mapBatch.begin(camera);
 		mapBatch.renderAll(environment);
@@ -77,13 +82,12 @@ public class V_Game extends VA_Screen {
 	}
 
 	private boolean limitCamera() {
-		float x = camera.position.x;
-		if (x > CAM_UPPER) {
+		if (camera.position.x > CAM_UPPER) {
 			camera.position.set(CAM_UPPER, camera.position.y, camera.position.z);
 			cameraMotion = 0f;
 			return false;
 		}
-		if (x < CAM_LOWER) {
+		if (camera.position.x < CAM_LOWER) {
 			camera.position.set(CAM_LOWER, camera.position.y, camera.position.z);
 			cameraMotion = 0f;
 			return false;
@@ -126,7 +130,12 @@ public class V_Game extends VA_Screen {
 
 		@Override
 		public boolean mouseMoved(int screenX, int screenY) {
-			return false;
+			Vector3 tmpVector = new Vector3();
+			Ray ray = camera.getPickRay(screenX, screenY);
+			final float distance = -ray.origin.y / ray.direction.y - 1f;
+			tmpVector.set(ray.direction).scl(distance).add(ray.origin);
+			mouseLight.setPosition(tmpVector);
+			return true;
 		}
 
 		@Override
