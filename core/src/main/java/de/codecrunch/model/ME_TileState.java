@@ -18,6 +18,11 @@ public enum ME_TileState {
 		protected ModelInstance getModel() {
 			return Model3DFactory.instantiate(Model3DFactory.empty);
 		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.EMPTY;
+		}
 	},
 	START {
 		@Override
@@ -28,6 +33,11 @@ public enum ME_TileState {
 		@Override
 		protected ModelInstance getModel() {
 			return Model3DFactory.instantiate(Model3DFactory.start);
+		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
 		}
 	},
 	END {
@@ -40,16 +50,26 @@ public enum ME_TileState {
 		protected ModelInstance getModel() {
 			return Model3DFactory.instantiate(Model3DFactory.end);
 		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
+		}
 	},
 	OCCUPIED {
 		@Override
 		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/occupied.png"));
+			return new Image(new Texture("tiles/textures/empty.png"));
 		}
 
 		@Override
 		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.occupied);
+			return Model3DFactory.instantiate(Model3DFactory.empty);
+		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.OBSTACLE;
 		}
 	},
 	PATH_STRAIGHT {
@@ -62,6 +82,11 @@ public enum ME_TileState {
 		@Override
 		protected ModelInstance getModel() {
 			return Model3DFactory.instantiate(Model3DFactory.path_straight);
+		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
 		}
 	},
 	PATH_LEFT {
@@ -76,6 +101,11 @@ public enum ME_TileState {
 			instance.transform.rotate(Vector3.Y, -90);
 			return instance;
 		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
+		}
 	},
 	PATH_RIGHT {
 		@Override
@@ -88,6 +118,11 @@ public enum ME_TileState {
 			ModelInstance instance = Model3DFactory.instantiate(Model3DFactory.path_corner);
 			return instance;
 		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
+		}
 	},
 	PATH_CROSS {
 		@Override
@@ -98,6 +133,11 @@ public enum ME_TileState {
 		@Override
 		protected ModelInstance getModel() {
 			return Model3DFactory.instantiate(Model3DFactory.path_cross);
+		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
 		}
 	},
 	PATH_SPLIT_RIGHT {
@@ -110,6 +150,11 @@ public enum ME_TileState {
 		protected ModelInstance getModel() {
 			return Model3DFactory.instantiate(Model3DFactory.path_split_right);
 		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
+		}
 	},
 	PATH_SPLIT_LEFT {
 		@Override
@@ -120,6 +165,11 @@ public enum ME_TileState {
 		@Override
 		protected ModelInstance getModel() {
 			return Model3DFactory.instantiate(Model3DFactory.path_split_left);
+		}
+		
+		@Override
+		public ME_TileStateGroup getGroup() {
+			return ME_TileStateGroup.PATH;
 		}
 	};
 
@@ -142,4 +192,10 @@ public enum ME_TileState {
 	protected abstract Image getImage();
 
 	protected abstract ModelInstance getModel();
+	
+	public abstract ME_TileStateGroup getGroup();
+	
+	public enum ME_TileStateGroup {
+		PATH,OBSTACLE,EMPTY;
+	}
 }

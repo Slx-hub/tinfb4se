@@ -103,6 +103,8 @@ public class C_Editor {
 			path.removeFront();
 			if (newHead != null)
 				newHead.get().setTileState(ME_TileState.END).updateEditorImage();
+			if (newHead == path.tail())
+				newHead.get().setTileState(ME_TileState.START).updateEditorImage();
 		} else if (tile == path.tail().get()) {
 			path.tail().get().setTileState(ME_TileState.EMPTY).updateEditorImage();
 			M_Path<M_Tile>.Node newTail = path.tail().next();
