@@ -19,6 +19,17 @@ public enum ME_TileState {
 			return Model3DFactory.instantiate(Model3DFactory.empty);
 		}
 	},
+	START {
+		@Override
+		protected Image getImage() {
+			return new Image(new Texture("tiles/textures/start.png"));
+		}
+
+		@Override
+		protected ModelInstance getModel() {
+			return Model3DFactory.instantiate(Model3DFactory.start);
+		}
+	},
 	END {
 		@Override
 		protected Image getImage() {
@@ -62,7 +73,7 @@ public enum ME_TileState {
 		@Override
 		protected ModelInstance getModel() {
 			ModelInstance instance = Model3DFactory.instantiate(Model3DFactory.path_corner);
-			instance.transform.rotate(Vector3.Y, 90);
+			instance.transform.rotate(Vector3.Y, -90);
 			return instance;
 		}
 	},

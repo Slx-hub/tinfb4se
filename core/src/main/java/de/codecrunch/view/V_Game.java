@@ -17,9 +17,9 @@ import de.codecrunch.model.M_MapBatch;
 
 public class V_Game extends VA_Screen {
 
-	private final float CAM_DISTANCE = 25.3f;
+	private final float CAM_DISTANCE = 26.3f;
 	private final float CAM_LOWER = 20.3f;
-	private final float CAM_UPPER = 169.6f;
+	private final float CAM_UPPER = 169.7f;
 	private final float MAP_MIDDLE = 40f;
 
 	private C_Game controller;
@@ -42,7 +42,7 @@ public class V_Game extends VA_Screen {
 				Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 
-		camera.direction.set(0.001f, -1f, 0f);
+		camera.direction.set(0.0001f, -1f, 0f);
 		camera.position.set(CAM_LOWER, CAM_DISTANCE, MAP_MIDDLE);
 		camera.near = 0.1f;
 		camera.far = 100.0f;
@@ -68,7 +68,7 @@ public class V_Game extends VA_Screen {
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClearColor(120, 120, 120, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
 		camera.translate(cameraMotion, 0, 0);
