@@ -21,6 +21,7 @@ public class V_Game extends VA_Screen {
 	private final float CAM_LOWER = 20.3f;//20.3
 	private final float CAM_UPPER = 169.7f;//169.7
 	private final float MAP_MIDDLE = 40f;//40
+	private final float MAP_BRIGHTNESS = 1f;
 
 	private C_Game controller;
 
@@ -49,7 +50,7 @@ public class V_Game extends VA_Screen {
 		camera.far = 120.0f;
 		camera.update();
 
-		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.9f, 0.9f, 0.9f, 1.0f));
+		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
 		//environment.add(mouseLight);
 	}
 

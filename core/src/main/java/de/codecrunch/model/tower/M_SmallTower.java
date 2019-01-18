@@ -19,7 +19,7 @@ public class M_SmallTower extends MA_Tower {
 	@Override
 	public ModelInstance getModel() {
 		if (model == null)
-			model = Model3DFactory.instantiate(Model3DFactory.loadModel("turrets/stub.g3db"));
+			model = Model3DFactory.instantiate(Model3DFactory.loadModel("towers/stub.g3db"));
 		return model;
 	}
 }
