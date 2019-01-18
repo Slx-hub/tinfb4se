@@ -5,11 +5,16 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class M_Map implements Serializable {
-    private M_Tile[][] tiles;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3304573725417148782L;
+	
+	private M_Tile[][] tiles;
     private List<M_Tile> path;
     private String mapName = "";
-    public final int x_count = 20;
-    public final int y_count = 9;
+    public static final int x_count = 20;
+    public static final int y_count = 9;
 
     public M_Map() {
         tiles = new M_Tile[x_count][y_count];

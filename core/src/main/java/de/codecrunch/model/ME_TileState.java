@@ -173,7 +173,7 @@ public enum ME_TileState {
 		}
 	};
 
-	private final float tileDistance = 10f;
+	public final static float tileDistance = 10f;
 
 	public Image getEditorImage(int rotation) {
 		Image editorImage = getImage();

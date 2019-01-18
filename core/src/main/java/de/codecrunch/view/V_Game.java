@@ -13,19 +13,20 @@ import com.badlogic.gdx.math.collision.Ray;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
-import de.codecrunch.model.M_MapBatch;
+import de.codecrunch.model.M_RenderBatch;
 
 public class V_Game extends VA_Screen {
 
-	private final float CAM_DISTANCE = 26.3f;
-	private final float CAM_LOWER = 20.3f;
-	private final float CAM_UPPER = 169.7f;
-	private final float MAP_MIDDLE = 40f;
+	private final float CAM_DISTANCE = 26.3f;//26.3
+	private final float CAM_LOWER = 20.3f;//20.3
+	private final float CAM_UPPER = 169.7f;//169.7
+	private final float MAP_MIDDLE = 40f;//40
 
 	private C_Game controller;
 
 	private PerspectiveCamera camera;
-	private M_MapBatch mapBatch = new M_MapBatch();
+	private M_RenderBatch mapBatch = new M_RenderBatch();
+	private M_RenderBatch towerBatch = new M_RenderBatch();
 	private Environment environment = new Environment();
 	private PointLight mouseLight = new PointLight().set(1f, 1f, 1f, 30f, 1f, 40f, 100f);
 
@@ -45,7 +46,7 @@ public class V_Game extends VA_Screen {
 		camera.direction.set(0.0001f, -1f, 0f);
 		camera.position.set(CAM_LOWER, CAM_DISTANCE, MAP_MIDDLE);
 		camera.near = 0.1f;
-		camera.far = 100.0f;
+		camera.far = 120.0f;
 		camera.update();
 
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.9f, 0.9f, 0.9f, 1.0f));
@@ -56,8 +57,12 @@ public class V_Game extends VA_Screen {
 		controller = game;
 	}
 
-	public M_MapBatch getMapBatch() {
+	public M_RenderBatch getMapBatch() {
 		return mapBatch;
+	}
+	
+	public M_RenderBatch getTowerBatch() {
+		return towerBatch;
 	}
 
 	@Override
@@ -79,6 +84,9 @@ public class V_Game extends VA_Screen {
 		mapBatch.begin(camera);
 		mapBatch.renderAll(environment);
 		mapBatch.end();
+		towerBatch.begin(camera);
+		towerBatch.renderAll(environment);
+		towerBatch.end();
 	}
 
 	private boolean limitCamera() {

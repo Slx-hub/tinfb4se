@@ -6,10 +6,12 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 
 import de.codecrunch.TowerAttackGame;
+import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.M_Game;
 import de.codecrunch.model.M_Map;
-import de.codecrunch.model.M_MapBatch;
+import de.codecrunch.model.M_RenderBatch;
 import de.codecrunch.model.M_Tile;
+import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.view.V_Game;
 
 public class C_Game {
@@ -29,23 +31,38 @@ public class C_Game {
 	}
 
 	public void start() {
-		M_MapBatch mapBatch = view.getMapBatch();
+		M_RenderBatch mapBatch = view.getMapBatch();
 		map.foreachTile(new Consumer<M_Tile>() {
 			@Override
 			public void accept(M_Tile t) {
 				t.updateGameModel();
-				mapBatch.addTile(t.getGameModel());
+				mapBatch.addElement(t.getGameModel());
 			}
 		});
 
-		Timer.instance().scheduleTask(new Task(){
+		Timer.instance().scheduleTask(new Task() {
+			private int timerCount = 0;
+
 			@Override
 			public void run() {
-				computer.addMoney(10);
+				computer.addMoney(50);
+				computer.tick(timerCount);
+				timerCount++;
 			}
 		}, 0, 1);
-		
+		Timer.instance().start();
+
 		computer.init(map);
 		view.setup();
+	}
+	
+	public void placeTower(MA_Tower tower, int x, int y){
+			tower.setPos(x, y);
+			tower.getModel().transform.setTranslation(x * ME_TileState.tileDistance, 0.5f, y * ME_TileState.tileDistance);
+			view.getTowerBatch().addElement(tower.getModel());
+			computer.drawMoney(tower.getPrice());
+			map.getTile(x, y).setTileState(ME_TileState.OCCUPIED);
+			computer.updateDistancePathCount(map);
+
 	}
 }

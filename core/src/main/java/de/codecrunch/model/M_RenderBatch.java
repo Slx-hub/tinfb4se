@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 
-public class M_MapBatch extends ModelBatch {
+public class M_RenderBatch extends ModelBatch {
 	private List<ModelInstance> tiles = new LinkedList<>();
 	
 	public void renderAll(Environment environment) {
@@ -25,7 +25,7 @@ public class M_MapBatch extends ModelBatch {
 		super.dispose();
 	}
 	
-	public void addTile(ModelInstance tile) {
+	public void addElement(ModelInstance tile) {
 		tiles.add(tile);
 	}
 }

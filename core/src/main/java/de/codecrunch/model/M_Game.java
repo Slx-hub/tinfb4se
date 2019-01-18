@@ -1,7 +1,7 @@
 package de.codecrunch.model;
 
 import de.codecrunch.model.item.MA_Item;
-import de.codecrunch.model.turret.MA_Turret;
+import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
 
 public class M_Game {
