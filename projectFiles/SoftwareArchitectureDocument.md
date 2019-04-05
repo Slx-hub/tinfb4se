@@ -49,8 +49,8 @@ Meeing of the "tags" used in the class-diagram:
 * M_ : Model
 * V_ : View
 * C_ : Controller
-* AM_ & AV_ & AC_ : Abstract Model/View/Controller
-* E : Enum
+* MA_ & VA_ & CA_ : Abstract classes
+* ME_ & VE_ & CE_ : Enum classes
 
 ![alt text][ClassDiagram]
 
