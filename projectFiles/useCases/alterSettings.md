@@ -28,7 +28,7 @@ The user can change the volume of sound effects and background music. In additio
 
 ### 2.1.3 Narrative
 
-n/a
+You can find the feature file for this UC [here](https://github.com/SlaxXxX/tinfb4se/blob/master/android/src/androidTest/assets/alterSettings.feature)
 
 ## 2.2 Alternative Flows
 
