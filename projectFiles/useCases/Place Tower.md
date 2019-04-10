@@ -4,7 +4,7 @@ Place Tower
 
 ## 1.1 Brief Description
 
-The computer enemy should be able to place towers on free spaces.
+The computer enemy can place towers on free spaces.
 
 # 2 Flow of Events
 
