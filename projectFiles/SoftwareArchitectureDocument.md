@@ -21,6 +21,16 @@ This document is closely related to the Software Requirement Specifications and 
 This Document contains information about our software architecture. In more details, you can find information about Architectural Representation, Architectural Goals and Constraints, Use-Case View,
 Logical View, Process View, Deployment View, Implementation View, Data View, Size and Performance and Quality.
 
+### 1.6 Tech Stack
+* Java ver. 1.8
+* JUnit ver. 4.12
+* libGDX ver. 1.9.8
+* Android ver. 28.0.3
+* AndroidStudio ver. 3.3.2
+* Graddle ver. 3.3.2
+* GitHub
+* YouTrack
+
 ## 2. Architectural Representation
 This section describes what software architecture is for the current system. Our project is a plain Java application that interfaces with the user via two launchers. An android launcher and a desktop launcher.
 The application was built after the MVC architecture.
@@ -44,6 +54,14 @@ N.a
 As we started our project with the MVC architecture in mind, we agreed to a naming convention that specifies in which part the class acts.
 For example every class starting with V_ is part of the view etc.
 This "tag" also contains information about the type of class, like A for abstract and E for enum.
+
+Meeing of the "tags" used in the class-diagram:
+* M_ : Model
+* V_ : View
+* C_ : Controller
+* MA_ & VA_ & CA_ : Abstract classes
+* ME_ & VE_ & CE_ : Enum classes
+
 ![alt text][ClassDiagram]
 
 [ClassDiagram]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/ClassDiagram.png "Class Diagram"

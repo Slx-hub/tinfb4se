@@ -29,7 +29,7 @@ The user can choose from different levels and can select the one he wants to pla
 
 ### 2.1.3 Narrative
 
-n/a
+Yout can find the feature file of this UC [here](https://github.com/SlaxXxX/tinfb4se/blob/master/android/src/androidTest/assets/selectLevel.feature)
 
 ## 2.2 Alternative Flows
 
