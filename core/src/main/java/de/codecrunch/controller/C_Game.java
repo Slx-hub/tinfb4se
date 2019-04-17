@@ -12,6 +12,7 @@ import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_RenderBatch;
 import de.codecrunch.model.M_Tile;
 import de.codecrunch.model.tower.MA_Tower;
+import de.codecrunch.model.unit.MA_Unit;
 import de.codecrunch.view.V_Game;
 
 public class C_Game {
@@ -63,6 +64,10 @@ public class C_Game {
 			computer.drawMoney(tower.getPrice());
 			map.getTile(x, y).setTileState(ME_TileState.OCCUPIED);
 			computer.updateDistancePathCount(map);
+	}
 
+	public void placeUnit(MA_Unit unit){
+		M_Tile startTile = map.getPath().get(0);
+		unit.setPos(startTile.x_pos, startTile.y_pos);
 	}
 }

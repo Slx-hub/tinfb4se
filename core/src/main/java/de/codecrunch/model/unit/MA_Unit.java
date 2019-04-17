@@ -4,11 +4,14 @@ public abstract class MA_Unit {
     private int speed;
     private int maxLife;
     private int currentLife;
+    private int x_pos;
+    private int y_pos;
 
     public MA_Unit(int speed, int maxLife){
-        this.speed = speed;
-        this.maxLife = maxLife;
-        this.currentLife = maxLife;
+        setSpeed(speed);
+        setMaxLife(maxLife);
+        setCurrentLife(maxLife);
+        setPos(0,0);
     }
 
     public int getSpeed() {
@@ -45,19 +48,33 @@ public abstract class MA_Unit {
 
     public void takeDamage(int damage){
         if(this.currentLife < damage){
-            this.currentLife = 0;
+            setCurrentLife(0);
         }else{
-            this.currentLife = this.currentLife - damage;
+            setCurrentLife(this.currentLife - damage);
         }
     }
 
     public void heal(int healing){
         if (currentLife==0){
-            this.currentLife = 0;
+            setCurrentLife(0);
         } else if (this.maxLife < (this.currentLife+healing)){
-            this.currentLife = this.maxLife;
+            setCurrentLife(this.maxLife);
         } else {
-            this.currentLife += healing;
+            setCurrentLife(this.currentLife + healing);
         }
+    }
+
+    public void setPos(int x_pos, int y_pos) {
+        this.x_pos = x_pos;
+        this.y_pos = y_pos;
+    }
+
+
+    public int getX_pos() {
+        return x_pos;
+    }
+
+    public int getY_pos() {
+        return y_pos;
     }
 }
