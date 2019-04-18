@@ -1,5 +1,7 @@
 package de.codecrunch.controller;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.function.Consumer;
 
 import com.badlogic.gdx.utils.Timer;
@@ -21,6 +23,7 @@ public class C_Game {
 	private V_Game view;
 	private TowerAttackGame towerAttackGame;
 	private M_Map map;
+	private List<MA_Unit> unitList = new LinkedList<MA_Unit>();
 
 	public C_Game(TowerAttackGame game, M_Map map) {
 		towerAttackGame = game;
@@ -69,5 +72,23 @@ public class C_Game {
 	public void placeUnit(MA_Unit unit){
 		M_Tile startTile = map.getPath().get(0);
 		unit.setPos(startTile.x_pos, startTile.y_pos);
+		unit.setPath(map.getPath().iterator());
+		unitList.add(unit);
+	}
+
+	public void unitLifecycle(){
+		if(unitList.isEmpty()){
+			return;
+		}
+
+		List<MA_Unit> deadUnitsList = new LinkedList<MA_Unit>();
+
+		for(MA_Unit unit : unitList){
+			unit.move();
+
+			if(unit.getCurrentLife()<=0){
+				deadUnitsList.add(unit);
+			}
+		}
 	}
 }

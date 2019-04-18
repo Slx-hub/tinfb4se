@@ -1,11 +1,16 @@
 package de.codecrunch.model.unit;
 
+import java.util.Iterator;
+
+import de.codecrunch.model.M_Tile;
+
 public abstract class MA_Unit {
     private int speed;
     private int maxLife;
     private int currentLife;
     private int x_pos;
     private int y_pos;
+    private Iterator<M_Tile> pathIterator;
 
     public MA_Unit(int speed, int maxLife){
         setSpeed(speed);
@@ -76,5 +81,13 @@ public abstract class MA_Unit {
 
     public int getY_pos() {
         return y_pos;
+    }
+
+    public void setPath(Iterator<M_Tile> iterator) {
+        this.pathIterator = iterator;
+    }
+
+    public void move() {
+        //TODO implement unit movement here
     }
 }
