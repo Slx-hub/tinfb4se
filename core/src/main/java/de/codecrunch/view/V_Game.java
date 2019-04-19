@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
@@ -26,6 +27,8 @@ public class V_Game extends VA_Screen {
 	private C_Game controller;
 
 	private PerspectiveCamera camera;
+	private SpriteBatch hudBatch = new SpriteBatch();
+	V_HUD v_hud = new V_HUD(hudBatch);
 	private M_RenderBatch mapBatch = new M_RenderBatch();
 	private M_RenderBatch towerBatch = new M_RenderBatch();
 	private Environment environment = new Environment();
@@ -35,6 +38,7 @@ public class V_Game extends VA_Screen {
 
 	public V_Game(TowerAttackGame game) {
 		super(game);
+
 	}
 
 	public void setup() {
@@ -88,6 +92,9 @@ public class V_Game extends VA_Screen {
 		towerBatch.begin(camera);
 		towerBatch.renderAll(environment);
 		towerBatch.end();
+		hudBatch.setProjectionMatrix(v_hud.stage.getCamera().combined);
+		v_hud.stage.draw();
+
 	}
 
 	private boolean limitCamera() {
