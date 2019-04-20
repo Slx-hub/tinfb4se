@@ -6,11 +6,16 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -23,20 +28,23 @@ public class V_HUD {
     private int resources;
     private String timerDesc;
     private String resourceDesc;
-
+    private int timeCount = 0;
+    private ImageButton button;
     Label level;
     Label timerDescLabel;
     Label resourceDescLabel;
     Label worldTimer;
     Label resourcesLabel;
 
+    TextureAtlas buttonAtlas;
+
     ImageButton turretPlacer;
 
     public V_HUD(SpriteBatch sb) {
         this.resources = 99999;
         this.timer = 99999;
-        this.timerDesc = "timer: ";
-        this.resourceDesc = "resources: ";
+        this.timerDesc = "timer";
+        this.resourceDesc = "resources";
         viewport = new FitViewport(1024, 576, new OrthographicCamera());
         stage = new Stage(viewport, sb);
         Table labelTable = new Table();
@@ -53,23 +61,35 @@ public class V_HUD {
         resourceDescLabel = new Label(resourceDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         resourcesLabel = new Label(String.format("%05d", resources), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
 
-        Texture turretUp = new Texture(Gdx.files.internal("turretUp.png"));
-        Texture turretDown = new Texture(Gdx.files.internal("turretDown.png"));
-        TextureRegion textureRegionTurretUp = new TextureRegion(turretUp);
-        TextureRegion textureRegionTurretDown = new TextureRegion(turretDown);
-        TextureRegionDrawable texRegionDrawableTurretUp = new TextureRegionDrawable(textureRegionTurretUp);
-        TextureRegionDrawable texRegionDrawableTurretDown = new TextureRegionDrawable(textureRegionTurretDown);
-        ImageButton button = new ImageButton(texRegionDrawableTurretUp, texRegionDrawableTurretDown); //Set the button up
-
         Gdx.input.setInputProcessor(stage);
-        stage.act(Gdx.graphics.getDeltaTime());
-        buttonTable.add(button).expandX().left().padBottom(10);
-        labelTable.add(level).expandX().left().padLeft(10).padTop(10);
-        labelTable.add(timerDescLabel).padTop(10);
-        labelTable.add(worldTimer).padTop(10);
-        labelTable.add(resourcesLabel).expandX().right().padTop(10).padRight(10);
+        Skin buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
+        TextButton button1 = new TextButton("Place Tower", buttonSkins);
+       /* button1.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if(button1.isChecked()) {
+                    button1.setChecked(false);
+                    button1.setText("placed Tower");
+                    System.out.println("false");
+                }
+                else {
+                    button1.setChecked(true);
+                    button1.setText("place Tower");
+                }
+            }
+        });*/
+        buttonTable.add(button1).expandX().left().padBottom(10);
+        labelTable.add(level).expandX().padTop(10);
+        labelTable.add(timerDescLabel).expandX().padTop(10);
+        labelTable.add(resourceDescLabel).expandX().padTop(10);
+        labelTable.row();
+        labelTable.add(new Label("", new Label.LabelStyle(new BitmapFont(), Color.GREEN))).expandX().padTop(10);
+        labelTable.add(worldTimer).expandX().padTop(10);
+        labelTable.add(resourcesLabel).expandX().padTop(10);
 
+        stage.addActor(button1);
         stage.addActor(labelTable);
         stage.addActor(buttonTable);
     }
+
 }
