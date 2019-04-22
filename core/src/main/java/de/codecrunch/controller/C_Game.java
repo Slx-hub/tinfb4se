@@ -15,6 +15,7 @@ import de.codecrunch.model.M_RenderBatch;
 import de.codecrunch.model.M_Tile;
 import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
+import de.codecrunch.model.unit.M_SmallUnit;
 import de.codecrunch.view.V_Game;
 
 public class C_Game {
@@ -28,6 +29,7 @@ public class C_Game {
 	public C_Game(TowerAttackGame game, M_Map map) {
 		towerAttackGame = game;
 		this.map = map;
+		autoPlaceUnit(); // DUMMY -- just to place one unit automatically to not be dependent on a functional push of a button
 	}
 
 	public void setView(V_Game view) {
@@ -90,5 +92,9 @@ public class C_Game {
 				deadUnitsList.add(unit);
 			}
 		}
+	}
+
+	public void autoPlaceUnit(){
+		placeUnit(new M_SmallUnit());
 	}
 }
