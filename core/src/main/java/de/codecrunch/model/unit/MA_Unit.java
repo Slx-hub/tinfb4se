@@ -1,5 +1,7 @@
 package de.codecrunch.model.unit;
 
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
+
 import java.util.Iterator;
 
 import de.codecrunch.model.M_Tile;
@@ -11,6 +13,7 @@ public abstract class MA_Unit {
     private int x_pos;
     private int y_pos;
     private Iterator<M_Tile> pathIterator;
+    protected ModelInstance model;
 
     public MA_Unit(int speed, int maxLife){
         setSpeed(speed);
@@ -18,6 +21,8 @@ public abstract class MA_Unit {
         setCurrentLife(maxLife);
         setPos(0,0);
     }
+
+    public abstract ModelInstance getModel();
 
     public int getSpeed() {
         return this.speed;
