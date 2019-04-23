@@ -24,12 +24,11 @@ public class C_Game {
 	private V_Game view;
 	private TowerAttackGame towerAttackGame;
 	private M_Map map;
-	private List<MA_Unit> unitList = new LinkedList<MA_Unit>();
+	private List<MA_Unit> unitList = new LinkedList<>();
 
 	public C_Game(TowerAttackGame game, M_Map map) {
 		towerAttackGame = game;
 		this.map = map;
-		autoPlaceUnit(); // DUMMY -- just to place one unit automatically to not be dependent on a functional push of a button
 	}
 
 	public void setView(V_Game view) {
@@ -60,6 +59,7 @@ public class C_Game {
 
 		computer.init(map);
 		view.setup();
+        autoPlaceUnit(); // DUMMY -- just to place one unit automatically to not be dependent on a functional push of a button
 	}
 	
 	public void placeTower(MA_Tower tower, int x, int y){
@@ -73,7 +73,7 @@ public class C_Game {
 
 	public void placeUnit(MA_Unit unit){
 		M_Tile startTile = map.getPath().get(0);
-		unit.getModel().transform.setTranslation(startTile.x_pos * ME_TileState.tileDistance, 0.5f, startTile.y_pos * ME_TileState.tileDistance);
+		unit.getModel().transform.setTranslation(startTile.x_pos * ME_TileState.tileDistance, 0f, startTile.y_pos * ME_TileState.tileDistance);
 		view.getUnitBatch().addElement(unit.getModel());
 		unit.setPos(startTile.x_pos, startTile.y_pos);
 		unit.setPath(map.getPath().iterator());
