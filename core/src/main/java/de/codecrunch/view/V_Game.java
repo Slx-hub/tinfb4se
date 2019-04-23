@@ -31,6 +31,7 @@ public class V_Game extends VA_Screen {
 	V_HUD v_hud = new V_HUD(hudBatch);
 	private M_RenderBatch mapBatch = new M_RenderBatch();
 	private M_RenderBatch towerBatch = new M_RenderBatch();
+	private M_RenderBatch unitBatch = new M_RenderBatch();
 	private Environment environment = new Environment();
 	private PointLight mouseLight = new PointLight().set(1f, 1f, 1f, 30f, 1f, 40f, 100f);
 
@@ -70,6 +71,10 @@ public class V_Game extends VA_Screen {
 		return towerBatch;
 	}
 
+	public M_RenderBatch getUnitBatch() {
+		return unitBatch;
+	}
+
 	@Override
 	public void dispose() {
 		mapBatch.dispose();
@@ -92,6 +97,9 @@ public class V_Game extends VA_Screen {
 		towerBatch.begin(camera);
 		towerBatch.renderAll(environment);
 		towerBatch.end();
+		unitBatch.begin(camera);
+		unitBatch.renderAll(environment);
+		unitBatch.end();
 		hudBatch.setProjectionMatrix(v_hud.stage.getCamera().combined);
 		v_hud.stage.draw();
 
