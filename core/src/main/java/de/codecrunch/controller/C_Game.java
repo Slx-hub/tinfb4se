@@ -24,6 +24,7 @@ public class C_Game {
 	private V_Game view;
 	private TowerAttackGame towerAttackGame;
 	private M_Map map;
+	private List<MA_Tower> towerList = new LinkedList<>();
 	private List<MA_Unit> unitList = new LinkedList<>();
 
 	public C_Game(TowerAttackGame game, M_Map map) {
@@ -69,6 +70,7 @@ public class C_Game {
 			computer.drawMoney(tower.getPrice());
 			map.getTile(x, y).setTileState(ME_TileState.OCCUPIED);
 			computer.updateDistancePathCount(map);
+			towerList.add(tower);
 	}
 
 	public void placeUnit(MA_Unit unit){
@@ -80,23 +82,14 @@ public class C_Game {
 		unitList.add(unit);
 	}
 
-	public void unitLifecycle(){
-		if(unitList.isEmpty()){
-			return;
-		}
-
-		List<MA_Unit> deadUnitsList = new LinkedList<MA_Unit>();
-
-		for(MA_Unit unit : unitList){
-			unit.move();
-
-			if(unit.getCurrentLife()<=0){
-				deadUnitsList.add(unit);
-			}
-		}
-	}
-
 	public void autoPlaceUnit(){
 		placeUnit(new M_SmallUnit());
 	}
+
+    public void tick(float delta) {
+	    for (MA_Unit unit : unitList)
+            unit.tick(delta);
+        for (MA_Tower tower : towerList)
+            tower.tick(delta);
+    }
 }

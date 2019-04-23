@@ -82,6 +82,7 @@ public class V_Game extends VA_Screen {
 
 	@Override
 	public void render(float delta) {
+	    controller.tick(delta);
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl.glClearColor(120, 120, 120, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
