@@ -18,7 +18,7 @@ import de.codecrunch.model.M_RenderBatch;
 
 public class V_Game extends VA_Screen {
 
-	private final float CAM_DISTANCE = 26.3f;//26.3
+	private final float CAM_DISTANCE = 44.8f;//26.3
 	private final float CAM_LOWER = 20.3f;//20.3
 	private final float CAM_UPPER = 169.7f;//169.7
 	private final float MAP_MIDDLE = 40f;//40
@@ -45,7 +45,7 @@ public class V_Game extends VA_Screen {
 	public void setup() {
 
 		camera = new PerspectiveCamera(
-				90,
+				60,
 				Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 
