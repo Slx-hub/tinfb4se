@@ -2,21 +2,39 @@
 
 ## 1.	Introduction
 ### 1.1	Purpose
-n/a
+The purpose of the Iteration Test Plan is to gather all of the information necessary to plan and control the test effort for a given iteration. 
+It describes the approach to testing the software.
+This Test Plan for vnv supports the following objectives:
+-	Identifies the items that should be targeted by the tests.
+-	Identifies the motivation for and ideas behind the test areas to be covered.
+-	Outlines the testing approach that will be used.
+-	Identifies the required resources and provides an estimate of the test efforts.
 ### 1.2	Scope
-n/a
+This document describes the used tests, as they are unittests and functionality testing.
 ### 1.3	Intended Audience
 This document is meant for internal use primarily.
 ### 1.4	Document Terminology and Acronyms
-n/a
+- **SRS**	Software Requirements Specification
+- **n/a**	not applicable
+- **tbd**	to be determined
 ### 1.5	 References
-n/a
+- [GitHub](https://github.com/SlaxXxX/tinfb4se)
+- [Blog](https://tinfb4se.wordpress.com/)
+- [Overall Use case diagram](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/OverallUseCaseDiagram.png)
+- [Software Requirements Specification](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/SoftwareRequirementsSpecification.md)
+- [Software Architecture Document](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/SoftwareArchitectureDocument.md)
 ## 2.	Evaluation Mission and Test Motivation
 ### 2.1	Background
+By testing our project, we make sure that all changes to the sourcecode do not break the functionality. Also by integrating the test process in our deployment process, we make sure that only working versions of our project getting deployed. So the web application is always available.
 ### 2.2	Evaluation Mission
-n/a
+Our motivation in implementing tests came at an early stage to recognize the need for errors and to ensure the functionality and thus the outstanding quality of the software.
 ### 2.3	Test Motivators
-n/a
+Our motivation in implementing tests came at an early stage to recognize the need for errors and to ensure the functionality and thus the outstanding quality of the software.
+Our testing is motivated by 
+- quality risks 
+- technical risks, 
+- use cases 
+- functional requirements
 ## 3.	Target Test Items
 n/a
 ## 4.	Outline of Planned Tests
