@@ -97,11 +97,18 @@ public abstract class MA_Unit {
 
     public void tick(float delta) {
         move(delta);
+
+        if (pathIterator.hasNext()) {
+            M_Tile next = pathIterator.next();
+            if (x_pos < next.x_pos) {
+
+            }
+        }
     }
 
     public void move(float delta) {
         //test to rotate unit
-        model.transform.rotate(new Vector3(0,1,0),1);
-        //TODO implement unit movement here
+
+        state.applyMovement(model.transform, speed);
     }
 }
