@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Vector3;
 import java.util.Iterator;
 
 import de.codecrunch.model.M_Tile;
-import de.codecrunch.model.tower.ME_TowerState;
 
 public abstract class MA_Unit {
     private int speed;
