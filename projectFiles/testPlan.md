@@ -23,6 +23,15 @@ This document is meant for internal use primarily.
 - [Overall Use case diagram](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/OverallUseCaseDiagram.png)
 - [Software Requirements Specification](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/SoftwareRequirementsSpecification.md)
 - [Software Architecture Document](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/SoftwareArchitectureDocument.md)
+- [UC Alter Path](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Alter%20Path.md)
+- [UC Close Game](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Close%20Game.md)
+- [UC Move Camera](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Move%20Camera.md)
+- [UC Navigate Menu](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Navigate%20Menu.md)
+- [UC Place Tower](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Place%20Tower.md)
+- [UC Place Unit](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Place%20Unit.md)
+- [UC Save Level](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Save%20Level.md)
+- [UC Select Level](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Select%20Level.md)
+
 ## 2.	Evaluation Mission and Test Motivation
 ### 2.1	Background
 By testing our project, we make sure that all changes to the sourcecode do not break the functionality. Also by integrating the test process in our deployment process, we make sure that only working versions of our project getting deployed. So the web application is always available.
@@ -36,22 +45,32 @@ Our testing is motivated by
 - use cases 
 - functional requirements
 ## 3.	Target Test Items
-n/a
+The listing below identifies those test items (software, hardware, and supporting product elements) that have been identified as targets for testing. This list represents what items will be tested. 
+Items for Testing:
+- java backend
+- UI (Android-App & Desktop-Launcher)
 ## 4.	Outline of Planned Tests
 ### 4.1	Outline of Test Inclusions
-n/a
+Unit testing of the java backend and functional testing of the user-interface aswell as a installationtest from a user.
 ### 4.2	Outline of Other Candidates for Potential Inclusion
-n/a
+Integrationtesting of key elements that work on a wider scope are potential test szenarios aswell but these are not in scope if our current testing process.
 ## 5.	Test Approach
 ### 5.1	Testing Techniques and Types
 #### 5.1.1	Function and Database Integrity Testing
 n/a
 #### 5.1.2	Unit Testing
-n/a
+|| |
+|---|---|
+|Technique Objective  	| Exercise functionality of model functions. Test for right data entry and right data output. |
+|Technique 		|  Execute JUnit Test functions in our test classes |
+|Oracles 		|  Each test expect the right value given in the assertequals function |
+|Required Tools 	|  JUnit Test |
+|Success Criteria	|    Testcoverage > ?%      |
+|Special Considerations	|     -          |
 #### 5.1.3	Business Cycle Testing
 n/a
 #### 5.1.4	User Interface Testing
-n/a
+Automated with use of Cucumber and Feature-Files
 #### 5.1.5	Performance Profiling 
 n/a
 #### 5.1.6	Load Testing
@@ -71,9 +90,9 @@ n/a
 ## 6.	Entry and Exit Criteria
 ### 6.1	Test Plan
 #### 6.1.1	Test Plan Entry Criteria
-n/a
+Building a new version of the software will execute the testprocess.
 #### 6.1.2	Test Plan Exit Criteria
-n/a
+When all tests pass without throwing an exception.
 ## 7.	Deliverables
 ### 7.1	Test Evaluation Summaries
 n/a
@@ -98,6 +117,7 @@ n/a
 ## 8.	Testing Workflow
 n/a
 ## 9.	Environmental Needs
+[This section presents the non-human resources required for the Test Plan.]
 ### 9.1	Base System Hardware
 n/a
 ### 9.2	Base Software Elements in the Test Environment
