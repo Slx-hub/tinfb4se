@@ -1,10 +1,12 @@
 package de.codecrunch.model.unit;
 
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.math.Vector3;
 
 import java.util.Iterator;
 
 import de.codecrunch.model.M_Tile;
+import de.codecrunch.model.tower.ME_TowerState;
 
 public abstract class MA_Unit {
     private int speed;
@@ -14,6 +16,7 @@ public abstract class MA_Unit {
     private int y_pos;
     private Iterator<M_Tile> pathIterator;
     protected ModelInstance model;
+    protected ME_UnitState state = ME_UnitState.IDLE;
 
     public MA_Unit(int speed, int maxLife){
         setSpeed(speed);
@@ -92,7 +95,13 @@ public abstract class MA_Unit {
         this.pathIterator = iterator;
     }
 
-    public void move() {
+    public void tick(float delta) {
+        move(delta);
+    }
+
+    public void move(float delta) {
+        //test to rotate unit
+        model.transform.rotate(new Vector3(0,1,0),1);
         //TODO implement unit movement here
     }
 }

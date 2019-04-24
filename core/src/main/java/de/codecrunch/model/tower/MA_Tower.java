@@ -13,6 +13,7 @@ public abstract class MA_Tower {
 	protected M_Bullet m_bullet = new M_Bullet();
 	protected int x_pos,y_pos;
 	protected ModelInstance model;
+    protected ME_TowerState state = ME_TowerState.IDLE;
 
 	public static List<MA_Tower> getAllTowers() {
 		List<MA_Tower> list = new ArrayList<>();
@@ -28,4 +29,8 @@ public abstract class MA_Tower {
 	public abstract int getPrice();
 	public abstract int getRange();
 	public abstract ModelInstance getModel();
+
+	public void tick(float delta) {
+	    //do stuff
+    }
 }
