@@ -74,18 +74,22 @@ The user can save his created Level. Before saving, the created level will be ch
 ### <a name="3.1.6 Place unit">3.1.6 Place unit</a>
 
 The user should be able to send units onto the field.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Place%20Unit.md)
 
 ### <a name="3.1.7 Move camera">3.1.8 Move camera</a>
 
 The user should be able to move the in-game camera.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Move%20Camera.md)
 
 ### <a name="3.1.8 Close game">3.1.9 Close game</a>
 
 The user should be able to close a game and return to the menu.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Close%20Game.md)
 
 ### <a name="3.1.9 Place turret">3.1.9 Place turret</a>
 
 The computer enemy should be able to place turrets on free spaces.
+</br>For more detailed Information click [here](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Place%20Tower.md)
 
 ## <a name="3.2 Usability">3.2 Usability</a>
 
