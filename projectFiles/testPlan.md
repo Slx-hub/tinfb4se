@@ -112,7 +112,9 @@ n/a
 #### 7.6.2	Additional Automated Functional Test Scripts
 n/a
 #### 7.6.3	Test Guidelines
-n/a
+- One test-tlass contains test for only one class that needs to be tested
+- The test-class should have the same name as the class to be tested with the Addition "Test" at the end (ex. MyClass -> MyClassTest)
+- The test-functions should be named so one can see its purpose without the need of looking into the implementation. It should contain the name of the tested function, the testcase and the expected outcome. (ex. "setSpeed_canNotBeNegative_speedShouldBeUnchanged()").
 #### 7.6.4	Traceability Matrices
 n/a
 ## 8.	Testing Workflow
