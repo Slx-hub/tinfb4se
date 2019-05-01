@@ -96,11 +96,11 @@ Building a new version of the software will execute the testprocess.
 When all tests pass without throwing an exception.
 ## 7.	Deliverables
 ### 7.1	Test Evaluation Summaries
-n/a
+Planned implementation of somarcloud-services
 ### 7.2	Reporting on Test Coverage
-n/a
+Planned implementation of somarcloud-services
 ### 7.3	Perceived Quality Reports
-n/a
+Planned implementation of somarcloud-services
 ### 7.4	Incident Logs and Change Requests
 n/a
 ### 7.5	Smoke Test Suite and Supporting Test Scripts
@@ -112,7 +112,7 @@ n/a
 #### 7.6.2	Additional Automated Functional Test Scripts
 n/a
 #### 7.6.3	Test Guidelines
-- One test-tlass contains test for only one class that needs to be tested
+- One test-class contains test for only one class that needs to be tested
 - The test-class should have the same name as the class to be tested with the Addition "Test" at the end (ex. MyClass -> MyClassTest)
 - The test-functions should be named so one can see its purpose without the need of looking into the implementation. It should contain the name of the tested function, the testcase and the expected outcome. (ex. "setSpeed_canNotBeNegative_speedShouldBeUnchanged()").
 #### 7.6.4	Traceability Matrices
@@ -124,7 +124,7 @@ n/a
 ### 9.1	Base System Hardware
 n/a
 ### 9.2	Base Software Elements in the Test Environment
-n/a
+AndroidStudio & JUnit4
 ### 9.3	Productivity and Support Tools
 n/a
 ## 10.	Responsibilities, Staffing, and Training Needs
