@@ -31,7 +31,8 @@ This document is meant for internal use primarily.
 - [UC Place Unit](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Place%20Unit.md)
 - [UC Save Level](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Save%20Level.md)
 - [UC Select Level](https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/useCases/Select%20Level.md)
-
+### 1.6 Document Structure
+tbd
 ## 2.	Evaluation Mission and Test Motivation
 ### 2.1	Background
 By testing our project, we make sure that all changes to the sourcecode do not break the functionality. Also by integrating the test process in our deployment process, we make sure that only working versions of our project getting deployed. So the web application is always available.
@@ -55,11 +56,14 @@ Items for Testing:
 Unit testing of the java backend and functional testing of the user-interface aswell as a installationtest from a user.
 ### 4.2	Outline of Other Candidates for Potential Inclusion
 Integrationtesting of key elements that work on a wider scope are potential test szenarios aswell but these are not in scope if our current testing process.
+### 4.3 Outline of Test Exclusion
+tbd
 ## 5.	Test Approach
-### 5.1	Testing Techniques and Types
-#### 5.1.1	Function and Database Integrity Testing
+### 5.1 Initial Test-Idea Catalogs and other Rference Sources
+### 5.2	Testing Techniques and Types
+#### 5.2.1	Function and Database Integrity Testing
 n/a
-#### 5.1.2	Unit Testing
+#### 5.2.2	Unit Testing
 || |
 |---|---|
 |Technique Objective  	| Exercise functionality of model functions. Test for right data entry and right data output. |
@@ -68,25 +72,25 @@ n/a
 |Required Tools 	|  JUnit Test |
 |Success Criteria	|    Testcoverage > ?%      |
 |Special Considerations	|     -          |
-#### 5.1.3	Business Cycle Testing
+#### 5.2.3	Business Cycle Testing
 n/a
-#### 5.1.4	User Interface Testing
+#### 5.2.4	User Interface Testing
 Automated with use of Cucumber and Feature-Files
-#### 5.1.5	Performance Profiling 
+#### 5.2.5	Performance Profiling 
 n/a
-#### 5.1.6	Load Testing
+#### 5.2.6	Load Testing
 n/a
-#### 5.1.7	Stress Testing
+#### 5.2.7	Stress Testing
 n/a
-#### 5.1.8	Volume Testing
+#### 5.2.8	Volume Testing
 n/a
-#### 5.1.9	Security and Access Control Testing
+#### 5.2.9	Security and Access Control Testing
 n/a
-#### 5.1.10	Failover and Recovery Testing
+#### 5.2.10	Failover and Recovery Testing
 n/a
-#### 5.1.11	Configuration Testing
+#### 5.2.11	Configuration Testing
 n/a
-#### 5.1.12	Installation Testing
+#### 5.2.12	Installation Testing
 n/a
 ## 6.	Entry and Exit Criteria
 ### 6.1	Test Plan
@@ -94,6 +98,15 @@ n/a
 Building a new version of the software will execute the testprocess.
 #### 6.1.2	Test Plan Exit Criteria
 When all tests pass without throwing an exception.
+#### 6.1.3 Suspension and Resumption Criteria
+n/a
+### 6.2 Test Cycles
+#### 6.2.1 Test Cycle Entry Critria
+n/a
+#### 6.2.2 Test Cycle Exit Criteria
+n/a
+#### 6.2.3 Test Cycle Abnormal Termination
+n/a
 ## 7.	Deliverables
 ### 7.1	Test Evaluation Summaries
 Planned implementation of somarcloud-services
@@ -127,6 +140,8 @@ n/a
 AndroidStudio & JUnit4
 ### 9.3	Productivity and Support Tools
 n/a
+### 9.4 Test Environment Configurations
+n/a
 ## 10.	Responsibilities, Staffing, and Training Needs
 ### 10.1	People and Roles
 This table shows the staffing assumptions for the test effort.
@@ -144,4 +159,19 @@ Human Resources
 ### 10.2	Staffing and Training Needs
 n/a
 ## 11.	Iteration Milestones
+n/a
+## 12. Risks, Dependencies, Assumptions, and Constrains
+n/a
+## 13. Management, Process and Procedures
+### 13.1 Measuring and Assessing the Extent of Testing
+n/a
+### 13.2 Assessing the Deliverables of this Test Plan
+n/a
+### 13.3 Problem Reporting, Escalation, and Issue Resolution
+n/a
+### 13.4 Managing Test Cycles
+n/a
+### 13.5 Traceability Strategies
+n/a
+### 13.6 Approval and Signoff
 n/a
