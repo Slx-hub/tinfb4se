@@ -105,5 +105,4 @@ public class M_BaseTest {
 
         assertEquals(expected,actual);
     }
-
 }
