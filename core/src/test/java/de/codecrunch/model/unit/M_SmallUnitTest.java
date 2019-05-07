@@ -186,4 +186,71 @@ public class M_SmallUnitTest {
 
         assertEquals(expected,actual);
     }
+
+
+    @Test
+    public void setPos_shouldSetXPosition_XShouldReturnOne(){
+        int expected = 1;
+
+        M_SmallUnit unit = new M_SmallUnit();
+        unit.setPos(1,0);
+        int actual = unit.getX_pos();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void setPos_shouldSetYPosition_YShouldReturnOne(){
+        int expected = 1;
+
+        M_SmallUnit unit = new M_SmallUnit();
+        unit.setPos(0,1);
+        int actual = unit.getY_pos();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void setPos_XCanNotBeNegative_XShouldNotChange(){
+        int expected = 1;
+
+        M_SmallUnit unit = new M_SmallUnit();
+        unit.setPos(1,0);
+        unit.setPos(-1,0);
+        int actual = unit.getX_pos();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void setPos_YCanNotBeNegative_YShouldNotChange(){
+        int expected = 1;
+
+        M_SmallUnit unit = new M_SmallUnit();
+        unit.setPos(0,1);
+        unit.setPos(0,-1);
+        int actual = unit.getY_pos();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getX_pos_shouldReturnActualXPosition(){
+        int expected = 0;
+
+        M_SmallUnit unit = new M_SmallUnit();
+        int actual = unit.getX_pos();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getY_pos_shouldReturnActualXPosition(){
+        int expected = 0;
+
+        M_SmallUnit unit = new M_SmallUnit();
+        int actual = unit.getY_pos();
+
+        assertEquals(expected,actual);
+    }
 }

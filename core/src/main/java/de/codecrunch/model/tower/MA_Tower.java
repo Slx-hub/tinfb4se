@@ -22,10 +22,19 @@ public abstract class MA_Tower {
 	}
 	
 	public void setPos(int x, int y) {
+		if(x<0 || y<0) return;
 		x_pos = x;
 		y_pos = y;
 	}
-	
+
+	public int getX_pos(){
+		return x_pos;
+	}
+
+	public int getY_pos() {
+		return y_pos;
+	}
+
 	public abstract int getPrice();
 	public abstract int getRange();
 	public abstract ModelInstance getModel();
