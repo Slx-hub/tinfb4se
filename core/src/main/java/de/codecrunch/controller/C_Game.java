@@ -60,7 +60,7 @@ public class C_Game {
 
 		computer.init(map);
 		view.setup();
-        autoPlaceUnit(); // DUMMY -- just to place one unit automatically to not be dependent on a functional push of a button
+       //autoPlaceUnit(); // DUMMY -- just to place one unit automatically to not be dependent on a functional push of a button
 	}
 	
 	public void placeTower(MA_Tower tower, int x, int y){

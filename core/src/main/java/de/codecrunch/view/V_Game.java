@@ -27,8 +27,8 @@ public class V_Game extends VA_Screen {
 	private C_Game controller;
 
 	private PerspectiveCamera camera;
-	private SpriteBatch hudBatch = new SpriteBatch();
-	V_HUD v_hud = new V_HUD(hudBatch);
+	private TowerAttackGame game;
+	private V_HUD v_hud;
 	private M_RenderBatch mapBatch = new M_RenderBatch();
 	private M_RenderBatch towerBatch = new M_RenderBatch();
 	private M_RenderBatch unitBatch = new M_RenderBatch();
@@ -39,7 +39,8 @@ public class V_Game extends VA_Screen {
 
 	public V_Game(TowerAttackGame game) {
 		super(game);
-
+		this.game = game;
+		this.v_hud = new V_HUD(game, controller);
 	}
 
 	public void setup() {

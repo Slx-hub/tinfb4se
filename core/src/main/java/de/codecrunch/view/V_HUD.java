@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -20,8 +21,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-public class V_HUD {
-    public Stage stage;
+import de.codecrunch.TowerAttackGame;
+import de.codecrunch.controller.C_Game;
+import de.codecrunch.model.tower.MA_Tower;
+import de.codecrunch.model.unit.M_SmallUnit;
+
+public class V_HUD extends VA_Screen {
+
     private Viewport viewport;
     private String levelName = ">Insert level name here<";
     private int timer;
@@ -30,23 +36,27 @@ public class V_HUD {
     private String resourceDesc;
     private int timeCount = 0;
     private ImageButton button;
+    C_Game gameControl;
     Label level;
     Label timerDescLabel;
     Label resourceDescLabel;
     Label worldTimer;
     Label resourcesLabel;
-
+    private TowerAttackGame game;
     TextureAtlas buttonAtlas;
 
     ImageButton turretPlacer;
 
-    public V_HUD(SpriteBatch sb) {
+    public V_HUD(TowerAttackGame game, C_Game gameControl) {
+        super(game);
+        this.gameControl = gameControl;
+        this.game = game;
         this.resources = 99999;
         this.timer = 99999;
         this.timerDesc = "timer";
         this.resourceDesc = "resources";
         viewport = new FitViewport(1024, 576, new OrthographicCamera());
-        stage = new Stage(viewport, sb);
+
         Table labelTable = new Table();
         Table buttonTable = new Table();
 
@@ -61,7 +71,7 @@ public class V_HUD {
         resourceDescLabel = new Label(resourceDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         resourcesLabel = new Label(String.format("%05d", resources), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
 
-        Gdx.input.setInputProcessor(stage);
+
         Skin buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
         TextButton button1 = new TextButton("Place Tower", buttonSkins);
        /* button1.addListener(new ChangeListener() {
@@ -87,6 +97,13 @@ public class V_HUD {
         labelTable.add(worldTimer).expandX().padTop(10);
         labelTable.add(resourcesLabel).expandX().padTop(10);
 
+
+        button1.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+               gameControl.placeUnit(new M_SmallUnit());
+            }
+        });
         stage.addActor(button1);
         stage.addActor(labelTable);
         stage.addActor(buttonTable);
