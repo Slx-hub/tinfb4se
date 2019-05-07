@@ -135,7 +135,7 @@ n/a
 ## 9.	Environmental Needs
 [This section presents the non-human resources required for the Test Plan.]
 ### 9.1	Base System Hardware
-n/a
+tbd
 ### 9.2	Base Software Elements in the Test Environment
 AndroidStudio & JUnit4
 ### 9.3	Productivity and Support Tools
@@ -157,7 +157,7 @@ Human Resources
 | Test System Administrator | 1 | Ensures test environment and assets are managed and maintained.<br> Responsibilities include:<br> 	administer test management system<br> install and support access to, and recovery of, test environment configurations and test labs | 
 | Implementer | 3| Implements and unit tests the test classes and test packages.<br> Responsibilities include:<br> creates the test components required to support testability requirements as defined by the designer |
 ### 10.2	Staffing and Training Needs
-n/a
+tbd
 ## 11.	Iteration Milestones
 n/a
 ## 12. Risks, Dependencies, Assumptions, and Constrains
