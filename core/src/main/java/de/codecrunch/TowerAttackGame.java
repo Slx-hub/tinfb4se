@@ -2,6 +2,7 @@ package de.codecrunch;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 
 import de.codecrunch.controller.C_Editor;
 import de.codecrunch.controller.C_Game;
@@ -107,7 +108,10 @@ public class TowerAttackGame extends Game {
         gameScreen.setController(game);
         game.start();
         changeScreen(SCREENID_GAME);
-        Gdx.input.setInputProcessor(gameScreen.new GameInputProcessor());
+        InputMultiplexer multiplexer = new InputMultiplexer();
+        multiplexer.addProcessor(gameScreen.getStage());
+        multiplexer.addProcessor(gameScreen.new GameInputProcessor());
+        Gdx.input.setInputProcessor(multiplexer);
     }
 
 }

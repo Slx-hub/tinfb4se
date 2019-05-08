@@ -2,68 +2,40 @@ package de.codecrunch.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
-import de.codecrunch.TowerAttackGame;
-import de.codecrunch.controller.C_Game;
-import de.codecrunch.model.tower.MA_Tower;
-import de.codecrunch.model.unit.M_SmallUnit;
 
-public class V_HUD extends VA_Screen {
+public class V_HUD {
 
-    private Viewport viewport;
     private String levelName = ">Insert level name here<";
     private int timer;
     private int resources;
     private String timerDesc;
     private String resourceDesc;
-    private int timeCount = 0;
-    private ImageButton button;
-    C_Game gameControl;
+    public TextButton button1;
+    Table labelTable;
     Label level;
     Label timerDescLabel;
     Label resourceDescLabel;
     Label worldTimer;
     Label resourcesLabel;
-    private TowerAttackGame game;
-    TextureAtlas buttonAtlas;
 
-    ImageButton turretPlacer;
-
-    public V_HUD(TowerAttackGame game, C_Game gameControl) {
-        super(game);
-        this.gameControl = gameControl;
-        this.game = game;
+    public V_HUD() {
         this.resources = 99999;
         this.timer = 99999;
         this.timerDesc = "timer";
         this.resourceDesc = "resources";
-        viewport = new FitViewport(1024, 576, new OrthographicCamera());
 
-        Table labelTable = new Table();
-        Table buttonTable = new Table();
+        this.labelTable = new Table();
 
         labelTable.top();
         labelTable.setFillParent(true);
-        buttonTable.bottom();
-        buttonTable.setFillParent(true);
 
         level = new Label(levelName, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         timerDescLabel = new Label(timerDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
@@ -73,22 +45,8 @@ public class V_HUD extends VA_Screen {
 
 
         Skin buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
-        TextButton button1 = new TextButton("Place Tower", buttonSkins);
-       /* button1.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                if(button1.isChecked()) {
-                    button1.setChecked(false);
-                    button1.setText("placed Tower");
-                    System.out.println("false");
-                }
-                else {
-                    button1.setChecked(true);
-                    button1.setText("place Tower");
-                }
-            }
-        });*/
-        buttonTable.add(button1).expandX().left().padBottom(10);
+         this.button1 = new TextButton("Place Tower", buttonSkins);
+        labelTable.add(button1).expandX().left().padBottom(10);
         labelTable.add(level).expandX().padTop(10);
         labelTable.add(timerDescLabel).expandX().padTop(10);
         labelTable.add(resourceDescLabel).expandX().padTop(10);
@@ -98,15 +56,11 @@ public class V_HUD extends VA_Screen {
         labelTable.add(resourcesLabel).expandX().padTop(10);
 
 
-        button1.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-               gameControl.placeUnit(new M_SmallUnit());
-            }
-        });
-        stage.addActor(button1);
-        stage.addActor(labelTable);
-        stage.addActor(buttonTable);
+
+    }
+
+    public Table setUpHUD() {
+        return labelTable;
     }
 
 }

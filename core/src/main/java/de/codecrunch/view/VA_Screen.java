@@ -29,7 +29,6 @@ public abstract class VA_Screen implements Screen {
         stage = new Stage(new FitViewport(1024, 640),hudBatch);
         Gdx.input.setInputProcessor(stage);
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-        Gdx.input.setInputProcessor(stage);
         stage.draw();
     }
 
