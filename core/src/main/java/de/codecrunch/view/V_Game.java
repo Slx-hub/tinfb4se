@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_RenderBatch;
+import de.codecrunch.model.unit.M_SmallUnit;
 
 public class V_Game extends VA_Screen {
 
@@ -50,7 +51,7 @@ public class V_Game extends VA_Screen {
 		this.button1.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				controller.autoPlaceUnit();
+				controller.placeUnit((new M_SmallUnit()));
 
 			}
 
