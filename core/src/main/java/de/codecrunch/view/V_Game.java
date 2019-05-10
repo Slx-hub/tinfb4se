@@ -4,21 +4,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import java.util.List;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_RenderBatch;
-import de.codecrunch.model.unit.M_SmallUnit;
 
 public class V_Game extends VA_Screen {
 
@@ -28,11 +29,12 @@ public class V_Game extends VA_Screen {
 	private final float MAP_MIDDLE = 40f;//40
 	private final float MAP_BRIGHTNESS = 1f;
 
+	SpriteBatch hudBatch;
+	private List<Table> hudComponents;
 	private TextButton button1;
-	private C_Game controller;
-	private Table hudComponents;
+	public C_Game controller;
 	private PerspectiveCamera camera;
-	private TowerAttackGame game;
+	V_HUD v_hud;
 	private M_RenderBatch mapBatch = new M_RenderBatch();
 	private M_RenderBatch towerBatch = new M_RenderBatch();
 	private M_RenderBatch unitBatch = new M_RenderBatch();
@@ -43,22 +45,8 @@ public class V_Game extends VA_Screen {
 
 	public V_Game(TowerAttackGame game) {
 		super(game);
-		this.game = game;
-		this.hudComponents = new Table();
-		Skin buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
-		this.button1 = new TextButton("Place Unit", buttonSkins);
-		stage.addActor(button1);
-		this.button1.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				controller.placeUnit((new M_SmallUnit()));
-
-			}
-
-		});
-
-
-		stage.draw();
+		this.hudBatch = new SpriteBatch();
+		this.stage = new Stage(new FitViewport( 1024, 640),hudBatch);
 	}
 
 	public void setup() {
@@ -121,6 +109,7 @@ public class V_Game extends VA_Screen {
 		unitBatch.renderAll(environment);
 		unitBatch.end();
 		hudBatch.setProjectionMatrix(stage.getCamera().combined);
+		v_hud = new V_HUD(controller,stage);
 		stage.draw();
 	}
 

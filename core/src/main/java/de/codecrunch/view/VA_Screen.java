@@ -22,12 +22,10 @@ public abstract class VA_Screen implements Screen {
     TowerAttackGame towerAttackGame;
     Stage stage;
     final public static Skin uiSkin = new Skin(Gdx.files.internal("skins/quantum-horizon/quantum-horizon-ui.json"));
-    SpriteBatch hudBatch;
+
     public VA_Screen(TowerAttackGame game) {
-        this.hudBatch = new SpriteBatch();
         towerAttackGame = game;
-        stage = new Stage(new FitViewport(1024, 640),hudBatch);
-        Gdx.input.setInputProcessor(stage);
+        stage = new Stage(new FitViewport(640, 360));
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
     }
