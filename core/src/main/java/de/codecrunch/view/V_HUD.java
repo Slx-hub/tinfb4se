@@ -16,6 +16,8 @@ import de.codecrunch.model.unit.M_SmallUnit;
 
 class V_HUD {
 
+    private int digitCount;
+    private float timeCount = 0;
     private Skin buttonSkins;
     private Table buttonTable;
     private Table labelTable;
@@ -60,7 +62,7 @@ class V_HUD {
         placeUnit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                controller.placeUnit(new M_SmallUnit()); {
+                controller.placeUnit(new M_SmallUnit());{
 
                 }
 
@@ -72,7 +74,6 @@ class V_HUD {
     private void buildTopTable(C_Game controller) {
         createLabels();
         TextButton exit = new TextButton("X", buttonSkins);
-
         labelTable = new Table();
         labelTable.top();
         labelTable.setFillParent(true);
@@ -81,23 +82,37 @@ class V_HUD {
         labelTable.add(resourceDescLabel).expandX().padTop(10);
         labelTable.add(exit).padTop(10);
         labelTable.row();
-        labelTable.add(new Label("", new Label.LabelStyle(new BitmapFont(), Color.GREEN))).expandX().padTop(10);
-        labelTable.add(worldTimer).expandX().padTop(10);
-        labelTable.add(resourcesLabel).expandX().padTop(10);
+        labelTable.add(new Label("", new Label.LabelStyle(new BitmapFont(), Color.GREEN))).expandX();
+        labelTable.add(worldTimer).expandX();
+        labelTable.add(resourcesLabel).expandX();
     }
 
     private void createLabels() {
 
+        digitCount = 0;
         resources = 99999;
         timer = 0;
         timerDesc = "timer";
         resourceDesc = "resources";
         level = new Label(levelName, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         timerDescLabel = new Label(timerDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        worldTimer = new Label(String.format("%05d", timer), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        worldTimer = new Label(String.format("%1d", timer), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         resourceDescLabel = new Label(resourceDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        resourcesLabel = new Label(String.format("%05d", resources), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        resourcesLabel = new Label(String.format("%5d", resources), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+    }
+
+    public void update(float dt){
+        timeCount += dt;
+        if(timeCount >= 1) {
+            timer++;
+            if(String.valueOf(timer).length() > digitCount){
+                digitCount++;
+            }
+            worldTimer.setText(String.format("%"+digitCount+"d", timer));
+            timeCount = 0;
+        }
+        }
     }
 
 
-}
+

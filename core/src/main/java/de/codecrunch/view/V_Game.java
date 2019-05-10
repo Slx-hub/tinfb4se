@@ -62,7 +62,8 @@ public class V_Game extends VA_Screen {
 		camera.near = 0.1f;
 		camera.far = 120.0f;
 		camera.update();
-
+		hudBatch.setProjectionMatrix(stage.getCamera().combined);
+		v_hud = new V_HUD(controller,stage, levelName);
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
 		//environment.add(mouseLight);
 	}
@@ -113,8 +114,9 @@ public class V_Game extends VA_Screen {
 		unitBatch.begin(camera);
 		unitBatch.renderAll(environment);
 		unitBatch.end();
-		hudBatch.setProjectionMatrix(stage.getCamera().combined);
-		v_hud = new V_HUD(controller,stage, levelName);
+
+		v_hud.update(Gdx.graphics.getDeltaTime());
+
 		stage.draw();
 	}
 
