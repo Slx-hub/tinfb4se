@@ -40,7 +40,7 @@ public class V_EditorLevelSelect extends VA_LevelSelect {
     }
 
     @Override
-    public void startMap(M_Map map) {
+    public void startMap(M_Map map, String level) {
         towerAttackGame.startEditor(map);
     }
 }

@@ -98,7 +98,7 @@ public class TowerAttackGame extends Game {
         changeScreen(SCREENID_EDITOR);
     }
 
-    public void startGame(M_Map map) {
+    public void startGame(M_Map map, String levelName) {
         //Loads 3d Models -> May be put in loading screen later.
         Model3DFactory.setup();
 
@@ -106,6 +106,7 @@ public class TowerAttackGame extends Game {
         setupScreen(SCREENID_GAME);
         game.setView(gameScreen);
         gameScreen.setController(game);
+        gameScreen.setLevelName(levelName);
         game.start();
         changeScreen(SCREENID_GAME);
         InputMultiplexer multiplexer = new InputMultiplexer();

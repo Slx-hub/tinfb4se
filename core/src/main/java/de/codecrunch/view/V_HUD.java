@@ -16,13 +16,15 @@ import de.codecrunch.model.unit.M_SmallUnit;
 
 class V_HUD {
 
+    private Skin buttonSkins;
     private Table buttonTable;
     private Table labelTable;
-    private String levelName = ">Insert level name here<";
+    private String levelName;
     private int timer;
     private int resources;
     private String timerDesc;
     private String resourceDesc;
+    private TextButton exit;
     private TextButton placeUnit;
     private Label level;
     private Label timerDescLabel;
@@ -30,10 +32,11 @@ class V_HUD {
     private Label worldTimer;
     private Label resourcesLabel;
 
-    public V_HUD(C_Game controller,Stage stage) {
-
-        buildLabelTable();
-        buildButtonTable(controller);
+    public V_HUD(C_Game controller,Stage stage, String levelName) {
+        buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
+        this.levelName = "level: " + levelName;
+        buildTopTable(controller);
+        buildBottomTable(controller);
         addHudComponents(stage);
     }
 
@@ -42,18 +45,17 @@ class V_HUD {
         stage.addActor(buttonTable);
     }
 
-    private void buildButtonTable(C_Game controller) {
+    private void buildBottomTable(C_Game controller) {
         buttonTable = new Table();
         buttonTable.bottom();
         buttonTable.setFillParent(true);
-        buildPlaceUnitButton(controller);
+        buildUnitButton(controller);
         buttonTable.add(placeUnit).left().expandX().padBottom(10).padLeft(10);
 
 
     }
 
-    private void buildPlaceUnitButton(C_Game controller) {
-        Skin buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
+    private void buildUnitButton(C_Game controller) {
         placeUnit = new TextButton("Place Unit", buttonSkins);
         placeUnit.addListener(new ChangeListener() {
             @Override
@@ -67,14 +69,17 @@ class V_HUD {
         });
     }
 
-    private void buildLabelTable() {
+    private void buildTopTable(C_Game controller) {
         createLabels();
+        TextButton exit = new TextButton("X", buttonSkins);
+
         labelTable = new Table();
         labelTable.top();
         labelTable.setFillParent(true);
         labelTable.add(level).expandX().padTop(10);
         labelTable.add(timerDescLabel).expandX().padTop(10);
         labelTable.add(resourceDescLabel).expandX().padTop(10);
+        labelTable.add(exit).padTop(10);
         labelTable.row();
         labelTable.add(new Label("", new Label.LabelStyle(new BitmapFont(), Color.GREEN))).expandX().padTop(10);
         labelTable.add(worldTimer).expandX().padTop(10);
@@ -82,8 +87,9 @@ class V_HUD {
     }
 
     private void createLabels() {
+
         resources = 99999;
-        timer = 99999;
+        timer = 0;
         timerDesc = "timer";
         resourceDesc = "resources";
         level = new Label(levelName, new Label.LabelStyle(new BitmapFont(), Color.GREEN));

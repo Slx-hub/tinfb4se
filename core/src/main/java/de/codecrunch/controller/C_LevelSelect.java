@@ -48,9 +48,10 @@ public class C_LevelSelect {
         }
     }
 
+
     public void selected(String level) {
         M_Map loaded = model.loadMap(level);
         if (loaded != null)
-            view.startMap(loaded);
+            view.startMap(loaded, level);
     }
 }
