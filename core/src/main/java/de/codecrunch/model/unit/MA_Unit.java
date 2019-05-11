@@ -2,6 +2,8 @@ package de.codecrunch.model.unit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
@@ -113,6 +115,7 @@ public abstract class MA_Unit {
     public void move(float delta) {
         //test to rotate unit
 
+
         if(waypoint == 0){
             setPos(tileList.get(waypoint).x_pos * ME_TileState.tileDistance, tileList.get(waypoint).y_pos * ME_TileState.tileDistance);
             waypoint++;
@@ -127,8 +130,10 @@ public abstract class MA_Unit {
                 waypoint++;
         }
         float angle = (float) Math.atan2((tileList.get(waypoint).x_pos* ME_TileState.tileDistance) - x_pos, (tileList.get(waypoint).y_pos* ME_TileState.tileDistance )- y_pos);
+        System.out.println("angle: " + angle);
         velocity.set((float) Math.cos(angle) * speed, (float) Math.sin(angle) * speed);
         this.setPos(x_pos + velocity.y*delta , y_pos +velocity.x*delta);
+        this.getModel().transform.setFromEulerAngles(angle* MathUtils.radiansToDegrees+180,0,0);
         this.getModel().transform.setTranslation(x_pos , 0, y_pos );
 
     }
