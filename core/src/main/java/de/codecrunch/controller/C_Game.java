@@ -74,15 +74,12 @@ public class C_Game {
 	}
 
 	public void placeUnit(MA_Unit unit){
-		M_Tile startTile = map.getPath().get(0);
-		unit.getModel().transform.setTranslation(startTile.x_pos * ME_TileState.tileDistance, 0f, startTile.y_pos * ME_TileState.tileDistance);
-		view.getUnitBatch().addElement(unit.getModel());
-		unit.setPos(startTile.x_pos, startTile.y_pos);
-		unit.setPath(map.getPath().iterator());
-		unitList.add(unit);
-	}
+				view.getUnitBatch().addElement(unit.getModel());
+				unit.setTileList(map.getPath());
+				unitList.add(unit);
+}
 
-	public void autoPlaceUnit(){
+	public void autoPlaceUnit() throws InterruptedException{
 		placeUnit(new M_SmallUnit());
 	}
 
@@ -90,6 +87,8 @@ public class C_Game {
 	    for (MA_Unit unit : unitList)
             unit.tick(delta);
         for (MA_Tower tower : towerList)
-            tower.tick(delta);
+            tower.tick(delta) ;
     }
+
+
 }

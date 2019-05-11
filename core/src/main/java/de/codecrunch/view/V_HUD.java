@@ -16,6 +16,7 @@ import de.codecrunch.model.unit.M_SmallUnit;
 
 class V_HUD {
 
+    private C_Game controller1;
     private int digitCount;
     private float timeCount = 0;
     private Skin buttonSkins;
@@ -35,6 +36,7 @@ class V_HUD {
     private Label resourcesLabel;
 
     public V_HUD(C_Game controller,Stage stage, String levelName) {
+        this.controller1 = controller;
         buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
         this.levelName = "level: " + levelName;
         buildTopTable(controller);
@@ -47,7 +49,7 @@ class V_HUD {
         stage.addActor(buttonTable);
     }
 
-    private void buildBottomTable(C_Game controller) {
+    private void buildBottomTable(C_Game controller){
         buttonTable = new Table();
         buttonTable.bottom();
         buttonTable.setFillParent(true);
@@ -62,10 +64,7 @@ class V_HUD {
         placeUnit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                controller.placeUnit(new M_SmallUnit());{
-
-                }
-
+                controller.placeUnit(new M_SmallUnit());
             }
 
         });
@@ -77,10 +76,10 @@ class V_HUD {
         labelTable = new Table();
         labelTable.top();
         labelTable.setFillParent(true);
-        labelTable.add(level).expandX().padTop(10);
-        labelTable.add(timerDescLabel).expandX().padTop(10);
-        labelTable.add(resourceDescLabel).expandX().padTop(10);
-        labelTable.add(exit).padTop(10);
+        labelTable.add(level).expandX();
+        labelTable.add(timerDescLabel).expandX();
+        labelTable.add(resourceDescLabel).expandX();
+        labelTable.add(exit);
         labelTable.row();
         labelTable.add(new Label("", new Label.LabelStyle(new BitmapFont(), Color.GREEN))).expandX();
         labelTable.add(worldTimer).expandX();
@@ -101,17 +100,17 @@ class V_HUD {
         resourcesLabel = new Label(String.format("%5d", resources), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
     }
 
-    public void update(float dt){
+    public void update(float dt) {
         timeCount += dt;
-        if(timeCount >= 1) {
+        if (timeCount >= 1) {
             timer++;
-            if(String.valueOf(timer).length() > digitCount){
+            if (String.valueOf(timer).length() > digitCount) {
                 digitCount++;
             }
-            worldTimer.setText(String.format("%"+digitCount+"d", timer));
+            worldTimer.setText(String.format("%" + digitCount + "d", timer));
             timeCount = 0;
         }
-        }
+    }
     }
 
 
