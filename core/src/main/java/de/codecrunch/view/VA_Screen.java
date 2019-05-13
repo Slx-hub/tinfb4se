@@ -3,6 +3,7 @@ package de.codecrunch.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -25,7 +26,6 @@ public abstract class VA_Screen implements Screen {
     public VA_Screen(TowerAttackGame game) {
         towerAttackGame = game;
         stage = new Stage(new FitViewport(640, 360));
-        Gdx.input.setInputProcessor(stage);
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
     }

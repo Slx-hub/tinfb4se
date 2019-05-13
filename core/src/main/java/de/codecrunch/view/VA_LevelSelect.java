@@ -5,10 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
-import java.awt.BorderLayout;
-
-import javax.swing.plaf.basic.BasicArrowButton;
-
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_LevelSelect;
 import de.codecrunch.model.M_Map;
@@ -68,5 +64,5 @@ public abstract class VA_LevelSelect extends VA_Screen {
         super.render(0);
     }
 
-    public abstract void startMap(M_Map map);
+    public abstract void startMap(M_Map map, String level);
 }

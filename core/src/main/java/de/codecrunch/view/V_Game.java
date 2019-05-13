@@ -7,10 +7,15 @@ import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.environment.PointLight;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+
+import java.util.List;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
@@ -24,11 +29,13 @@ public class V_Game extends VA_Screen {
 	private final float MAP_MIDDLE = 40f;//40
 	private final float MAP_BRIGHTNESS = 1f;
 
-	private C_Game controller;
-
+	private String levelName;
+	SpriteBatch hudBatch;
+	private List<Table> hudComponents;
+	private TextButton button1;
+	public C_Game controller;
 	private PerspectiveCamera camera;
-	private SpriteBatch hudBatch = new SpriteBatch();
-	V_HUD v_hud = new V_HUD(hudBatch);
+	V_HUD v_hud;
 	private M_RenderBatch mapBatch = new M_RenderBatch();
 	private M_RenderBatch towerBatch = new M_RenderBatch();
 	private M_RenderBatch unitBatch = new M_RenderBatch();
@@ -39,7 +46,8 @@ public class V_Game extends VA_Screen {
 
 	public V_Game(TowerAttackGame game) {
 		super(game);
-
+		this.hudBatch = new SpriteBatch();
+		this.stage = new Stage(new FitViewport( 1024, 640),hudBatch);
 	}
 
 	public void setup() {
@@ -54,9 +62,14 @@ public class V_Game extends VA_Screen {
 		camera.near = 0.1f;
 		camera.far = 120.0f;
 		camera.update();
-
+		hudBatch.setProjectionMatrix(stage.getCamera().combined);
+		v_hud = new V_HUD(controller,stage, levelName);
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
 		//environment.add(mouseLight);
+	}
+
+	public void setLevelName(String levelName){
+		this.levelName = levelName;
 	}
 
 	public void setController(C_Game game) {
@@ -101,9 +114,10 @@ public class V_Game extends VA_Screen {
 		unitBatch.begin(camera);
 		unitBatch.renderAll(environment);
 		unitBatch.end();
-		hudBatch.setProjectionMatrix(v_hud.stage.getCamera().combined);
-		v_hud.stage.draw();
 
+		v_hud.update(Gdx.graphics.getDeltaTime());
+
+		stage.draw();
 	}
 
 	private boolean limitCamera() {

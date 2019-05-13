@@ -59,7 +59,7 @@ public class C_Computer {
 			break;
 		case saving:
 			if (money >= towerList.get(until).getPrice()) {
-				buyTower(towerList.get(until));
+				//buyTower(towerList.get(until));
 				computerState = CE_ComputerState.idle;
 			}
 			break;
