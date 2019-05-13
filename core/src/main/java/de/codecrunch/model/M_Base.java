@@ -15,7 +15,8 @@ public class M_Base {
     }
 
     public void setCurrentLife(int currentLife) {
-        this.currentLife = currentLife;
+        if (this.maxLife >= currentLife)
+            this.currentLife = currentLife;
     }
 
     public int getMaxLife() {
@@ -23,7 +24,8 @@ public class M_Base {
     }
 
     public void setMaxLife(int maxLife) {
-        this.maxLife = maxLife;
+        if (maxLife > 0)
+            this.maxLife = maxLife;
     }
 
     public void takeDamage(){

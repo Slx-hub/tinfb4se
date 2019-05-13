@@ -195,7 +195,7 @@ public class M_GiantUnitTest {
 
         M_GiantUnit unit = new M_GiantUnit();
         unit.setPos(1,0);
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -206,7 +206,7 @@ public class M_GiantUnitTest {
 
         M_GiantUnit unit = new M_GiantUnit();
         unit.setPos(0,1);
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }
@@ -218,7 +218,7 @@ public class M_GiantUnitTest {
         M_GiantUnit unit = new M_GiantUnit();
         unit.setPos(1,0);
         unit.setPos(-1,0);
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -230,7 +230,7 @@ public class M_GiantUnitTest {
         M_GiantUnit unit = new M_GiantUnit();
         unit.setPos(0,1);
         unit.setPos(0,-1);
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }
@@ -240,7 +240,7 @@ public class M_GiantUnitTest {
         int expected = 0;
 
         M_GiantUnit unit = new M_GiantUnit();
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -250,7 +250,7 @@ public class M_GiantUnitTest {
         int expected = 0;
 
         M_GiantUnit unit = new M_GiantUnit();
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }

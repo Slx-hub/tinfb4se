@@ -2,6 +2,7 @@ package de.codecrunch.model.unit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 
 import java.util.Iterator;
@@ -79,8 +80,10 @@ public abstract class MA_Unit {
     }
 
     public void setPos(int x_pos, int y_pos) {
-        this.currentTile_xPos = x_pos;
-        this.currentTile_yPos = y_pos;
+        if (x_pos >= 0 && y_pos >= 0) {
+            this.currentTile_xPos = x_pos;
+            this.currentTile_yPos = y_pos;
+        }
     }
 
 
@@ -98,8 +101,13 @@ public abstract class MA_Unit {
 
     public void tick(float delta) {
         move(delta);
-
-
+        Vector3 tmp = new Vector3();
+        model.transform.getTranslation(tmp);
+        float x = tmp.x;
+        float y = tmp.y;
+        Gdx.app.log("model pos: ", "x = " + Float.toString(x) + "y = " + Float.toString(y));
+    }
+/*
         if (pathIterator.hasNext()) {
             M_Tile next = pathIterator.next();
             if (currentTile_yPos == next.y_pos) {
@@ -111,19 +119,13 @@ public abstract class MA_Unit {
 
                 }
 
-/*                Vector3 tmp = new Vector3();
-                model.transform.getTranslation(tmp);
-                float x = tmp.x;
-                float y = tmp.y;
-                Gdx.app.log("model pos: ", "x = " + Float.toString(x) + "y = " + Float.toString(y));*/
-            }
+
             if (currentTile_xPos == next.x_pos) {
                 if (currentTile_yPos < next.y_pos) { //Nach Westen
                 }
                 if (currentTile_yPos > next.y_pos) { //Nach Osten
                 }
             }
-
             if (currentTile_yPos == 5) {
                state = ME_UnitState.ROTATE_LEFT;
             }
@@ -131,19 +133,43 @@ public abstract class MA_Unit {
             //currentTile_xPos = next.x_pos;
             //currentTile_yPos = next.y_pos;
         }
-    }
+        */
+    //}
 
     public void move(float delta) {
-        Vector3 currentModel_Pos = new Vector3();
-        Vector3 n = new Vector3(70, 20,60);
-        float f1 = 0.1F;
-        float f2 = -0.1F;
+        // Move unit
+        boolean hasArrived = state.applyMovement(model.transform,speed * delta);
 
-        model.transform.getTranslation(currentModel_Pos);
+
+        // TODO If yes, change state
+        // for example: state = ME_UnitState.RotateLeft
+        if (hasArrived) {
+            //next tile
+            M_Tile next = pathIterator.next();
+            if (currentTile_xPos < next.x_pos) {
+                //state = ME_UnitState.ROTATE_LEFT;
+            }
+            if (currentTile_yPos < next.y_pos) {
+                //state = ME_UnitState.ROTATE_LEFT;
+            }
+        }
+
+
+        // End of Method.
+
+
+        //Vector3 currentModel_Pos = new Vector3();
+        //Vector3 n = new Vector3(70, 20,60);
+        ////float f2 = -0.1F;
+
+        //model.transform.getTranslation(currentModel_Pos);
         //currentModel_Pos.x = currentModel_Pos.x + Gdx.graphics.getDeltaTime();
-        currentModel_Pos.x = currentModel_Pos.x + f1;
-        //currentModel_Pos.y = currentTile_yPos + f1;
-        model.transform.setTranslation(currentModel_Pos);
+        //currentModel_Pos.x = currentModel_Pos.x + f1;
+        //currentModel_Pos.z = currentModel_Pos.z  + f2; //Westen
+        //currentTile_xPos
+        //if (currentTile_xPos >= currentModel_Pos.x)
+         //   model.transform.setTranslation(currentModel_Pos);
+
         //model.transform.rotate(new Vector3(0, 1, 0), 0.5f);
 
 
@@ -179,5 +205,11 @@ public abstract class MA_Unit {
             }*//*
 
         }*/
+    }
+
+    float getModelRotation() {
+        Quaternion quat = new Quaternion();
+        model.transform.getRotation(quat);
+        return quat.getAxisAngle(Vector3.Y);
     }
 }

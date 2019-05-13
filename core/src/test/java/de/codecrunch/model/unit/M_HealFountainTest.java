@@ -261,7 +261,7 @@ public class M_HealFountainTest {
 
         M_HealFountain unit = new M_HealFountain();
         unit.setPos(1,0);
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -272,7 +272,7 @@ public class M_HealFountainTest {
 
         M_HealFountain unit = new M_HealFountain();
         unit.setPos(0,1);
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }
@@ -284,7 +284,7 @@ public class M_HealFountainTest {
         M_HealFountain unit = new M_HealFountain();
         unit.setPos(1,0);
         unit.setPos(-1,0);
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -296,7 +296,7 @@ public class M_HealFountainTest {
         M_HealFountain unit = new M_HealFountain();
         unit.setPos(0,1);
         unit.setPos(0,-1);
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }
@@ -306,7 +306,7 @@ public class M_HealFountainTest {
         int expected = 0;
 
         M_HealFountain unit = new M_HealFountain();
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -316,7 +316,7 @@ public class M_HealFountainTest {
         int expected = 0;
 
         M_HealFountain unit = new M_HealFountain();
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }

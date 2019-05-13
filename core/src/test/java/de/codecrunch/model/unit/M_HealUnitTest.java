@@ -195,7 +195,7 @@ public class M_HealUnitTest {
 
         M_HealUnit unit = new M_HealUnit();
         unit.setPos(1,0);
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -206,7 +206,7 @@ public class M_HealUnitTest {
 
         M_HealUnit unit = new M_HealUnit();
         unit.setPos(0,1);
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }
@@ -218,7 +218,7 @@ public class M_HealUnitTest {
         M_HealUnit unit = new M_HealUnit();
         unit.setPos(1,0);
         unit.setPos(-1,0);
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -230,7 +230,7 @@ public class M_HealUnitTest {
         M_HealUnit unit = new M_HealUnit();
         unit.setPos(0,1);
         unit.setPos(0,-1);
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }
@@ -240,7 +240,7 @@ public class M_HealUnitTest {
         int expected = 0;
 
         M_HealUnit unit = new M_HealUnit();
-        int actual = unit.getX_pos();
+        int actual = unit.getCurrentTile_xPos();
 
         assertEquals(expected,actual);
     }
@@ -250,7 +250,7 @@ public class M_HealUnitTest {
         int expected = 0;
 
         M_HealUnit unit = new M_HealUnit();
-        int actual = unit.getY_pos();
+        int actual = unit.getCurrentTile_yPos();
 
         assertEquals(expected,actual);
     }
