@@ -8,7 +8,7 @@ public class M_SmallUnit extends MA_Unit {
     private String modelAssetString = "units/unit.g3db";
 
     public M_SmallUnit(){
-        super(2,100);
+        super(20,100);
     }
 
     @Override
