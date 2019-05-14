@@ -182,7 +182,7 @@ public enum ME_TileState {
 		return editorImage;
 	}
 
-	public ModelInstance getGameModel(int rotation, float x_pos, float y_pos) {
+	public ModelInstance getGameModel(int rotation, int x_pos, int y_pos) {
 		ModelInstance gameModel = getModel();
 		gameModel.transform.rotate(Vector3.Y, rotation);
 		gameModel.transform.setTranslation(x_pos * tileDistance, 0, y_pos * tileDistance);

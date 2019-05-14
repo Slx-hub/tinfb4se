@@ -6,7 +6,7 @@ import de.codecrunch.Model3DFactory;
 public class M_SmallUnit extends MA_Unit {
 
     public M_SmallUnit(){
-        super(20,100);
+        super(2,100);
     }
 
     @Override
