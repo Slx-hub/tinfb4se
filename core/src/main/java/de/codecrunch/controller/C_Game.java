@@ -74,16 +74,9 @@ public class C_Game {
 	}
 
 	public void placeUnit(MA_Unit unit){
-		M_Tile startTile = map.getPath().get(0);
-		unit.getModel().transform.setTranslation(startTile.x_pos * ME_TileState.tileDistance, 0f, startTile.y_pos * ME_TileState.tileDistance);
 		view.getUnitBatch().addElement(unit.getModel());
-		unit.setPos(startTile.x_pos, startTile.y_pos);
 		unit.setPath(map.getPath().iterator());
 		unitList.add(unit);
-	}
-
-	public void autoPlaceUnit(){
-		placeUnit(new M_SmallUnit());
 	}
 
     public void tick(float delta) {

@@ -5,23 +5,29 @@ import com.badlogic.gdx.math.Vector3;
 
 import java.util.Iterator;
 
+import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.M_Tile;
+import de.codecrunch.model.unit.state.MA_UnitState;
+import de.codecrunch.model.unit.state.M_UnitState_DONE;
+import de.codecrunch.model.unit.state.M_UnitState_DRIVE_FORWARD;
+import de.codecrunch.model.unit.state.M_UnitState_IDLE;
+import de.codecrunch.model.unit.state.M_UnitState_ROTATE_LEFT;
+import de.codecrunch.model.unit.state.M_UnitState_ROTATE_RIGHT;
 
 public abstract class MA_Unit {
+
     private int speed;
     private int maxLife;
     private int currentLife;
-    private int x_pos;
-    private int y_pos;
+    private M_Tile currentTile;
     private Iterator<M_Tile> pathIterator;
     protected ModelInstance model;
-    protected ME_UnitState state = ME_UnitState.IDLE;
+    protected MA_UnitState state = new M_UnitState_IDLE();
 
-    public MA_Unit(int speed, int maxLife){
+    public MA_Unit(int speed, int maxLife) {
         setSpeed(speed);
         setMaxLife(maxLife);
         setCurrentLife(maxLife);
-        setPos(0,0);
     }
 
     public abstract ModelInstance getModel();
@@ -31,7 +37,7 @@ public abstract class MA_Unit {
     }
 
     public void setSpeed(int speed) {
-        if (!(speed < 0)){
+        if (!(speed < 0)) {
             this.speed = speed;
         }
     }
@@ -51,43 +57,29 @@ public abstract class MA_Unit {
     }
 
     public void setCurrentLife(int currentLife) {
-        if(this.maxLife < currentLife){
+        if (this.maxLife < currentLife) {
             this.currentLife = maxLife;
-        }else{
+        } else {
             this.currentLife = currentLife;
         }
     }
 
-    public void takeDamage(int damage){
-        if(this.currentLife < damage){
+    public void takeDamage(int damage) {
+        if (this.currentLife < damage) {
             setCurrentLife(0);
-        }else{
+        } else {
             setCurrentLife(this.currentLife - damage);
         }
     }
 
-    public void heal(int healing){
-        if (currentLife==0){
+    public void heal(int healing) {
+        if (currentLife == 0) {
             setCurrentLife(0);
-        } else if (this.maxLife < (this.currentLife+healing)){
+        } else if (this.maxLife < (this.currentLife + healing)) {
             setCurrentLife(this.maxLife);
         } else {
             setCurrentLife(this.currentLife + healing);
         }
-    }
-
-    public void setPos(int x_pos, int y_pos) {
-        this.x_pos = x_pos;
-        this.y_pos = y_pos;
-    }
-
-
-    public int getX_pos() {
-        return x_pos;
-    }
-
-    public int getY_pos() {
-        return y_pos;
     }
 
     public void setPath(Iterator<M_Tile> iterator) {
@@ -99,8 +91,43 @@ public abstract class MA_Unit {
     }
 
     public void move(float delta) {
-        //test to rotate unit
-        model.transform.rotate(new Vector3(0,1,0),1);
-        //TODO implement unit movement here
+        // Move unit
+        boolean hasArrived = state.applyMovement(model.transform, speed * delta);
+
+        if (hasArrived) {
+            // if he's done rotating, drive to the next tile
+            if (state.isRotating()) {
+                state = new M_UnitState_DRIVE_FORWARD();
+                //setUnitToTileRotation();
+                return;
+            }
+            //next tile
+            currentTile = pathIterator.next();
+
+            if (!pathIterator.hasNext()) {
+                state = new M_UnitState_DONE();
+                return;
+            }
+
+            if (state.isIdle()) {
+                setInitialPosition();
+            }
+
+            switch (currentTile.getTileState()) {
+                case PATH_LEFT:
+                    state = new M_UnitState_ROTATE_LEFT();
+                    break;
+                case PATH_RIGHT:
+                    state = new M_UnitState_ROTATE_RIGHT();
+                    break;
+                default:
+                    state = new M_UnitState_DRIVE_FORWARD();
+            }
+        }
+    }
+
+    private void setInitialPosition() {
+        model.transform.setTranslation(currentTile.x_pos * ME_TileState.tileDistance, 0f, currentTile.y_pos * ME_TileState.tileDistance);
+        model.transform.rotate(Vector3.Y, currentTile.getTileRotation() - 90);
     }
 }
