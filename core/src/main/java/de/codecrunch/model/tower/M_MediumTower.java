@@ -5,7 +5,18 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import de.codecrunch.Model3DFactory;
 
 public class M_MediumTower extends MA_Tower {
-	
+
+	@Override
+	public float getReloadTime() {
+		return 4;
+	}
+
+	@Override
+	public int getDamage() {
+		return 100;
+	}
+
+
 	@Override
 	public int getPrice() {
 		return 100;

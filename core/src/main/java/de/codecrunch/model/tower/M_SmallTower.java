@@ -7,6 +7,16 @@ import de.codecrunch.Model3DFactory;
 public class M_SmallTower extends MA_Tower {
 
 	@Override
+	public float getReloadTime() {
+		return 2;
+	}
+
+	@Override
+	public int getDamage() {
+		return 30;
+	}
+
+	@Override
 	public int getPrice() {
 		return 50;
 	}

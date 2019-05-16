@@ -9,10 +9,10 @@ import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 
 public class M_RenderBatch extends ModelBatch {
-	private List<ModelInstance> tiles = new LinkedList<>();
+	private List<ModelInstance> elements = new LinkedList<>();
 	
 	public void renderAll(Environment environment) {
-		tiles.forEach(new Consumer<ModelInstance>() {
+		elements.forEach(new Consumer<ModelInstance>() {
 			@Override
 			public void accept(ModelInstance instance) {
 				render(instance, environment);
@@ -25,7 +25,11 @@ public class M_RenderBatch extends ModelBatch {
 		super.dispose();
 	}
 	
-	public void addElement(ModelInstance tile) {
-		tiles.add(tile);
+	public void addElement(ModelInstance element) {
+		elements.add(element);
+	}
+
+	public void removeElement(ModelInstance element) {
+		elements.remove(element);
 	}
 }

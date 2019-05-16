@@ -56,6 +56,8 @@ public abstract class MA_Unit {
         return currentLife;
     }
 
+    public boolean isDead() {return currentLife <= 0;}
+
     public void setCurrentLife(int currentLife) {
         if (this.maxLife < currentLife) {
             this.currentLife = maxLife;
@@ -112,6 +114,8 @@ public abstract class MA_Unit {
             if (state.isIdle()) {
                 setInitialPosition();
             }
+
+            currentTile.unitEntered(this);
 
             switch (currentTile.getTileState()) {
                 case PATH_LEFT:
