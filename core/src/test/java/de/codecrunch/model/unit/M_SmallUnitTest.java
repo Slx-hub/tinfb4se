@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class M_SmallUnitTest {
 
-    private int speed = 2;
+    private int speed = 20;
     private int maxLife = 100;
 
     @Test
