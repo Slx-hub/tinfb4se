@@ -92,6 +92,8 @@ n/a
 n/a
 #### 5.2.12	Installation Testing
 n/a
+#### 5.2.13 User Acceptance Testing
+UAT as so called Beta-Tests with a few users testing the game in the current state to play it before release and give constructive feedback aswell as bug reports or balancing problems.
 ## 6.	Entry and Exit Criteria
 ### 6.1	Test Plan
 #### 6.1.1	Test Plan Entry Criteria
@@ -109,11 +111,12 @@ n/a
 n/a
 ## 7.	Deliverables
 ### 7.1	Test Evaluation Summaries
-Planned implementation of somarcloud-services
+To see the implementation of sonarcloud-services click [here](https://sonarcloud.io/dashboard?id=SlaxXxX_tinfb4se).
 ### 7.2	Reporting on Test Coverage
-Planned implementation of somarcloud-services
+To see the implementation of sonarcloud-services click [here](https://sonarcloud.io/component_measures?id=SlaxXxX_tinfb4se&metric=Coverage).</br>
+Note that there is an unknown issue with the coverage at the moment. There is a fair amount of tests and they got a 100% succes rate but coverage still is 0,0%.
 ### 7.3	Perceived Quality Reports
-Planned implementation of somarcloud-services
+To see the implementation of sonarcloud-services click [here](https://sonarcloud.io/component_measures?id=SlaxXxX_tinfb4se&metric=Maintainability).
 ### 7.4	Incident Logs and Change Requests
 n/a
 ### 7.5	Smoke Test Suite and Supporting Test Scripts
