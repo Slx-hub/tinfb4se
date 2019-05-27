@@ -20,6 +20,7 @@ import java.util.List;
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_RenderBatch;
+import de.codecrunch.model.M_User;
 
 public class V_Game extends VA_Screen {
 
@@ -50,7 +51,7 @@ public class V_Game extends VA_Screen {
 		this.stage = new Stage(new FitViewport( 1024, 640),hudBatch);
 	}
 
-	public void setup() {
+	public V_HUD setup(M_User user) {
 
 		camera = new PerspectiveCamera(
 				60,
@@ -63,9 +64,10 @@ public class V_Game extends VA_Screen {
 		camera.far = 120.0f;
 		camera.update();
 		hudBatch.setProjectionMatrix(stage.getCamera().combined);
-		v_hud = new V_HUD(controller,stage, levelName);
+		v_hud = new V_HUD(controller,stage, levelName, user);
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
 		//environment.add(mouseLight);
+        return v_hud;
 	}
 
 	public void setLevelName(String levelName){
@@ -114,9 +116,6 @@ public class V_Game extends VA_Screen {
 		unitBatch.begin(camera);
 		unitBatch.renderAll(environment);
 		unitBatch.end();
-
-		v_hud.update(Gdx.graphics.getDeltaTime());
-
 		stage.draw();
 	}
 
