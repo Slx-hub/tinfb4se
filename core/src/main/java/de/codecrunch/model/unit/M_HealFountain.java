@@ -16,6 +16,11 @@ public class M_HealFountain extends MA_Unit {
         this.healingPerSecond = 10;
     }
 
+    @Override
+    public int getCost() {
+        return 0;
+    }
+
     public int getHealRadius() {
         return healRadius;
     }

@@ -77,6 +77,7 @@ public class C_Game {
         tower.setPos(x, y);
         tower.getModel().transform.setTranslation(x * ME_TileState.tileDistance, 0.5f, y * ME_TileState.tileDistance);
         view.getTowerBatch().addElement(tower.getModel());
+        view.addLaserLine(tower.getLaserLine());
         computer.drawMoney(tower.getPrice());
         map.getTile(x, y).setTileState(ME_TileState.OCCUPIED);
         computer.updateDistancePathCount(map);
@@ -84,10 +85,14 @@ public class C_Game {
         registerTowerOnMap(tower, x, y);
     }
 
-    public void placeUnit(MA_Unit unit) {
-        view.getUnitBatch().addElement(unit.getModel());
-        unit.setPath(map.getPath().iterator());
-        unitList.add(unit);
+    public void buyUnit(MA_Unit unit) {
+        if (unit.getCost() <= user.getBalance()) {
+            user.drawMoney(unit.getCost());
+            hud.update();
+            view.getUnitBatch().addElement(unit.getModel());
+            unit.setPath(map.getPath().iterator());
+            unitList.add(unit);
+        }
     }
 
     public void removeUnit(MA_Unit unit) {

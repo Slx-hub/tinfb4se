@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.math.Vector3;
 
+import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.unit.MA_Unit;
 
 public abstract class MA_Tower {
@@ -14,7 +16,8 @@ public abstract class MA_Tower {
     protected ModelInstance model;
     protected ME_TowerState state = ME_TowerState.RELOAD;
     protected MA_Unit unitAimingAt;
-    protected float currentReloadTime = getReloadTime();
+    protected float currentWaitTime = getReloadTime();
+    protected LineCoordinates laserLine = new LineCoordinates();
 
     public static List<MA_Tower> getAllTowers() {
         List<MA_Tower> list = new ArrayList<>();
@@ -26,6 +29,7 @@ public abstract class MA_Tower {
         if (x < 0 || y < 0) return;
         x_pos = x;
         y_pos = y;
+        laserLine.setStart(new Vector3(x * ME_TileState.tileDistance, 1f, y * ME_TileState.tileDistance));
     }
 
     public int getX_pos() {
@@ -51,8 +55,8 @@ public abstract class MA_Tower {
             case IDLE:
                 break;
             case RELOAD:
-                currentReloadTime -= delta;
-                if (currentReloadTime <= 0)
+                currentWaitTime -= delta;
+                if (currentWaitTime <= 0)
                     state = ME_TowerState.SHOOT;
                 break;
             case SHOOT:
@@ -64,13 +68,30 @@ public abstract class MA_Tower {
                 else
                     shoot();
                 break;
+            case WAITFORBULLET:
+                currentWaitTime -= delta;
+                setLaserEndOnUnit();
+                if (currentWaitTime <= 0) {
+                    laserLine.render = false;
+                    currentWaitTime = getReloadTime();
+                    state = ME_TowerState.RELOAD;
+                }
+                break;
         }
     }
 
     private void shoot() {
         unitAimingAt.takeDamage(this.getDamage());
-        state = ME_TowerState.RELOAD;
-        currentReloadTime = getReloadTime();
+        laserLine.render = true;
+        setLaserEndOnUnit();
+        state = ME_TowerState.WAITFORBULLET;
+        currentWaitTime = getReloadTime() / 10;
+    }
+
+    private void setLaserEndOnUnit() {
+        if (unitAimingAt == null)
+            return;
+        laserLine.setEnd(unitAimingAt.getModel().transform.getTranslation(laserLine.getEnd()));
     }
 
     public void onUnitInRange(MA_Unit unit) {
@@ -82,6 +103,32 @@ public abstract class MA_Tower {
     }
 
     protected enum ME_TowerState {
-        IDLE, RELOAD, SHOOT;
+        IDLE, RELOAD, SHOOT, WAITFORBULLET;
+    }
+
+    public LineCoordinates getLaserLine() {
+        return laserLine;
+    }
+
+    public class LineCoordinates {
+        public boolean render = false;
+        private Vector3 start = new Vector3();
+        private Vector3 end = new Vector3();
+
+        protected void setStart(Vector3 pos) {
+            start = pos;
+        }
+
+        protected void setEnd(Vector3 pos) {
+            end = pos;
+        }
+
+        public Vector3 getStart() {
+            return start;
+        }
+
+        public Vector3 getEnd() {
+            return end;
+        }
     }
 }

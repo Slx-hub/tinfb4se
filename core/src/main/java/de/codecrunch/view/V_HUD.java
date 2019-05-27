@@ -63,7 +63,7 @@ public class V_HUD {
         placeUnit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                controller.placeUnit(new M_SmallUnit());
+                controller.buyUnit(new M_SmallUnit());
                 {
 
                 }

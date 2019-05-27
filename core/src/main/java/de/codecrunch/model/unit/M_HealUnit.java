@@ -13,6 +13,11 @@ public class M_HealUnit extends MA_Unit {
     private String modelAssetString = "units/unit.g3db";
 
     @Override
+    public int getCost() {
+        return 70;
+    }
+
+    @Override
     public ModelInstance getModel() {
         if (model == null)
             model = Model3DFactory.instantiate(Model3DFactory.loadModel(modelAssetString));

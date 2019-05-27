@@ -13,6 +13,11 @@ public class M_BigUnit extends MA_Unit {
     }
 
     @Override
+    public int getCost() {
+        return 100;
+    }
+
+    @Override
     public ModelInstance getModel() {
 
         if (model == null)
