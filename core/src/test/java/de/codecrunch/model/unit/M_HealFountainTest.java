@@ -20,7 +20,7 @@ public class M_HealFountainTest {
         speed = unit.getSpeed();
         maxLife = unit.getMaxLife();
         healingPerSecond = unit.getHealingPerSecond();
-        healRadius = unit.getHealingPerSecond();
+        healRadius = unit.getHealRadius();
     }
 
     @Test
