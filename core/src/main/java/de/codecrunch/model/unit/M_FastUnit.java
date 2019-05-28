@@ -13,6 +13,11 @@ public class M_FastUnit extends MA_Unit {
     }
 
     @Override
+    public int getCost() {
+        return 70;
+    }
+
+    @Override
     public ModelInstance getModel() {
         if (model == null)
             model = Model3DFactory.instantiate(Model3DFactory.loadModel(modelAssetString));

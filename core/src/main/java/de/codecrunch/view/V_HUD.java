@@ -10,20 +10,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+
 import de.codecrunch.controller.C_Game;
+import de.codecrunch.model.M_User;
 import de.codecrunch.model.unit.M_SmallUnit;
 
 
-class V_HUD {
+public class V_HUD {
 
-    private int digitCount;
-    private float timeCount = 0;
+    private M_User user;
+
     private Skin buttonSkins;
     private Table buttonTable;
     private Table labelTable;
     private String levelName;
-    private int timer;
-    private int resources;
     private String timerDesc;
     private String resourceDesc;
     private TextButton exit;
@@ -34,12 +34,13 @@ class V_HUD {
     private Label worldTimer;
     private Label resourcesLabel;
 
-    public V_HUD(C_Game controller,Stage stage, String levelName) {
+    public V_HUD(C_Game controller, Stage stage, String levelName, M_User user) {
         buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
         this.levelName = "level: " + levelName;
         buildTopTable(controller);
         buildBottomTable(controller);
         addHudComponents(stage);
+        this.user = user;
     }
 
     private void addHudComponents(Stage stage) {
@@ -62,7 +63,8 @@ class V_HUD {
         placeUnit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                controller.placeUnit(new M_SmallUnit());{
+                controller.buyUnit(new M_SmallUnit());
+                {
 
                 }
 
@@ -88,31 +90,23 @@ class V_HUD {
     }
 
     private void createLabels() {
-
-        digitCount = 0;
-        resources = 99999;
-        timer = 0;
-        timerDesc = "timer";
-        resourceDesc = "resources";
+        timerDesc = "Time";
+        resourceDesc = "Balance";
         level = new Label(levelName, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         timerDescLabel = new Label(timerDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        worldTimer = new Label(String.format("%1d", timer), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        worldTimer = new Label(String.format("%5d", 0), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         resourceDescLabel = new Label(resourceDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        resourcesLabel = new Label(String.format("%5d", resources), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        resourcesLabel = new Label(String.format("%5d", 0), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
     }
 
-    public void update(float dt){
-        timeCount += dt;
-        if(timeCount >= 1) {
-            timer++;
-            if(String.valueOf(timer).length() > digitCount){
-                digitCount++;
-            }
-            worldTimer.setText(String.format("%"+digitCount+"d", timer));
-            timeCount = 0;
-        }
-        }
+    public void setTime(int time) {
+        worldTimer.setText(String.format("%5d", time));
     }
+
+    public void update() {
+        resourcesLabel.setText(String.format("%5d", user.getBalance()));
+    }
+}
 
 
 

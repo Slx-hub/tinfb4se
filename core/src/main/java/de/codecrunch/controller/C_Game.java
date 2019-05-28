@@ -14,13 +14,17 @@ import de.codecrunch.model.M_Game;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_RenderBatch;
 import de.codecrunch.model.M_Tile;
+import de.codecrunch.model.M_User;
 import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
 import de.codecrunch.model.unit.M_SmallUnit;
 import de.codecrunch.view.V_Game;
+import de.codecrunch.view.V_HUD;
 
 public class C_Game {
     private M_Game model = new M_Game();
+    private M_User user = new M_User();
+    private V_HUD hud;
     private C_Computer computer = new C_Computer(this);
     private V_Game view;
     private TowerAttackGame towerAttackGame;
@@ -52,21 +56,28 @@ public class C_Game {
 
             @Override
             public void run() {
-                computer.addMoney(50);
-                computer.tick(timerCount);
                 timerCount++;
+                int amount = 5 + timerCount / 30;
+                computer.addMoney(amount);
+                user.addMoney(amount);
+
+                hud.setTime(timerCount);
+                hud.update();
+
+                computer.tick(timerCount);
             }
-        }, 0, 1);
+        }, 1, 1);
         Timer.instance().start();
 
         computer.init(map);
-        view.setup();
+        hud = view.setup(user);
     }
 
     public void placeTower(MA_Tower tower, int x, int y) {
         tower.setPos(x, y);
         tower.getModel().transform.setTranslation(x * ME_TileState.tileDistance, 0.5f, y * ME_TileState.tileDistance);
         view.getTowerBatch().addElement(tower.getModel());
+        view.addLaserLine(tower.getLaserLine());
         computer.drawMoney(tower.getPrice());
         map.getTile(x, y).setTileState(ME_TileState.OCCUPIED);
         computer.updateDistancePathCount(map);
@@ -74,10 +85,14 @@ public class C_Game {
         registerTowerOnMap(tower, x, y);
     }
 
-    public void placeUnit(MA_Unit unit) {
-        view.getUnitBatch().addElement(unit.getModel());
-        unit.setPath(map.getPath().iterator());
-        unitList.add(unit);
+    public void buyUnit(MA_Unit unit) {
+        if (unit.getCost() <= user.getBalance()) {
+            user.drawMoney(unit.getCost());
+            hud.update();
+            view.getUnitBatch().addElement(unit.getModel());
+            unit.setPath(map.getPath().iterator());
+            unitList.add(unit);
+        }
     }
 
     public void removeUnit(MA_Unit unit) {

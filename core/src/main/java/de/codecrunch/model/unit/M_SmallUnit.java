@@ -12,6 +12,11 @@ public class M_SmallUnit extends MA_Unit {
     }
 
     @Override
+    public int getCost() {
+        return 20;
+    }
+
+    @Override
     public ModelInstance getModel() {
 
         if (model == null)

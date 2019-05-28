@@ -32,6 +32,8 @@ public abstract class MA_Unit {
 
     public abstract ModelInstance getModel();
 
+    public abstract int getCost();
+
     public int getSpeed() {
         return this.speed;
     }
