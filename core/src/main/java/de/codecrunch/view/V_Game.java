@@ -192,7 +192,7 @@ public class V_Game extends VA_Screen {
         public boolean mouseMoved(int screenX, int screenY) {
             Vector3 tmpVector = new Vector3();
             Ray ray = camera.getPickRay(screenX, screenY);
-            final float distance = -ray.origin.y / ray.direction.y - 1f;
+            final float distance = -ray.origin.y / ray.direction.y - 2f;
             tmpVector.set(ray.direction).scl(distance).add(ray.origin);
             mouseLight.setPosition(tmpVector);
             return true;

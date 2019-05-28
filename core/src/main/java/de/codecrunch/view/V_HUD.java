@@ -2,14 +2,18 @@ package de.codecrunch.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_User;
@@ -27,7 +31,7 @@ public class V_HUD {
     private String timerDesc;
     private String resourceDesc;
     private TextButton exit;
-    private TextButton placeUnit;
+    private ImageButton buySmallUnit;
     private Label level;
     private Label timerDescLabel;
     private Label resourceDescLabel;
@@ -53,14 +57,14 @@ public class V_HUD {
         buttonTable.bottom();
         buttonTable.setFillParent(true);
         buildUnitButton(controller);
-        buttonTable.add(placeUnit).left().expandX().padBottom(10).padLeft(10);
+        buttonTable.add(buySmallUnit).left().expandX().padBottom(10).padLeft(10);
 
 
     }
 
     private void buildUnitButton(C_Game controller) {
-        placeUnit = new TextButton("Place Unit", buttonSkins);
-        placeUnit.addListener(new ChangeListener() {
+        buySmallUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buySmallUnitButton.png")))));
+        buySmallUnit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 controller.buyUnit(new M_SmallUnit());

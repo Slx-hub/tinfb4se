@@ -30,7 +30,7 @@ public class M_MediumTower extends MA_Tower {
 	@Override
 	public ModelInstance getModel() {
 		if (model == null)
-			model = Model3DFactory.instantiate(Model3DFactory.loadModel("towers/stub.g3db"));
+			model = Model3DFactory.instantiate(Model3DFactory.loadModel("towers/mediumTower.g3db"));
 		return model;
 	}
 }
