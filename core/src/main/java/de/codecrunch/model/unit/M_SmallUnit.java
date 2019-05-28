@@ -5,7 +5,7 @@ import de.codecrunch.Model3DFactory;
 
 public class M_SmallUnit extends MA_Unit {
 
-    private String modelAssetString = "units/unit.g3db";
+    private String modelAssetString = "units/smallUnit.g3db";
 
     public M_SmallUnit(){
         super(20,100);

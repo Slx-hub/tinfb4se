@@ -18,6 +18,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_User;
+import de.codecrunch.model.unit.M_BigUnit;
+import de.codecrunch.model.unit.M_MediumUnit;
 import de.codecrunch.model.unit.M_SmallUnit;
 
 
@@ -33,6 +35,8 @@ public class V_HUD {
     private String resourceDesc;
     private TextButton exit;
     private ImageButton buySmallUnit;
+    private ImageButton buyMediumUnit;
+    private ImageButton buyBigUnit;
     private Label level;
     private Label timerDescLabel;
     private Label resourceDescLabel;
@@ -58,26 +62,39 @@ public class V_HUD {
         buttonTable = new Table();
         buttonTable.bottom();
         buttonTable.setFillParent(true);
-        buildUnitButton(controller);
-        buttonTable.add(buySmallUnit).left().expandX().padBottom(10).padLeft(10);
-
+        buildUnitButtons(controller);
+        buttonTable.add(buySmallUnit).left().padBottom(10).padLeft(10);
+        buttonTable.add(buyMediumUnit).left().padBottom(10).padLeft(10);
+        buttonTable.add(buyBigUnit).left().padBottom(10).padLeft(10);
 
     }
 
-    private void buildUnitButton(C_Game controller) {
+    private void buildUnitButtons(C_Game controller) {
         buySmallUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buySmallUnitButton.png")))));
+        buyMediumUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyMediumUnitButton.png")))));
+        buyBigUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyBigUnitButton.png")))));
+
         buySmallUnit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 controller.buyUnit(new M_SmallUnit());
-                {
-
-                }
-
             }
 
         });
+        buyMediumUnit.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                controller.buyUnit(new M_MediumUnit());
+            }
+        });
+        buyBigUnit.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                controller.buyUnit(new M_BigUnit());
+            }
+        });
     }
+
     private void buildExitButton() {
         exit = new TextButton("Exit", buttonSkins);
         exit.addListener(new ChangeListener() {
