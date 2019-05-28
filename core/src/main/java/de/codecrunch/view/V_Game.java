@@ -34,6 +34,7 @@ public class V_Game extends VA_Screen {
     private final float MAP_MIDDLE = 40f;//40
     private final float MAP_BRIGHTNESS = 1f;
 
+    private TowerAttackGame game;
     private String levelName;
     SpriteBatch hudBatch;
     private List<Table> hudComponents;
@@ -55,6 +56,7 @@ public class V_Game extends VA_Screen {
         super(game);
         this.hudBatch = new SpriteBatch();
         this.stage = new Stage(new FitViewport(1024, 640), hudBatch);
+        this.game = game;
     }
 
     public V_HUD setup(M_User user) {
@@ -70,7 +72,7 @@ public class V_Game extends VA_Screen {
         camera.far = 120.0f;
         camera.update();
         hudBatch.setProjectionMatrix(stage.getCamera().combined);
-        v_hud = new V_HUD(controller, stage, levelName, user);
+        v_hud = new V_HUD(controller, stage, levelName, user, game);
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
         //environment.add(mouseLight);
         return v_hud;
