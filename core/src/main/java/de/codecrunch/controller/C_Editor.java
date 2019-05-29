@@ -1,8 +1,6 @@
 package de.codecrunch.controller;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 
@@ -11,13 +9,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_Path;
-import de.codecrunch.model.M_Path.Node;
 import de.codecrunch.model.M_Tile;
 import de.codecrunch.view.VA_Screen;
 import de.codecrunch.view.V_Editor;
@@ -39,12 +35,7 @@ public class C_Editor {
         }
 
         towerAttackGame = game;
-        map.foreachTile(new Consumer<M_Tile>() {
-            @Override
-            public void accept(M_Tile m_tile) {
-                m_tile.updateEditorImage();
-            }
-        });
+        map.foreachTile(M_Tile::updateEditorImage);
     }
 
     public void setView(V_Editor view) {
@@ -101,10 +92,11 @@ public class C_Editor {
             path.head().get().setTileState(ME_TileState.EMPTY).updateEditorImage();
             M_Path<M_Tile>.Node newHead = path.head().prev();
             path.removeFront();
-            if (newHead != null)
+            if (newHead != null){
                 newHead.get().setTileState(ME_TileState.END).updateEditorImage();
-            if (newHead == path.tail())
-                newHead.get().setTileState(ME_TileState.START).updateEditorImage();
+                if (newHead == path.tail())
+                    newHead.get().setTileState(ME_TileState.START).updateEditorImage();
+            }
         } else if (tile == path.tail().get()) {
             path.tail().get().setTileState(ME_TileState.EMPTY).updateEditorImage();
             M_Path<M_Tile>.Node newTail = path.tail().next();
@@ -115,7 +107,7 @@ public class C_Editor {
     }
 
     private boolean neighbour(M_Tile t1, M_Tile t2) {
-        return Math.abs(t1.x_pos - t2.x_pos) <= 1 && t1.y_pos == t2.y_pos || Math.abs(t1.y_pos - t2.y_pos) <= 1 && t1.x_pos == t2.x_pos;
+        return Math.abs(t1.xPos - t2.xPos) <= 1 && t1.yPos == t2.yPos || Math.abs(t1.yPos - t2.yPos) <= 1 && t1.xPos == t2.xPos;
     }
 
     private void update(M_Path<M_Tile>.Node node) {
@@ -127,12 +119,12 @@ public class C_Editor {
         else
             neighbour = node.next().get();
 
-        int rotation = (90 * (2 - (neighbour.y_pos - node.get().y_pos)) - (neighbour.x_pos < node.get().x_pos ? 180 : 0) + (!node.hasPrev() ? 180 : 0)) % 360;
+        int rotation = (90 * (2 - (neighbour.yPos - node.get().yPos)) - (neighbour.xPos < node.get().xPos ? 180 : 0) + (!node.hasPrev() ? 180 : 0)) % 360;
         node.get().setTileRotation(rotation);
 
         if (node.hasPrev() && node.hasNext()) {
-            int prevAngle = (node.get().x_pos - node.prev().get().x_pos + 1) * 90 + (node.get().y_pos < node.prev().get().y_pos ? 180 : 0);
-            int nextAngle = (node.get().x_pos - node.next().get().x_pos + 1) * 90 + (node.get().y_pos < node.next().get().y_pos ? 180 : 0);
+            int prevAngle = (node.get().xPos - node.prev().get().xPos + 1) * 90 + (node.get().yPos < node.prev().get().yPos ? 180 : 0);
+            int nextAngle = (node.get().xPos - node.next().get().xPos + 1) * 90 + (node.get().yPos < node.next().get().yPos ? 180 : 0);
             int betweenAngle = (prevAngle - nextAngle) % 360;
 
             switch (betweenAngle) {
@@ -148,15 +140,17 @@ public class C_Editor {
                 case -270:
                     node.get().setTileState(ME_TileState.PATH_LEFT);
                     break;
+                default:
+                    break;
             }
         }
         node.get().updateEditorImage();
     }
 
     public void save() {
-        TextField input = new TextField(map.getMapName(), view.uiSkin);
+        TextField input = new TextField(map.getMapName(), VA_Screen.uiSkin);
         input.setMaxLength(9);
-        Dialog dialog = new Dialog("Save Level", view.uiSkin) {
+        Dialog dialog = new Dialog("Save Level", VA_Screen.uiSkin) {
             @Override
             public void result(Object obj) {
                 if ((boolean) obj) {
@@ -181,10 +175,10 @@ public class C_Editor {
         try {
             file.getParentFile().mkdirs();
             file.createNewFile();
-            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file));
-            map.deflate();
-            stream.writeObject(map);
-            stream.close();
+            try (ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file))) {
+                map.deflate();
+                stream.writeObject(map);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

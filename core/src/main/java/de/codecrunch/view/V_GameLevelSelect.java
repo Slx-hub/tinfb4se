@@ -30,7 +30,7 @@ public class V_GameLevelSelect extends VA_LevelSelect {
     }
 
 
-    public void startMap(M_Map map, String LevelName) {
-        towerAttackGame.startGame(map, LevelName);
+    public void startMap(M_Map map, String levelName) {
+        towerAttackGame.startGame(map, levelName);
     }
 }

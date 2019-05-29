@@ -20,9 +20,6 @@ public class Model3DFactory {
         start = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/start.g3db", Files.FileType.Internal));
         path_straight = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_straight.g3db", Files.FileType.Internal));
         path_corner = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_corner.g3db", Files.FileType.Internal));
-        //path_cross = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_cross.g3db", Files.FileType.Internal));
-        //path_split_right = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_right.g3db", Files.FileType.Internal));
-        //path_split_left = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_left.g3db", Files.FileType.Internal));
     }
 
     public static ModelInstance instantiate(Model model) {

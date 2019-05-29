@@ -1,12 +1,9 @@
 package de.codecrunch.controller;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
-import de.codecrunch.model.ME_TileState.ME_TileStateGroup;
 import de.codecrunch.model.M_ComputerInformation;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.tower.MA_Tower;
@@ -14,13 +11,17 @@ import de.codecrunch.model.tower.MA_Tower;
 public class C_Computer {
     private C_Game game;
     private M_ComputerInformation info = new M_ComputerInformation();
-    public static final int maxRange = 3;
+    public static final int MAX_RANGE = 3;
 
-    private enum CE_ComputerState {
-        idle, waiting, saving, done;
+    private static int compare(MA_Tower o1, MA_Tower o2) {
+        return Integer.compare(o1.getPrice(), o2.getPrice());
     }
 
-    private CE_ComputerState computerState = CE_ComputerState.idle;
+    private enum CE_ComputerState {
+        IDLE, WAITING, SAVING, DONE;
+    }
+
+    private CE_ComputerState computerState = CE_ComputerState.IDLE;
 
     private List<MA_Tower> towerList = MA_Tower.getAllTowers();
 
@@ -35,34 +36,31 @@ public class C_Computer {
         this.game = game;
 
         // sorts the list of towers accortding to their price. this is useful for finding a suiting tower for the computers funds
-        towerList.sort(new Comparator<MA_Tower>() {
-            @Override
-            public int compare(MA_Tower o1, MA_Tower o2) {
-                return Integer.compare(o1.getPrice(), o2.getPrice());
-            }
-        });
+        towerList.sort(C_Computer::compare);
     }
 
     public void tick(int gameTime) {
         switch (computerState) {
-            case idle:
+            case IDLE:
                 //choose a random time to wait, so the computer doesn't spam towers
                 until = gameTime + (int) (Math.random() * (5 + gameTime / 100));
-                computerState = CE_ComputerState.waiting;
+                computerState = CE_ComputerState.WAITING;
                 break;
-            case waiting:
+            case WAITING:
                 if (gameTime >= until) {
-                    //if he's done waiting, choose a tower that is in the range of the computers funds
+                    //if he's DONE WAITING, choose a tower that is in the range of the computers funds
                     until = Math.min(towerList.size() - 1, Math.max(0, getAffordable() + (int) (Math.random() * (4 + gameTime / 30) - 2)));
-                    computerState = CE_ComputerState.saving;
+                    computerState = CE_ComputerState.SAVING;
                 }
                 break;
-            case saving:
+            case SAVING:
                 if (money >= towerList.get(until).getPrice()) {
                     //if the tower has enough money, buy that tower
                     buyTower(towerList.get(until));
-                    computerState = CE_ComputerState.idle;
+                    computerState = CE_ComputerState.IDLE;
                 }
+                break;
+            case DONE:
                 break;
         }
     }
@@ -73,6 +71,7 @@ public class C_Computer {
     private int getAffordable() {
         int i;
         for (i = 0; i < towerList.size() && money > towerList.get(i).getPrice(); i++) {
+            // Empty on purpose
         }
         return i;
     }
@@ -105,13 +104,13 @@ public class C_Computer {
         int index = tower.getRange() - 1;
 
         //if the list of suitable tile for that specific range is empty, cycle though the other range lists until theres a free spot
-        for (int offset = 0; topTiles.get(index).isEmpty() && offset < maxRange; offset++) {
-            index = (tower.getRange() - 1 + offset) % maxRange;
+        for (int offset = 0; topTiles.get(index).isEmpty() && offset < MAX_RANGE; offset++) {
+            index = (tower.getRange() - 1 + offset) % MAX_RANGE;
         }
 
         //if there still is no suitable spot, the whole map is filled with towers, so computer can chill
         if (topTiles.get(index).isEmpty()) {
-            computerState = CE_ComputerState.done;
+            computerState = CE_ComputerState.DONE;
             return;
         }
 

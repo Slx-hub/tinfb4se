@@ -1,8 +1,5 @@
 package de.codecrunch.view;
 
-import de.codecrunch.TowerAttackGame;
-import de.codecrunch.controller.C_Settings;
-
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
@@ -13,7 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
-import javax.xml.soap.Text;
+import de.codecrunch.TowerAttackGame;
+import de.codecrunch.controller.C_Settings;
 
 public class V_Settings extends VA_Screen {
 
@@ -34,33 +32,24 @@ public class V_Settings extends VA_Screen {
 
         final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, uiSkin);
         volumeMusicSlider.setValue(settings.getMusicVolume());
-        volumeMusicSlider.addListener(new EventListener() {
-            @Override
-            public boolean handle(Event event) {
-                settings.setMusicVolume(volumeMusicSlider.getValue());
-                return false;
-            }
+        volumeMusicSlider.addListener(event -> {
+            settings.setMusicVolume(volumeMusicSlider.getValue());
+            return false;
         });
 
         final Slider volumeSoundSlider = new Slider(0f, 1f, 0.1f, false, uiSkin);
         volumeSoundSlider.setValue(settings.getSoundVolume());
-        volumeSoundSlider.addListener(new EventListener() {
-            @Override
-            public boolean handle(Event event) {
-                settings.setSoundVolume(volumeSoundSlider.getValue());
-                return false;
-            }
+        volumeSoundSlider.addListener(event -> {
+            settings.setSoundVolume(volumeSoundSlider.getValue());
+            return false;
         });
 
         final CheckBox pushCheckbox = new CheckBox(null, uiSkin);
         pushCheckbox.setChecked(settings.isPushEnabled());
-        pushCheckbox.addListener(new EventListener() {
-            @Override
-            public boolean handle(Event event) {
-                boolean enabled = pushCheckbox.isChecked();
-                settings.setPushEnabled(enabled);
-                return false;
-            }
+        pushCheckbox.addListener(event -> {
+            boolean enabled = pushCheckbox.isChecked();
+            settings.setPushEnabled(enabled);
+            return false;
         });
 
         volumeMusicLabel = new Label("Music", uiSkin);
@@ -89,6 +78,6 @@ public class V_Settings extends VA_Screen {
 
     @Override
     public void show() {
-
+        // Empty on purpose
     }
 }

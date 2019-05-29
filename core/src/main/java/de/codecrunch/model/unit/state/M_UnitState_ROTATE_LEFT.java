@@ -11,9 +11,7 @@ public class M_UnitState_ROTATE_LEFT extends MA_UnitState {
         step *= rotationMultiplier;
         rotationToGo -= step;
         transform.rotate(Vector3.Y, step + (rotationToGo < 0 ? rotationToGo : 0));
-        if (rotationToGo <= 0)
-            return true;
-        return false;
+        return rotationToGo <= 0;
     }
 
     @Override

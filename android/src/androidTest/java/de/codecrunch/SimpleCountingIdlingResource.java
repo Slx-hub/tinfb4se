@@ -8,8 +8,8 @@ import static android.support.test.internal.util.Checks.checkNotNull;
 
 /**
  * An simple counter implementation of that determines idleness by
- * maintaining an internal counter. When the counter is 0 - it is considered to be idle, when it is
- * non-zero it is not idle. This is very similar to the way a Semaphore
+ * maintaining an internal counter. When the counter is 0 - it is considered to be IDLE, when it is
+ * non-zero it is not IDLE. This is very similar to the way a Semaphore
  * behaves.
  * This class can then be used to wrap up operations that while in progress should block tests from
  * accessing the UI.

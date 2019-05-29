@@ -40,7 +40,7 @@ public abstract class MA_Unit {
     }
 
     public void setSpeed(int speed) {
-        if (!(speed < 0)) {
+        if (speed >= 0) {
             this.speed = speed;
         }
     }
@@ -50,7 +50,7 @@ public abstract class MA_Unit {
     }
 
     public void setMaxLife(int maxLife) {
-        if (!(maxLife <= 0)) {
+        if (maxLife > 0) {
             this.maxLife = maxLife;
         }
     }
@@ -92,8 +92,8 @@ public abstract class MA_Unit {
     public void setPath(Iterator<M_Tile> iterator) {
         this.pathIterator = iterator;
         nextTile = pathIterator.next();
-        xPos = nextTile.x_pos;
-        yPos = nextTile.y_pos;
+        xPos = nextTile.xPos;
+        yPos = nextTile.yPos;
         setInitialPosition();
     }
 
@@ -114,7 +114,7 @@ public abstract class MA_Unit {
         boolean hasArrived = state.applyMovement(model.transform, speed * delta);
 
         if (hasArrived) {
-            // if he's done rotating, drive to the next tile
+            // if he's DONE rotating, drive to the next tile
             if (state.isRotating()) {
                 state = new M_UnitState_DRIVE_FORWARD();
                 return;
@@ -125,8 +125,8 @@ public abstract class MA_Unit {
                 nextTile = pathIterator.next();
 
             //update position and notify towers unit has arrived
-            xPos = nextTile.x_pos;
-            yPos = nextTile.y_pos;
+            xPos = nextTile.xPos;
+            yPos = nextTile.yPos;
             nextTile.unitEntered(this);
 
             if (!pathIterator.hasNext()) {
@@ -148,7 +148,7 @@ public abstract class MA_Unit {
     }
 
     private void setInitialPosition() {
-        model.transform.setTranslation(nextTile.x_pos * ME_TileState.tileDistance, 0f, nextTile.y_pos * ME_TileState.tileDistance);
+        model.transform.setTranslation(nextTile.xPos * ME_TileState.TILE_DISTANCE, 0f, nextTile.yPos * ME_TileState.TILE_DISTANCE);
         model.transform.rotate(Vector3.Y, nextTile.getTileRotation() - 90);
     }
 }

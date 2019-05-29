@@ -65,7 +65,9 @@ public class M_LevelSelect {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        map.inflate();
+        if(map!=null){
+            map.inflate();
+        }
         return map;
     }
 }

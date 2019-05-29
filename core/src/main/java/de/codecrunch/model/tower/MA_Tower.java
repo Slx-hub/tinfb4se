@@ -29,7 +29,7 @@ public abstract class MA_Tower {
         if (x < 0 || y < 0) return;
         x_pos = x;
         y_pos = y;
-        laserLine.setStart(new Vector3(x * ME_TileState.tileDistance, 1f, y * ME_TileState.tileDistance));
+        laserLine.setStart(new Vector3(x * ME_TileState.TILE_DISTANCE, 1f, y * ME_TileState.TILE_DISTANCE));
     }
 
     public int getX_pos() {

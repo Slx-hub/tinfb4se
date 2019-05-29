@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Editor;
+import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_Tile;
 
 public class V_Editor extends VA_Screen {
@@ -35,8 +36,8 @@ public class V_Editor extends VA_Screen {
 		uiTable.add(mapTable).colspan(4);
 
 		M_Tile[][] tiles = controller.getMap().getAllTiles();
-		for (int y = 0; y < controller.getMap().y_count; y++) {
-			for (int x = 0; x < controller.getMap().x_count; x++) {
+		for (int y = 0; y < M_Map.Y_COUNT; y++) {
+			for (int x = 0; x < M_Map.X_COUNT; x++) {
 				final M_Tile m_tile = tiles[x][y];
 				mapTable.add(m_tile).center();
 				m_tile.addListener(tileListener);
@@ -88,7 +89,7 @@ public class V_Editor extends VA_Screen {
 
 	@Override
 	public void show() {
-
+		// Empty on purpose
 	}
 
 }

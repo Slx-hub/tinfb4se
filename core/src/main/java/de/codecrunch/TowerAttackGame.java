@@ -29,12 +29,12 @@ public class TowerAttackGame extends Game {
     private V_EditorLevelSelect editorLevelSelectScreen;
 
 
-    public final static int SCREENID_GAME = 0;
-    public final static int SCREENID_GAMELVLSELECT = 1;
-    public final static int SCREENID_MENU = 2;
-    public final static int SCREENID_SETTINGS = 3;
-    public final static int SCREENID_EDITORLVLSELECT = 4;
-    public final static int SCREENID_EDITOR = 5;
+    public static final int SCREENID_GAME = 0;
+    public static final int SCREENID_GAMELVLSELECT = 1;
+    public static final int SCREENID_MENU = 2;
+    public static final int SCREENID_SETTINGS = 3;
+    public static final int SCREENID_EDITORLVLSELECT = 4;
+    public static final int SCREENID_EDITOR = 5;
 
 
     @Override
@@ -81,6 +81,8 @@ public class TowerAttackGame extends Game {
                 if (editorLevelSelectScreen == null)
                     editorLevelSelectScreen = new V_EditorLevelSelect(this);
                 currentScreen = editorLevelSelectScreen;
+                break;
+            default:
                 break;
         }
         if (changeTo) {

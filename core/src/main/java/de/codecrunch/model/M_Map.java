@@ -13,21 +13,21 @@ public class M_Map implements Serializable {
 	private M_Tile[][] tiles;
     private List<M_Tile> path;
     private String mapName = "";
-    public static final int x_count = 20;
-    public static final int y_count = 9;
+    public static final int X_COUNT = 20;
+    public static final int Y_COUNT = 9;
 
     public M_Map() {
-        tiles = new M_Tile[x_count][y_count];
-        for (int i = 0; i < x_count; i++) {
-            for (int j = 0; j < y_count; j++) {
+        tiles = new M_Tile[X_COUNT][Y_COUNT];
+        for (int i = 0; i < X_COUNT; i++) {
+            for (int j = 0; j < Y_COUNT; j++) {
                 tiles[i][j] = new M_Tile(ME_TileState.EMPTY, i, j, 0);
             }
         }
     }
 
     public void foreachTile(Consumer<M_Tile> consumer) {
-        for (int i = 0; i < x_count; i++) {
-            for (int j = 0; j < y_count; j++) {
+        for (int i = 0; i < X_COUNT; i++) {
+            for (int j = 0; j < Y_COUNT; j++) {
                 consumer.accept(tiles[i][j]);
             }
         }
@@ -62,20 +62,10 @@ public class M_Map implements Serializable {
     }
 
     public void deflate() {
-        foreachTile(new Consumer<M_Tile>() {
-            @Override
-            public void accept(M_Tile m_tile) {
-                m_tile.deflate();
-            }
-        });
+        foreachTile(M_Tile::deflate);
     }
 
     public void inflate() {
-        foreachTile(new Consumer<M_Tile>() {
-            @Override
-            public void accept(M_Tile m_tile) {
-                m_tile.inflate();
-            }
-        });
+        foreachTile(M_Tile::inflate);
     }
 }
