@@ -1,12 +1,11 @@
 package de.codecrunch.model;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Consumer;
-
 import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class M_RenderBatch extends ModelBatch {
 	private List<ModelInstance> elements = new LinkedList<>();
@@ -14,7 +13,8 @@ public class M_RenderBatch extends ModelBatch {
 	public void renderAll(Environment environment) {
 		elements.forEach(instance -> render(instance, environment));
 	}
-	
+
+	///TODO ask SlaxXxX "why?" --- should already be inherited without @Override
 	@Override
 	public void dispose() {
 		super.dispose();

@@ -12,7 +12,8 @@ import de.codecrunch.model.unit.MA_Unit;
 
 public abstract class MA_Tower {
 
-    protected int x_pos, y_pos;
+    protected int xPos;
+    protected int yPos;
     protected ModelInstance model;
     protected ME_TowerState state = ME_TowerState.RELOAD;
     protected MA_Unit unitAimingAt;
@@ -27,17 +28,17 @@ public abstract class MA_Tower {
 
     public void setPos(int x, int y) {
         if (x < 0 || y < 0) return;
-        x_pos = x;
-        y_pos = y;
+        xPos = x;
+        yPos = y;
         laserLine.setStart(new Vector3(x * ME_TileState.TILE_DISTANCE, 1f, y * ME_TileState.TILE_DISTANCE));
     }
 
-    public int getX_pos() {
-        return x_pos;
+    public int getXPos() {
+        return xPos;
     }
 
-    public int getY_pos() {
-        return y_pos;
+    public int getYPos() {
+        return yPos;
     }
 
     public abstract float getReloadTime();
@@ -61,8 +62,8 @@ public abstract class MA_Tower {
                 break;
             case SHOOT:
                 if (unitAimingAt != null && (unitAimingAt.isDead()
-                        || Math.abs(x_pos - unitAimingAt.getXTile()) > getRange()
-                        || Math.abs(y_pos - unitAimingAt.getYTile()) > getRange()))
+                        || Math.abs(xPos - unitAimingAt.getXTile()) > getRange()
+                        || Math.abs(yPos - unitAimingAt.getYTile()) > getRange()))
                     unitAimingAt = null;
 
                 if (unitAimingAt == null)

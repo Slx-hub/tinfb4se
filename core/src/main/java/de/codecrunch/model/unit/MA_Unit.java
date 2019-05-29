@@ -16,7 +16,8 @@ import de.codecrunch.model.unit.state.M_UnitState_ROTATE_RIGHT;
 
 public abstract class MA_Unit {
 
-    private int xPos = 0, yPos = 0;
+    private int xPos = 0;
+    private int yPos = 0;
     private int speed;
     private int maxLife;
     private int currentLife;

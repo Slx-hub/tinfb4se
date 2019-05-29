@@ -8,7 +8,14 @@ import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.utils.UBJsonReader;
 
 public class Model3DFactory {
-    public static Model empty,end,start,path_straight,path_corner,path_cross,path_split_right,path_split_left;
+    public static Model empty;
+    public static Model end;
+    public static Model start;
+    public static Model path_straight;
+    public static Model path_corner;
+    public static Model path_cross;
+    public static Model path_split_right;
+    public static Model path_split_left;
     private static G3dModelLoader modelLoader = new G3dModelLoader(new UBJsonReader());
 
     private Model3DFactory(){}
