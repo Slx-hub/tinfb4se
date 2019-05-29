@@ -60,7 +60,9 @@ public abstract class MA_Tower {
                     state = ME_TowerState.SHOOT;
                 break;
             case SHOOT:
-                if (unitAimingAt != null && unitAimingAt.isDead())
+                if (unitAimingAt != null && (unitAimingAt.isDead()
+                        || Math.abs(x_pos - unitAimingAt.getXTile()) > getRange()
+                        || Math.abs(y_pos - unitAimingAt.getYTile()) > getRange()))
                     unitAimingAt = null;
 
                 if (unitAimingAt == null)

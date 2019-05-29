@@ -16,10 +16,11 @@ import de.codecrunch.model.unit.state.M_UnitState_ROTATE_RIGHT;
 
 public abstract class MA_Unit {
 
+    private int xPos = 0, yPos = 0;
     private int speed;
     private int maxLife;
     private int currentLife;
-    private M_Tile currentTile;
+    private M_Tile nextTile;
     private Iterator<M_Tile> pathIterator;
     protected ModelInstance model;
     protected MA_UnitState state = new M_UnitState_IDLE();
@@ -58,7 +59,9 @@ public abstract class MA_Unit {
         return currentLife;
     }
 
-    public boolean isDead() {return currentLife <= 0;}
+    public boolean isDead() {
+        return currentLife <= 0;
+    }
 
     public void setCurrentLife(int currentLife) {
         if (this.maxLife < currentLife) {
@@ -88,10 +91,22 @@ public abstract class MA_Unit {
 
     public void setPath(Iterator<M_Tile> iterator) {
         this.pathIterator = iterator;
+        nextTile = pathIterator.next();
+        xPos = nextTile.x_pos;
+        yPos = nextTile.y_pos;
+        setInitialPosition();
     }
 
     public void tick(float delta) {
         move(delta);
+    }
+
+    public int getXTile() {
+        return xPos;
+    }
+
+    public int getYTile() {
+        return yPos;
     }
 
     public void move(float delta) {
@@ -102,24 +117,24 @@ public abstract class MA_Unit {
             // if he's done rotating, drive to the next tile
             if (state.isRotating()) {
                 state = new M_UnitState_DRIVE_FORWARD();
-                //setUnitToTileRotation();
                 return;
             }
-            //next tile
-            currentTile = pathIterator.next();
+
+            //next tile (temporary fix)
+            if (!state.isIdle())
+                nextTile = pathIterator.next();
+
+            //update position and notify towers unit has arrived
+            xPos = nextTile.x_pos;
+            yPos = nextTile.y_pos;
+            nextTile.unitEntered(this);
 
             if (!pathIterator.hasNext()) {
                 state = new M_UnitState_DONE();
                 return;
             }
 
-            if (state.isIdle()) {
-                setInitialPosition();
-            }
-
-            currentTile.unitEntered(this);
-
-            switch (currentTile.getTileState()) {
+            switch (nextTile.getTileState()) {
                 case PATH_LEFT:
                     state = new M_UnitState_ROTATE_LEFT();
                     break;
@@ -133,7 +148,7 @@ public abstract class MA_Unit {
     }
 
     private void setInitialPosition() {
-        model.transform.setTranslation(currentTile.x_pos * ME_TileState.tileDistance, 0f, currentTile.y_pos * ME_TileState.tileDistance);
-        model.transform.rotate(Vector3.Y, currentTile.getTileRotation() - 90);
+        model.transform.setTranslation(nextTile.x_pos * ME_TileState.tileDistance, 0f, nextTile.y_pos * ME_TileState.tileDistance);
+        model.transform.rotate(Vector3.Y, nextTile.getTileRotation() - 90);
     }
 }

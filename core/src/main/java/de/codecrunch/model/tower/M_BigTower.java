@@ -8,7 +8,7 @@ public class M_BigTower extends MA_Tower {
 
 	@Override
 	public float getReloadTime() {
-		return 6;
+		return 5;
 	}
 
 	@Override
