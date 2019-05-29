@@ -26,7 +26,7 @@ public class M_HealFountain extends MA_Unit {
     }
 
     public void setHealRadius(int healRadius) {
-        if (!(healRadius<=0)){
+        if (healRadius>0){
             this.healRadius = healRadius;
         }
     }
@@ -36,7 +36,7 @@ public class M_HealFountain extends MA_Unit {
     }
 
     public void setHealingPerSecond(int healingPerSecond) {
-        if (!(healingPerSecond<=0)){
+        if (healingPerSecond>0){
             this.healingPerSecond = healingPerSecond;
         }
     }

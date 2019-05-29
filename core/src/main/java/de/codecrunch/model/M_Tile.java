@@ -12,7 +12,8 @@ import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
 
 public class M_Tile extends Container<Image> implements Serializable {
-    public final int x_pos, y_pos;
+    public final int xPos;
+    public final int yPos;
 
     private transient ME_TileState state;
     //for serialization
@@ -22,10 +23,10 @@ public class M_Tile extends Container<Image> implements Serializable {
     private transient Image editorImage;
     private transient Set<MA_Tower> towersInRange;
 
-    public M_Tile(ME_TileState state, int x_pos, int y_pos, int rotation) {
+    public M_Tile(ME_TileState state, int xPos, int yPos, int rotation) {
         this.state = state;
-        this.x_pos = x_pos;
-        this.y_pos = y_pos;
+        this.xPos = xPos;
+        this.yPos = yPos;
         this.tileRotation = rotation;
     }
 
@@ -56,11 +57,12 @@ public class M_Tile extends Container<Image> implements Serializable {
     }
 
     public void updateGameModel() {
-        gameModel = state.getGameModel(tileRotation, x_pos, y_pos);
+        gameModel = state.getGameModel(tileRotation, xPos, yPos);
     }
 
+    @Override
     public String toString() {
-        return "[" + x_pos + "," + y_pos + "]";
+        return "[" + xPos + "," + yPos + "]";
     }
 
     public void deflate() {

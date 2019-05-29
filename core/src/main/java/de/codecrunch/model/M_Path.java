@@ -81,12 +81,7 @@ public class M_Path<T> {
 
     public M_Path<T> addFromList(List<T> list) {
         if (!list.isEmpty())
-            list.forEach(new Consumer<T>() {
-                @Override
-                public void accept(T d) {
-                    M_Path.this.addFront(d);
-                }
-            });
+            list.forEach(M_Path.this::addFront);
         return this;
     }
 

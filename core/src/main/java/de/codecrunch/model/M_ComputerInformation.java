@@ -25,7 +25,7 @@ public class M_ComputerInformation {
     }
 
     public void init(M_Map map) {
-        pcpr = new byte[C_Computer.maxRange][M_Map.x_count][M_Map.y_count];
+        pcpr = new byte[C_Computer.MAX_RANGE][M_Map.X_COUNT][M_Map.Y_COUNT];
         updateDistancePathCount(map);
     }
 
@@ -39,8 +39,8 @@ public class M_ComputerInformation {
         //if empty, go around in the specified radius and have a look how many tiles of the PATH group are in there.
         //the PATHs in range will be counted and later sorted, to find the best tiles to place a turret on
         for (int distance = 1; distance <= pcpr.length; distance++) {
-            for (int y = 0; y < M_Map.y_count; y++) {
-                for (int x = 0; x < M_Map.x_count; x++) {
+            for (int y = 0; y < M_Map.Y_COUNT; y++) {
+                for (int x = 0; x < M_Map.X_COUNT; x++) {
                     //if this spot is occupied, set the path count to -1 so it falls out of later comparison
                     if (map.getTile(x, y).getTileState().getGroup() != ME_TileState.ME_TileStateGroup.EMPTY)
                         pcpr[distance - 1][x][y] = -1;
@@ -53,11 +53,8 @@ public class M_ComputerInformation {
                             pcpr[distance - 1][x][y] += countPaths(map, x, y, distance, offset);
                         }
                     }
-                    //System.out.printf("%02d ", pcpr[distance - 1][x][y]);
                 }
-                //System.out.println();
             }
-            //System.out.println();
         }
         findTopTiles();
     }
@@ -90,7 +87,7 @@ public class M_ComputerInformation {
      * @return
      */
     private byte addIfPath(M_Map map, int x, int y) {
-        if (x > 0 && x < M_Map.x_count && y > 0 && y < M_Map.y_count && map.getTile(x, y).getTileState().getGroup() == ME_TileState.ME_TileStateGroup.PATH)
+        if (x > 0 && x < M_Map.X_COUNT && y > 0 && y < M_Map.Y_COUNT && map.getTile(x, y).getTileState().getGroup() == ME_TileState.ME_TileStateGroup.PATH)
             return 1;
         else
             return 0;
@@ -101,11 +98,11 @@ public class M_ComputerInformation {
      */
     private void findTopTiles() {
         topTiles = new ArrayList<TreeSet<TowerTile>>();
-        for (int range = 1; range <= C_Computer.maxRange; range++) {
+        for (int range = 1; range <= C_Computer.MAX_RANGE; range++) {
             TreeSet<TowerTile> topTileSet = new TreeSet<>();
             topTiles.add(topTileSet);
-            for (int y = 0; y < M_Map.y_count; y++) {
-                for (int x = 0; x < M_Map.x_count; x++) {
+            for (int y = 0; y < M_Map.Y_COUNT; y++) {
+                for (int x = 0; x < M_Map.X_COUNT; x++) {
                     if (pcpr[range - 1][x][y] < 0)
                         continue;
                     if (topTileSet.size() < 10 || pcpr[range - 1][x][y] > topTileSet.first().count) {
@@ -116,7 +113,6 @@ public class M_ComputerInformation {
                 }
             }
         }
-        //topTiles.forEach(set -> System.out.println(set.stream().map(tile -> tile.toString()).collect(Collectors.joining(" , "))));
     }
 
     /**
@@ -131,7 +127,7 @@ public class M_ComputerInformation {
             this.x = x;
             this.y = y;
             //this score avoids turrets having equal scores for comparison by taking the map position into account
-            score = count * M_Map.y_count * M_Map.x_count + y * M_Map.x_count + x;
+            score = count * M_Map.Y_COUNT * M_Map.X_COUNT + y * M_Map.X_COUNT + x;
         }
 
         @Override

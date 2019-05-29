@@ -12,12 +12,7 @@ public class M_RenderBatch extends ModelBatch {
 	private List<ModelInstance> elements = new LinkedList<>();
 	
 	public void renderAll(Environment environment) {
-		elements.forEach(new Consumer<ModelInstance>() {
-			@Override
-			public void accept(ModelInstance instance) {
-				render(instance, environment);
-			}
-		});
+		elements.forEach(instance -> render(instance, environment));
 	}
 	
 	@Override

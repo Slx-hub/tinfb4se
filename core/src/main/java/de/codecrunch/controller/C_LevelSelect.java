@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.M_LevelSelect;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.view.VA_LevelSelect;

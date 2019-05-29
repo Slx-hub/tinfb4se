@@ -21,11 +21,11 @@ import android.support.test.espresso.IdlingResource;
  *     mRepository.getData(new LoadDataCallback() {
  *         @Override
  *         public void onDataLoaded(Data data) {
- *             // now that the data has been loaded, we can mark the app as idle
+ *             // now that the data has been loaded, we can mark the app as IDLE
  *             // first, make sure the app is still marked as busy then decrement, there might be cases
- *             // when other components finished their asynchronous tasks and marked the app as idle
+ *             // when other components finished their asynchronous tasks and marked the app as IDLE
  *             if (!EspressoIdlingResource.getIdlingResource().isIdleNow()) {
- *                 EspressoIdlingResource.decrement(); // Set app as idle.
+ *                 EspressoIdlingResource.decrement(); // Set app as IDLE.
  *             }
  *             processData(data);
  *         }
@@ -43,14 +43,14 @@ import android.support.test.espresso.IdlingResource;
  *
  * At the completion of the action, notify Espresso that it can resume its tests:
  *
- * EspressoIdlingResource.decrement(); // Set app as idle.
+ * EspressoIdlingResource.decrement(); // Set app as IDLE.
  *
  * ------------------------------------------------------------------------------------------------
  *
  * In addition we need to set up the implementation of EspressoIdlingResource
  * in every test that targets components where Espresso has been notified.
  *
- * This can be done by simply adding these lines when preparing test fixtures:
+ * This can be DONE by simply adding these lines when preparing test fixtures:
  *
  * // Register your Idling Resource before any tests regarding this component
  * @Before
