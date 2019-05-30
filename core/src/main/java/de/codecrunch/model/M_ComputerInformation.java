@@ -41,25 +41,41 @@ public class M_ComputerInformation {
         for (int distance = 1; distance <= pcpr.length; distance++) {
             for (int y = 0; y < M_Map.Y_COUNT; y++) {
                 for (int x = 0; x < M_Map.X_COUNT; x++) {
-                    method(map, x, y, distance);
+                    fillPCPR(map, x, y, distance);
                 }
             }
         }
         findTopTiles();
     }
 
-    ///TODO temporary refactoring stuff --- renameing needed
-    private void method(M_Map map, int x, int y, int distance) {
+    /**
+     * fills the PCPR with Data
+     * extracted from "updateDistancePathCount()" trying to get less complexity
+     *
+     * @param map
+     * @param x
+     * @param y
+     * @param distance
+     */
+    private void fillPCPR(M_Map map, int x, int y, int distance) {
         //if this spot is occupied, set the path count to -1 so it falls out of later comparison
         if (map.getTile(x, y).getTileState().getGroup() != ME_TileState.ME_TileStateGroup.EMPTY)
             pcpr[distance - 1][x][y] = -1;
         else {
-            method2(map, x, y, distance);
+            addNotOccupiedSpotsToPCPR(map, x, y, distance);
         }
     }
 
-    ///TODO temporary refactoring stuff --- renameing needed
-    private void method2(M_Map map, int x, int y, int distance) {
+    /**
+     * adds Spots to PCPR that are not already occupied
+     * extracted from "fillPCPR()" trying to get less complexity
+     *
+     * @param map
+     * @param x
+     * @param y
+     * @param distance
+     */
+    private void addNotOccupiedSpotsToPCPR(M_Map map, int x, int y, int distance) {
         //if the distance is > 1 there has been a pathcount noted for distance-1 so take that result and add the new ones to it
         if (distance > 1)
             pcpr[distance - 1][x][y] = pcpr[distance - 2][x][y];
@@ -115,14 +131,22 @@ public class M_ComputerInformation {
                 for (int x = 0; x < M_Map.X_COUNT; x++) {
                     if (pcpr[range - 1][x][y] < 0)
                         continue;
-                    method3(range, x, y, topTileSet);
+                    addTopTileToTopTileSet(range, x, y, topTileSet);
                 }
             }
         }
     }
 
-    ///TODO temporary refactoring stuff --- renameing needed
-    private void method3(int range, int x, int y, TreeSet<TowerTile> topTileSet) {
+    /**
+     * adds a new fitting TowerTile to the given TileSet with TopTiles
+     * extracted from "findTopTiles()" trying to get less complexity
+     * 
+     * @param range
+     * @param x
+     * @param y
+     * @param topTileSet
+     */
+    private void addTopTileToTopTileSet(int range, int x, int y, TreeSet<TowerTile> topTileSet) {
         if (topTileSet.size() < 10 || pcpr[range - 1][x][y] > topTileSet.first().count) {
             if (topTileSet.size() >= 10)
                 topTileSet.remove(topTileSet.first());

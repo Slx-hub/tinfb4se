@@ -123,7 +123,7 @@ public class V_Game extends VA_Screen {
         Gdx.gl20.glLineWidth(5);
         laserRenderer.setColor(1, 0, 1, 1);
         for (MA_Tower.LineCoordinates coord : laserLines)
-            if (coord.render)
+            if (coord.isRender())
                 laserRenderer.line(coord.getStart(), coord.getEnd());
         laserRenderer.end();
 

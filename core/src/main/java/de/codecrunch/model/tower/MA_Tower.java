@@ -75,7 +75,7 @@ public abstract class MA_Tower {
                 currentWaitTime -= delta;
                 setLaserEndOnUnit();
                 if (currentWaitTime <= 0) {
-                    laserLine.render = false;
+                    laserLine.setRender(false);
                     currentWaitTime = getReloadTime();
                     state = ME_TowerState.RELOAD;
                 }
@@ -85,7 +85,7 @@ public abstract class MA_Tower {
 
     private void shoot() {
         unitAimingAt.takeDamage(this.getDamage());
-        laserLine.render = true;
+        laserLine.setRender(true);
         setLaserEndOnUnit();
         state = ME_TowerState.WAITFORBULLET;
         currentWaitTime = getReloadTime() / 10;
@@ -114,7 +114,7 @@ public abstract class MA_Tower {
     }
 
     public class LineCoordinates {
-        public boolean render = false;
+        private boolean render = false;
         private Vector3 start = new Vector3();
         private Vector3 end = new Vector3();
 
@@ -132,6 +132,14 @@ public abstract class MA_Tower {
 
         public Vector3 getEnd() {
             return end;
+        }
+
+        public boolean isRender() {
+            return render;
+        }
+
+        public void setRender(boolean render) {
+            this.render = render;
         }
     }
 }

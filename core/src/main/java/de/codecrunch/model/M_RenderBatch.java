@@ -13,12 +13,6 @@ public class M_RenderBatch extends ModelBatch {
 	public void renderAll(Environment environment) {
 		elements.forEach(instance -> render(instance, environment));
 	}
-
-	///TODO ask SlaxXxX "why?" --- should already be inherited without @Override
-	@Override
-	public void dispose() {
-		super.dispose();
-	}
 	
 	public void addElement(ModelInstance element) {
 		elements.add(element);
