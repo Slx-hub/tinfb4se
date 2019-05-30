@@ -180,10 +180,10 @@ public enum ME_TileState {
 		return editorImage;
 	}
 
-	public ModelInstance getGameModel(int rotation, int x_pos, int y_pos) {
+	public ModelInstance getGameModel(int rotation, int xPos, int yPos) {
 		ModelInstance gameModel = getModel();
 		gameModel.transform.rotate(Vector3.Y, rotation);
-		gameModel.transform.setTranslation(x_pos * TILE_DISTANCE, 0, y_pos * TILE_DISTANCE);
+		gameModel.transform.setTranslation(xPos * TILE_DISTANCE, 0, yPos * TILE_DISTANCE);
 		return gameModel;
 	}
 

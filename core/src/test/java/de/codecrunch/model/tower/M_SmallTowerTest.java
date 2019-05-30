@@ -23,7 +23,7 @@ public class M_SmallTowerTest{
     public void setPos_canBeChanged_positionShouldBeChanged() {
         tower.setPos(1,2);
         int[] expected = {1,2};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 
@@ -32,7 +32,7 @@ public class M_SmallTowerTest{
     public void setPos_canBeZeroZero_positionShouldBeZeroZero() {
         tower.setPos(0,0);
         int[] expected = {0,0};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 
@@ -40,7 +40,7 @@ public class M_SmallTowerTest{
     public void setPos_canNotBeNegativeAtX_positionShouldBeUnchanged() {
         tower.setPos(-1,2);
         int[] expected = {0,0};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 
@@ -48,7 +48,7 @@ public class M_SmallTowerTest{
     public void setPos_canNotBeNegativeAtY_positionShouldBeUnchanged() {
         tower.setPos(1,-2);
         int[] expected = {0,0};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 }

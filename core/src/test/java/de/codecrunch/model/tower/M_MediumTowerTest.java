@@ -22,7 +22,7 @@ public class M_MediumTowerTest {
         MA_Tower tower = new M_MediumTower();
         tower.setPos(1,2);
         int[] expected = {1,2};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 
@@ -31,7 +31,7 @@ public class M_MediumTowerTest {
         MA_Tower tower = new M_MediumTower();
         tower.setPos(0,0);
         int[] expected = {0,0};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 
@@ -40,7 +40,7 @@ public class M_MediumTowerTest {
         MA_Tower tower = new M_MediumTower();
         tower.setPos(-1,2);
         int[] expected = {0,0};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 
@@ -49,7 +49,7 @@ public class M_MediumTowerTest {
         MA_Tower tower = new M_MediumTower();
         tower.setPos(1,-2);
         int[] expected = {0,0};
-        int[] actual = {tower.getX_pos(), tower.getY_pos()};
+        int[] actual = {tower.getXPos(), tower.getYPos()};
         assertArrayEquals(expected, actual);
     }
 }

@@ -25,11 +25,11 @@ import de.codecrunch.model.tower.MA_Tower;
 
 public class V_Game extends VA_Screen {
 
-    private static final float camDistance = 44.8f;//26.3
-    private static final float camLower = 20.3f;//20.3
-    private static final float camUpper = 169.7f;//169.7
-    private static final float mapMiddle = 40f;//40
-    private static final float mapBrightness = 1f;
+    private static final float CAM_DISTANCE = 44.8f;//26.3
+    private static final float CAM_LOWER = 20.3f;//20.3
+    private static final float CAM_UPPER = 169.7f;//169.7
+    private static final float MAP_MIDDLE = 40f;//40
+    private static final float MAP_BRIGHTNESS = 1f;
 
     private TowerAttackGame game;
     private String levelName;
@@ -62,13 +62,13 @@ public class V_Game extends VA_Screen {
                 Gdx.graphics.getHeight());
 
         camera.direction.set(0.0001f, -1f, 0f);
-        camera.position.set(camLower, camDistance, mapMiddle);
+        camera.position.set(CAM_LOWER, CAM_DISTANCE, MAP_MIDDLE);
         camera.near = 0.1f;
         camera.far = 120.0f;
         camera.update();
         hudBatch.setProjectionMatrix(stage.getCamera().combined);
         vHud = new V_HUD(controller, stage, levelName, user, game);
-        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, mapBrightness, mapBrightness, mapBrightness, 1.0f));
+        environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
         return vHud;
     }
 
@@ -123,7 +123,7 @@ public class V_Game extends VA_Screen {
         Gdx.gl20.glLineWidth(5);
         laserRenderer.setColor(1, 0, 1, 1);
         for (MA_Tower.LineCoordinates coord : laserLines)
-            if (coord.render)
+            if (coord.isRender())
                 laserRenderer.line(coord.getStart(), coord.getEnd());
         laserRenderer.end();
 
@@ -138,13 +138,13 @@ public class V_Game extends VA_Screen {
     }
 
     private boolean limitCamera() {
-        if (camera.position.x > camUpper) {
-            camera.position.set(camUpper, camera.position.y, camera.position.z);
+        if (camera.position.x > CAM_UPPER) {
+            camera.position.set(CAM_UPPER, camera.position.y, camera.position.z);
             cameraMotion = 0f;
             return false;
         }
-        if (camera.position.x < camLower) {
-            camera.position.set(camLower, camera.position.y, camera.position.z);
+        if (camera.position.x < CAM_LOWER) {
+            camera.position.set(CAM_LOWER, camera.position.y, camera.position.z);
             cameraMotion = 0f;
             return false;
         }

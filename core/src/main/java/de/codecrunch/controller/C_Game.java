@@ -6,14 +6,11 @@ import com.badlogic.gdx.utils.Timer.Task;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Consumer;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.ME_TileState;
-import de.codecrunch.model.M_Game;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_RenderBatch;
-import de.codecrunch.model.M_Tile;
 import de.codecrunch.model.M_User;
 import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
@@ -21,7 +18,6 @@ import de.codecrunch.view.V_Game;
 import de.codecrunch.view.V_HUD;
 
 public class C_Game {
-    private M_Game model = new M_Game();
     private M_User user = new M_User();
     private V_HUD hud;
     private C_Computer computer = new C_Computer(this);
