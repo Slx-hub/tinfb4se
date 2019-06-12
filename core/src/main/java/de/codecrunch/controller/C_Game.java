@@ -43,12 +43,9 @@ public class C_Game {
 
     public void start() {
         M_RenderBatch mapBatch = view.getMapBatch();
-        map.foreachTile(new Consumer<M_Tile>() {
-            @Override
-            public void accept(M_Tile t) {
-                t.updateGameModel();
-                mapBatch.addElement(t.getGameModel());
-            }
+        map.foreachTile(t -> {
+            t.updateGameModel();
+            mapBatch.addElement(t.getGameModel());
         });
 
         Timer.instance().scheduleTask(new Task() {

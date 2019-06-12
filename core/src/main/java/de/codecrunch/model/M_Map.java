@@ -6,10 +6,10 @@ import java.util.function.Consumer;
 
 public class M_Map implements Serializable {
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -3304573725417148782L;
-	
+
 	private M_Tile[][] tiles;
     private List<M_Tile> path;
     private String mapName = "";
