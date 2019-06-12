@@ -122,6 +122,7 @@ The game should run smoothly without stuttering on not only the latest devices.
 ### <a name="3.5.1 Android">3.5.1 Android</a>
 
 Android is a commonly used OS primarily for mobile devices.
+Tested and developed for Android version 8.1 and higher.
 
 ### <a name="3.5.2 PC">3.5.2 PC</a>
 

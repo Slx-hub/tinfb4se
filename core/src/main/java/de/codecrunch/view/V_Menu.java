@@ -62,6 +62,6 @@ public class V_Menu extends VA_Screen {
 
     @Override
     public void show() {
-
+        // Empty on purpose
     }
 }

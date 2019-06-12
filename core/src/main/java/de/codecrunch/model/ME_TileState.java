@@ -75,8 +75,7 @@ public enum ME_TileState {
 	PATH_STRAIGHT {
 		@Override
 		protected Image getImage() {
-			Image image = new Image(new Texture("tiles/textures/path_straight.png"));
-			return image;
+			return new Image(new Texture("tiles/textures/path_straight.png"));
 		}
 
 		@Override
@@ -115,8 +114,7 @@ public enum ME_TileState {
 
 		@Override
 		protected ModelInstance getModel() {
-			ModelInstance instance = Model3DFactory.instantiate(Model3DFactory.path_corner);
-			return instance;
+			return Model3DFactory.instantiate(Model3DFactory.path_corner);
 		}
 		
 		@Override
@@ -173,7 +171,7 @@ public enum ME_TileState {
 		}
 	};
 
-	public final static float tileDistance = 10f;
+	public static final float TILE_DISTANCE = 10f;
 
 	public Image getEditorImage(int rotation) {
 		Image editorImage = getImage();
@@ -182,10 +180,10 @@ public enum ME_TileState {
 		return editorImage;
 	}
 
-	public ModelInstance getGameModel(int rotation, int x_pos, int y_pos) {
+	public ModelInstance getGameModel(int rotation, int xPos, int yPos) {
 		ModelInstance gameModel = getModel();
 		gameModel.transform.rotate(Vector3.Y, rotation);
-		gameModel.transform.setTranslation(x_pos * tileDistance, 0, y_pos * tileDistance);
+		gameModel.transform.setTranslation(xPos * TILE_DISTANCE, 0, yPos * TILE_DISTANCE);
 		return gameModel;
 	}
 

@@ -25,7 +25,7 @@ public class M_ComputerInformation {
     }
 
     public void init(M_Map map) {
-        pcpr = new byte[C_Computer.maxRange][M_Map.x_count][M_Map.y_count];
+        pcpr = new byte[C_Computer.MAX_RANGE][M_Map.X_COUNT][M_Map.Y_COUNT];
         updateDistancePathCount(map);
     }
 
@@ -39,27 +39,50 @@ public class M_ComputerInformation {
         //if empty, go around in the specified radius and have a look how many tiles of the PATH group are in there.
         //the PATHs in range will be counted and later sorted, to find the best tiles to place a turret on
         for (int distance = 1; distance <= pcpr.length; distance++) {
-            for (int y = 0; y < M_Map.y_count; y++) {
-                for (int x = 0; x < M_Map.x_count; x++) {
-                    //if this spot is occupied, set the path count to -1 so it falls out of later comparison
-                    if (map.getTile(x, y).getTileState().getGroup() != ME_TileState.ME_TileStateGroup.EMPTY)
-                        pcpr[distance - 1][x][y] = -1;
-                    else {
-                        //if the distance is > 1 there has been a pathcount noted for distance-1 so take that result and add the new ones to it
-                        if (distance > 1)
-                            pcpr[distance - 1][x][y] = pcpr[distance - 2][x][y];
-
-                        for (int offset = 0; offset < distance * 2; offset++) {
-                            pcpr[distance - 1][x][y] += countPaths(map, x, y, distance, offset);
-                        }
-                    }
-                    //System.out.printf("%02d ", pcpr[distance - 1][x][y]);
+            for (int y = 0; y < M_Map.Y_COUNT; y++) {
+                for (int x = 0; x < M_Map.X_COUNT; x++) {
+                    fillPCPR(map, x, y, distance);
                 }
-                //System.out.println();
             }
-            //System.out.println();
         }
         findTopTiles();
+    }
+
+    /**
+     * fills the PCPR with Data
+     * extracted from "updateDistancePathCount()" trying to get less complexity
+     *
+     * @param map
+     * @param x
+     * @param y
+     * @param distance
+     */
+    private void fillPCPR(M_Map map, int x, int y, int distance) {
+        //if this spot is occupied, set the path count to -1 so it falls out of later comparison
+        if (map.getTile(x, y).getTileState().getGroup() != ME_TileState.ME_TileStateGroup.EMPTY)
+            pcpr[distance - 1][x][y] = -1;
+        else {
+            addNotOccupiedSpotsToPCPR(map, x, y, distance);
+        }
+    }
+
+    /**
+     * adds Spots to PCPR that are not already occupied
+     * extracted from "fillPCPR()" trying to get less complexity
+     *
+     * @param map
+     * @param x
+     * @param y
+     * @param distance
+     */
+    private void addNotOccupiedSpotsToPCPR(M_Map map, int x, int y, int distance) {
+        //if the distance is > 1 there has been a pathcount noted for distance-1 so take that result and add the new ones to it
+        if (distance > 1)
+            pcpr[distance - 1][x][y] = pcpr[distance - 2][x][y];
+
+        for (int offset = 0; offset < distance * 2; offset++) {
+            pcpr[distance - 1][x][y] += countPaths(map, x, y, distance, offset);
+        }
     }
 
     /**
@@ -90,7 +113,7 @@ public class M_ComputerInformation {
      * @return
      */
     private byte addIfPath(M_Map map, int x, int y) {
-        if (x > 0 && x < M_Map.x_count && y > 0 && y < M_Map.y_count && map.getTile(x, y).getTileState().getGroup() == ME_TileState.ME_TileStateGroup.PATH)
+        if (x > 0 && x < M_Map.X_COUNT && y > 0 && y < M_Map.Y_COUNT && map.getTile(x, y).getTileState().getGroup() == ME_TileState.ME_TileStateGroup.PATH)
             return 1;
         else
             return 0;
@@ -100,23 +123,35 @@ public class M_ComputerInformation {
      * analyzes pcpr and filters out the top candidates for each range to save them in topTiles
      */
     private void findTopTiles() {
-        topTiles = new ArrayList<TreeSet<TowerTile>>();
-        for (int range = 1; range <= C_Computer.maxRange; range++) {
+        topTiles = new ArrayList<>();
+        for (int range = 1; range <= C_Computer.MAX_RANGE; range++) {
             TreeSet<TowerTile> topTileSet = new TreeSet<>();
             topTiles.add(topTileSet);
-            for (int y = 0; y < M_Map.y_count; y++) {
-                for (int x = 0; x < M_Map.x_count; x++) {
+            for (int y = 0; y < M_Map.Y_COUNT; y++) {
+                for (int x = 0; x < M_Map.X_COUNT; x++) {
                     if (pcpr[range - 1][x][y] < 0)
                         continue;
-                    if (topTileSet.size() < 10 || pcpr[range - 1][x][y] > topTileSet.first().count) {
-                        if (topTileSet.size() >= 10)
-                            topTileSet.remove(topTileSet.first());
-                        topTileSet.add(new TowerTile(pcpr[range - 1][x][y], x, y));
-                    }
+                    addTopTileToTopTileSet(range, x, y, topTileSet);
                 }
             }
         }
-        //topTiles.forEach(set -> System.out.println(set.stream().map(tile -> tile.toString()).collect(Collectors.joining(" , "))));
+    }
+
+    /**
+     * adds a new fitting TowerTile to the given TileSet with TopTiles
+     * extracted from "findTopTiles()" trying to get less complexity
+     * 
+     * @param range
+     * @param x
+     * @param y
+     * @param topTileSet
+     */
+    private void addTopTileToTopTileSet(int range, int x, int y, TreeSet<TowerTile> topTileSet) {
+        if (topTileSet.size() < 10 || pcpr[range - 1][x][y] > topTileSet.first().count) {
+            if (topTileSet.size() >= 10)
+                topTileSet.remove(topTileSet.first());
+            topTileSet.add(new TowerTile(pcpr[range - 1][x][y], x, y));
+        }
     }
 
     /**
@@ -124,14 +159,17 @@ public class M_ComputerInformation {
      */
     public class TowerTile implements Comparable<TowerTile> {
 
-        public final int score, count, x, y;
+        public final int score;
+        public final int count;
+        public final int x;
+        public final int y;
 
         public TowerTile(int count, int x, int y) {
             this.count = count;
             this.x = x;
             this.y = y;
             //this score avoids turrets having equal scores for comparison by taking the map position into account
-            score = count * M_Map.y_count * M_Map.x_count + y * M_Map.x_count + x;
+            score = count * M_Map.Y_COUNT * M_Map.X_COUNT + y * M_Map.X_COUNT + x;
         }
 
         @Override

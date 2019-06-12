@@ -1,39 +1,32 @@
 package de.codecrunch.controller;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Consumer;
-
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.ME_TileState;
-import de.codecrunch.model.M_Game;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_RenderBatch;
-import de.codecrunch.model.M_Tile;
 import de.codecrunch.model.M_User;
 import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
-import de.codecrunch.model.unit.M_SmallUnit;
 import de.codecrunch.view.V_Game;
 import de.codecrunch.view.V_HUD;
 
 public class C_Game {
-    private M_Game model = new M_Game();
     private M_User user = new M_User();
     private V_HUD hud;
     private C_Computer computer = new C_Computer(this);
     private V_Game view;
-    private TowerAttackGame towerAttackGame;
     private M_Map map;
     private List<MA_Tower> towerList = new LinkedList<>();
     private List<MA_Unit> unitList = new LinkedList<>();
 
     public C_Game(TowerAttackGame game, M_Map map) {
-        towerAttackGame = game;
         this.map = map;
     }
 
@@ -72,7 +65,7 @@ public class C_Game {
 
     public void placeTower(MA_Tower tower, int x, int y) {
         tower.setPos(x, y);
-        tower.getModel().transform.setTranslation(x * ME_TileState.tileDistance, 0.5f, y * ME_TileState.tileDistance);
+        tower.getModel().transform.setTranslation(x * ME_TileState.TILE_DISTANCE, 0.5f, y * ME_TileState.TILE_DISTANCE);
         view.getTowerBatch().addElement(tower.getModel());
         view.addLaserLine(tower.getLaserLine());
         computer.drawMoney(tower.getPrice());
@@ -114,8 +107,8 @@ public class C_Game {
 
     private void registerTowerOnMap(MA_Tower tower, int x, int y) {
         int range = tower.getRange();
-        for (int iy = Math.max(0, y - range); iy <= Math.min(M_Map.y_count - 1, y + range); iy++) {
-            for (int ix = Math.max(0, x - range); ix <= Math.min(M_Map.x_count - 1, x + range); ix++) {
+        for (int iy = Math.max(0, y - range); iy <= Math.min(M_Map.Y_COUNT - 1, y + range); iy++) {
+            for (int ix = Math.max(0, x - range); ix <= Math.min(M_Map.X_COUNT - 1, x + range); ix++) {
                 if (map.getTile(ix, iy).getTileState().getGroup() == ME_TileState.ME_TileStateGroup.PATH) {
                     map.getTile(ix, iy).registerTower(tower);
                 }

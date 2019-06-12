@@ -8,7 +8,14 @@ import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.utils.UBJsonReader;
 
 public class Model3DFactory {
-    public static Model empty,end,start,path_straight,path_corner,path_cross,path_split_right,path_split_left;
+    public static Model empty;
+    public static Model end;
+    public static Model start;
+    public static Model path_straight;
+    public static Model path_corner;
+    public static Model path_cross;
+    public static Model path_split_right;
+    public static Model path_split_left;
     private static G3dModelLoader modelLoader = new G3dModelLoader(new UBJsonReader());
 
     private Model3DFactory(){}
@@ -20,9 +27,6 @@ public class Model3DFactory {
         start = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/start.g3db", Files.FileType.Internal));
         path_straight = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_straight.g3db", Files.FileType.Internal));
         path_corner = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_corner.g3db", Files.FileType.Internal));
-        //path_cross = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_cross.g3db", Files.FileType.Internal));
-        //path_split_right = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_right.g3db", Files.FileType.Internal));
-        //path_split_left = modelLoader.loadModel(Gdx.files.getFileHandle("tiles/models/path_split_left.g3db", Files.FileType.Internal));
     }
 
     public static ModelInstance instantiate(Model model) {

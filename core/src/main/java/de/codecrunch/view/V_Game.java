@@ -12,12 +12,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.Ray;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import de.codecrunch.TowerAttackGame;
@@ -28,20 +25,18 @@ import de.codecrunch.model.tower.MA_Tower;
 
 public class V_Game extends VA_Screen {
 
-    private final float CAM_DISTANCE = 44.8f;//26.3
-    private final float CAM_LOWER = 20.3f;//20.3
-    private final float CAM_UPPER = 169.7f;//169.7
-    private final float MAP_MIDDLE = 40f;//40
-    private final float MAP_BRIGHTNESS = 1f;
+    private static final float CAM_DISTANCE = 44.8f;//26.3
+    private static final float CAM_LOWER = 20.3f;//20.3
+    private static final float CAM_UPPER = 169.7f;//169.7
+    private static final float MAP_MIDDLE = 40f;//40
+    private static final float MAP_BRIGHTNESS = 1f;
 
     private TowerAttackGame game;
     private String levelName;
     SpriteBatch hudBatch;
-    private List<Table> hudComponents;
-    private TextButton button1;
     public C_Game controller;
     private PerspectiveCamera camera;
-    V_HUD v_hud;
+    V_HUD vHud;
     private M_RenderBatch mapBatch = new M_RenderBatch();
     private Set<MA_Tower.LineCoordinates> laserLines = new HashSet<>();
     private ShapeRenderer laserRenderer = new ShapeRenderer();
@@ -72,10 +67,9 @@ public class V_Game extends VA_Screen {
         camera.far = 120.0f;
         camera.update();
         hudBatch.setProjectionMatrix(stage.getCamera().combined);
-        v_hud = new V_HUD(controller, stage, levelName, user, game);
+        vHud = new V_HUD(controller, stage, levelName, user, game);
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
-        //environment.add(mouseLight);
-        return v_hud;
+        return vHud;
     }
 
     public void setLevelName(String levelName) {
@@ -129,7 +123,7 @@ public class V_Game extends VA_Screen {
         Gdx.gl20.glLineWidth(5);
         laserRenderer.setColor(1, 0, 1, 1);
         for (MA_Tower.LineCoordinates coord : laserLines)
-            if (coord.render)
+            if (coord.isRender())
                 laserRenderer.line(coord.getStart(), coord.getEnd());
         laserRenderer.end();
 
