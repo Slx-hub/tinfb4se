@@ -13,6 +13,7 @@ A twisted Tower Defense Game where you actually send out Units to the field that
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=SlaxXxX_tinfb4se&metric=sqale_index)](https://sonarcloud.io/dashboard?id=SlaxXxX_tinfb4se)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=SlaxXxX_tinfb4se&metric=code_smells)](https://sonarcloud.io/dashboard?id=SlaxXxX_tinfb4se)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=SlaxXxX_tinfb4se&metric=bugs)](https://sonarcloud.io/dashboard?id=SlaxXxX_tinfb4se)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=SlaxXxX_tinfb4se&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=SlaxXxX_tinfb4se)
 # contributors
 Janis Schneider   - SlaxXxX
 
