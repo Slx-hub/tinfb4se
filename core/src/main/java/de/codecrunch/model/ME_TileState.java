@@ -75,12 +75,12 @@ public enum ME_TileState {
 	PATH_STRAIGHT {
 		@Override
 		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/path_straight.png"));
+			return new Image(new Texture("tiles/textures/pathStraight.png"));
 		}
 
 		@Override
 		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.path_straight);
+			return Model3DFactory.instantiate(Model3DFactory.pathStraight);
 		}
 		
 		@Override
@@ -96,7 +96,7 @@ public enum ME_TileState {
 
 		@Override
 		protected ModelInstance getModel() {
-			ModelInstance instance = Model3DFactory.instantiate(Model3DFactory.path_corner);
+			ModelInstance instance = Model3DFactory.instantiate(Model3DFactory.pathCorner);
 			instance.transform.rotate(Vector3.Y, -90);
 			return instance;
 		}
@@ -114,7 +114,7 @@ public enum ME_TileState {
 
 		@Override
 		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.path_corner);
+			return Model3DFactory.instantiate(Model3DFactory.pathCorner);
 		}
 		
 		@Override
@@ -125,12 +125,12 @@ public enum ME_TileState {
 	PATH_CROSS {
 		@Override
 		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/path_cross.png"));
+			return new Image(new Texture("tiles/textures/pathCross.png"));
 		}
 
 		@Override
 		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.path_cross);
+			return Model3DFactory.instantiate(Model3DFactory.pathCross);
 		}
 		
 		@Override
@@ -141,12 +141,12 @@ public enum ME_TileState {
 	PATH_SPLIT_RIGHT {
 		@Override
 		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/path_split_right.png"));
+			return new Image(new Texture("tiles/textures/pathSplitRight.png"));
 		}
 
 		@Override
 		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.path_split_right);
+			return Model3DFactory.instantiate(Model3DFactory.pathSplitRight);
 		}
 		
 		@Override
@@ -157,12 +157,12 @@ public enum ME_TileState {
 	PATH_SPLIT_LEFT {
 		@Override
 		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/path_split_left.png"));
+			return new Image(new Texture("tiles/textures/pathSplitLeft.png"));
 		}
 
 		@Override
 		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.path_split_left);
+			return Model3DFactory.instantiate(Model3DFactory.pathSplitLeft);
 		}
 		
 		@Override
