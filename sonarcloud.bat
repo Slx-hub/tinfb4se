@@ -1,0 +1,2 @@
+@echo off
+./gradlew sonarqube -D sonar.projectKey=SlaxXxX_tinfb4se -D sonar.organization=slaxxxx-github -D sonar.host.url=https://sonarcloud.io/ -D sonar.login=07330331709bf2b98e256c455067a8bf0d1ba5af -D sonar.binaries=build/classes -D sonar.junit.reportsPath=core/build/reports -D sonar.java.coveragePlugin=jacoco -D sonar.jacoco.reportPath=core/build/jacoco/test.exec
