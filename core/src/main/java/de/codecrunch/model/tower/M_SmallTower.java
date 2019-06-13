@@ -6,30 +6,15 @@ import de.codecrunch.Model3DFactory;
 
 public class M_SmallTower extends MA_Tower {
 
-	@Override
-	public float getReloadTime() {
-		return 1;
-	}
 
-	@Override
-	public int getDamage() {
-		return 30;
-	}
+    public M_SmallTower() {
+        super(1, 30, 50, 1);
+    }
 
-	@Override
-	public int getPrice() {
-		return 50;
-	}
-
-	@Override
-	public int getRange() {
-		return 1;
-	}
-
-	@Override
-	public ModelInstance getModel() {
-		if (model == null)
-			model = Model3DFactory.instantiate(Model3DFactory.loadModel("towers/smallTower.g3db"));
-		return model;
-	}
+    @Override
+    public ModelInstance getModel() {
+        if (model == null)
+            model = Model3DFactory.instantiate(Model3DFactory.loadModel("towers/smallTower.g3db"));
+        return model;
+    }
 }

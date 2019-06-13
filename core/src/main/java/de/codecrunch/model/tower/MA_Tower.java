@@ -20,6 +20,16 @@ public abstract class MA_Tower {
     protected float currentWaitTime = getReloadTime();
     protected LineCoordinates laserLine = new LineCoordinates();
 
+    protected final float reloadTime;
+    protected final int damage, price, range;
+
+    public MA_Tower(float preloadTime, int pdamage, int pprice, int prange) {
+        reloadTime = preloadTime;
+        damage = pdamage;
+        price = pprice;
+        range = prange;
+    }
+
     public static List<MA_Tower> getAllTowers() {
         List<MA_Tower> list = new ArrayList<>();
         list.addAll(Arrays.asList(new M_SmallTower(), new M_MediumTower(), new M_BigTower()));
@@ -41,13 +51,21 @@ public abstract class MA_Tower {
         return yPos;
     }
 
-    public abstract float getReloadTime();
+    public float getReloadTime() {
+        return reloadTime;
+    }
 
-    public abstract int getDamage();
+    public int getDamage() {
+        return damage;
+    }
 
-    public abstract int getPrice();
+    public int getPrice() {
+        return price;
+    }
 
-    public abstract int getRange();
+    public int getRange() {
+        return range;
+    }
 
     public abstract ModelInstance getModel();
 

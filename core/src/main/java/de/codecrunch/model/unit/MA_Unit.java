@@ -150,6 +150,6 @@ public abstract class MA_Unit {
 
     private void setInitialPosition() {
         model.transform.setTranslation(nextTile.xPos * ME_TileState.TILE_DISTANCE, 0f, nextTile.yPos * ME_TileState.TILE_DISTANCE);
-        model.transform.rotate(Vector3.Y, nextTile.getTileRotation() - 90);
+        model.transform.rotate(Vector3.Y, nextTile.getTileRotation() - 90f);
     }
 }

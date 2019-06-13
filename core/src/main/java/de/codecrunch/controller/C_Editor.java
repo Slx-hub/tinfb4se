@@ -92,7 +92,7 @@ public class C_Editor {
             path.head().get().setTileState(ME_TileState.EMPTY).updateEditorImage();
             M_Path<M_Tile>.Node newHead = path.head().prev();
             path.removeFront();
-            if (newHead != null){
+            if (newHead != null) {
                 newHead.get().setTileState(ME_TileState.END).updateEditorImage();
                 if (newHead == path.tail())
                     newHead.get().setTileState(ME_TileState.START).updateEditorImage();
@@ -180,7 +180,7 @@ public class C_Editor {
                 stream.writeObject(map);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Gdx.app.error("TowerAttack", e.getMessage(), e);
         }
         towerAttackGame.changeScreen(TowerAttackGame.SCREENID_EDITORLVLSELECT);
     }

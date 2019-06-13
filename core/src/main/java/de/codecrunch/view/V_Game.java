@@ -33,10 +33,10 @@ public class V_Game extends VA_Screen {
 
     private TowerAttackGame game;
     private String levelName;
-    SpriteBatch hudBatch;
-    public C_Game controller;
+    private SpriteBatch hudBatch;
+    private C_Game controller;
     private PerspectiveCamera camera;
-    V_HUD vHud;
+    private V_HUD vHud;
     private M_RenderBatch mapBatch = new M_RenderBatch();
     private Set<MA_Tower.LineCoordinates> laserLines = new HashSet<>();
     private ShapeRenderer laserRenderer = new ShapeRenderer();
