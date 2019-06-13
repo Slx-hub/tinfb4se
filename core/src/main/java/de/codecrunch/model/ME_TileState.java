@@ -121,54 +121,6 @@ public enum ME_TileState {
 		public ME_TileStateGroup getGroup() {
 			return ME_TileStateGroup.PATH;
 		}
-	},
-	PATH_CROSS {
-		@Override
-		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/pathCross.png"));
-		}
-
-		@Override
-		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.pathCross);
-		}
-		
-		@Override
-		public ME_TileStateGroup getGroup() {
-			return ME_TileStateGroup.PATH;
-		}
-	},
-	PATH_SPLIT_RIGHT {
-		@Override
-		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/pathSplitRight.png"));
-		}
-
-		@Override
-		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.pathSplitRight);
-		}
-		
-		@Override
-		public ME_TileStateGroup getGroup() {
-			return ME_TileStateGroup.PATH;
-		}
-	},
-	PATH_SPLIT_LEFT {
-		@Override
-		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/pathSplitLeft.png"));
-		}
-
-		@Override
-		protected ModelInstance getModel() {
-			return Model3DFactory.instantiate(Model3DFactory.pathSplitLeft);
-		}
-		
-		@Override
-		public ME_TileStateGroup getGroup() {
-			return ME_TileStateGroup.PATH;
-		}
 	};
 
 	public static final float TILE_DISTANCE = 10f;
