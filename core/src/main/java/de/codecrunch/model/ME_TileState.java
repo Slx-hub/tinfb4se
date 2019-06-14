@@ -91,7 +91,7 @@ public enum ME_TileState {
 	PATH_LEFT {
 		@Override
 		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/path_left.png"));
+			return new Image(new Texture("tiles/textures/pathLeft.png"));
 		}
 
 		@Override
@@ -109,7 +109,7 @@ public enum ME_TileState {
 	PATH_RIGHT {
 		@Override
 		protected Image getImage() {
-			return new Image(new Texture("tiles/textures/path_right.png"));
+			return new Image(new Texture("tiles/textures/pathRight.png"));
 		}
 
 		@Override
