@@ -121,15 +121,15 @@ public class V_HUD {
         labelTable.add(quitGame);
     }
 
-    BitmapFont createFont(FreeTypeFontGenerator ftfg, float dp) {
+    BitmapFont createFont(FreeTypeFontGenerator ftfg, int dp) {
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = (int) (dp * Gdx.graphics.getDensity());
+        parameter.size = dp;
         return ftfg.generateFont(parameter);
     }
     //On Init
 
     private void createLabels() {
-        BitmapFont font = createFont(new FreeTypeFontGenerator(Gdx.files.internal("font/arial.ttf")), 64);
+        BitmapFont font = createFont(new FreeTypeFontGenerator(Gdx.files.internal("font/arial.ttf")), 38);
         worldTimer = new Label(timerDesc + String.format("%5d", 0), new Label.LabelStyle(font, Color.GREEN));
         resources = new Label(resourceDesc + String.format("%5d", 50), new Label.LabelStyle(font, Color.GREEN));
         baseHealth = new Label(baseHealthDesc + String.format("%2d", 20), new Label.LabelStyle(font, Color.GREEN));
