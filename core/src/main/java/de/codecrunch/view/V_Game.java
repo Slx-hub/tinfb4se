@@ -50,7 +50,7 @@ public class V_Game extends VA_Screen {
     public V_Game(TowerAttackGame game) {
         super(game);
         this.hudBatch = new SpriteBatch();
-        this.stage = new Stage(new FitViewport(1024, 640), hudBatch);
+        this.stage = new Stage(new FitViewport(1024, 720), hudBatch);
         this.game = game;
     }
 

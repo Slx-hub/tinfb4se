@@ -1,10 +1,12 @@
 package de.codecrunch.view;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -48,6 +50,7 @@ public class V_HUD {
         this.levelName = "level: " + levelName;
         buildTopTable(controller);
         buildBottomTable(controller);
+
         addHudComponents(stage);
         this.user = user;
         this.game = game;
@@ -112,25 +115,37 @@ public class V_HUD {
         labelTable = new Table();
         labelTable.top();
         labelTable.setFillParent(true);
-        labelTable.add(level).expandX().padTop(10);
-        labelTable.add(timerDescLabel).expandX().padTop(10);
-        labelTable.add(resourceDescLabel).expandX().padTop(10);
-        labelTable.add(exit).expandX().right();
+        labelTable.add(level).padTop(10).left().padLeft(20f);
+        labelTable.add(timerDescLabel).padTop(10).expandX().center();
+        labelTable.add(resourceDescLabel).padTop(10).padRight(20f);
+        labelTable.add(exit).right();
         labelTable.row();
-        labelTable.add(new Label("", new Label.LabelStyle(new BitmapFont(), Color.GREEN))).expandX();
-        labelTable.add(worldTimer).expandX();
-        labelTable.add(resourcesLabel).expandX();
+        labelTable.add(new Label("", new Label.LabelStyle(new BitmapFont(), Color.GREEN)));
+        labelTable.add(worldTimer);
+        labelTable.add(resourcesLabel);
     }
+    BitmapFont createFont(FreeTypeFontGenerator ftfg, float dp) {
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        switch (Gdx.app.getType()) {
+            case Android:
+                parameter.size = (int) (dp * Gdx.graphics.getDensity());
+            case Desktop:
+                parameter.size = (int) dp;
 
+        }
+        return ftfg.generateFont(parameter);
+    }
+    //On Init
 
-    private void createLabels() {
+        private void createLabels() {
         timerDesc = "Time";
         resourceDesc = "Balance";
-        level = new Label(levelName, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        timerDescLabel = new Label(timerDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        worldTimer = new Label(String.format("%5d", 0), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        resourceDescLabel = new Label(resourceDesc, new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        resourcesLabel = new Label(String.format("%5d", 0), new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        BitmapFont font = createFont(new FreeTypeFontGenerator(Gdx.files.internal("font/arial.ttf")), 32);
+        level = new Label(levelName, new Label.LabelStyle(font, Color.GREEN));
+        timerDescLabel = new Label(timerDesc, new Label.LabelStyle(font, Color.GREEN));
+        worldTimer = new Label(String.format("%5d", 0), new Label.LabelStyle(font, Color.GREEN));
+        resourceDescLabel = new Label(resourceDesc, new Label.LabelStyle(font, Color.GREEN));
+        resourcesLabel = new Label(String.format("%5d", 0), new Label.LabelStyle(font, Color.GREEN));
     }
 
     public void setTime(int time) {
@@ -141,6 +156,5 @@ public class V_HUD {
         resourcesLabel.setText(String.format("%5d", user.getBalance()));
     }
 }
-
 
 
