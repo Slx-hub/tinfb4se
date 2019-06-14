@@ -24,9 +24,9 @@ import de.codecrunch.model.M_User;
 import de.codecrunch.model.tower.MA_Tower;
 
 public class V_Game extends VA_Screen {
-    private static final float CAM_DISTANCE = 44.8f;//44.8
-    private static final float CAM_LOWER = 20.3f;//20.3
-    private static final float CAM_UPPER = 169.7f;//169.7
+    private static final float CAM_DISTANCE = 45f;//44.8
+    private static final float CAM_LOWER = 8.5f;//20.3
+    private static final float CAM_UPPER = 175f;//169.7
     private static final float MAP_MIDDLE = 40f;//40
     private static final float MAP_BRIGHTNESS = 1f;
 
