@@ -15,4 +15,8 @@ public abstract class MA_UnitState {
     public boolean isIdle() {
         return false;
     }
+
+    public boolean isDone() {
+        return false;
+    }
 }

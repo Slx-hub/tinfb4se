@@ -11,7 +11,7 @@ public class M_HealFountain extends MA_Unit {
     private String modelAssetString = "units/unit.g3db";
 
     public M_HealFountain(){
-        super(0,1000);
+        super(0,1000, 0);
         this.healRadius = 2; // tiles
         this.healingPerSecond = 10;
     }

@@ -9,7 +9,7 @@ public class M_MediumUnit extends MA_Unit {
     private String modelAssetString = "units/mediumUnit.g3db";
 
     public M_MediumUnit(){
-        super(15,300);
+        super(15,300, 2);
     }
 
     @Override

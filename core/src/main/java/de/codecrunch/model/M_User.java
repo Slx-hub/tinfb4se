@@ -1,7 +1,7 @@
 package de.codecrunch.model;
 
 public class M_User {
-    private int money = 0;
+    private int money = 50;
 
     public int getBalance() {
         return money;

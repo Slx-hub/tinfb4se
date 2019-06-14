@@ -24,8 +24,7 @@ import de.codecrunch.model.M_User;
 import de.codecrunch.model.tower.MA_Tower;
 
 public class V_Game extends VA_Screen {
-
-    private static final float CAM_DISTANCE = 44.8f;//26.3
+    private static final float CAM_DISTANCE = 44.8f;//44.8
     private static final float CAM_LOWER = 20.3f;//20.3
     private static final float CAM_UPPER = 169.7f;//169.7
     private static final float MAP_MIDDLE = 40f;//40
@@ -50,11 +49,11 @@ public class V_Game extends VA_Screen {
     public V_Game(TowerAttackGame game) {
         super(game);
         this.hudBatch = new SpriteBatch();
-        this.stage = new Stage(new FitViewport(1024, 720), hudBatch);
+        this.stage = new Stage(new FitViewport(1280, 720), hudBatch);
         this.game = game;
     }
 
-    public V_HUD setup(M_User user) {
+    public V_HUD setup() {
 
         camera = new PerspectiveCamera(
                 60,
@@ -67,7 +66,7 @@ public class V_Game extends VA_Screen {
         camera.far = 120.0f;
         camera.update();
         hudBatch.setProjectionMatrix(stage.getCamera().combined);
-        vHud = new V_HUD(controller, stage, levelName, user, game);
+        vHud = new V_HUD(controller, stage, game);
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
         return vHud;
     }
@@ -105,7 +104,7 @@ public class V_Game extends VA_Screen {
     public void render(float delta) {
         controller.tick(delta);
         Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        Gdx.gl.glClearColor(120, 120, 120, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         camera.translate(cameraMotion, 0, 0);
@@ -201,4 +200,5 @@ public class V_Game extends VA_Screen {
         }
 
     }
+
 }

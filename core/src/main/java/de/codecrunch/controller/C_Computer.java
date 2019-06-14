@@ -34,7 +34,7 @@ public class C_Computer {
      */
     private int until;
 
-    private int money = 0;
+    private int money = 50;
 
     public C_Computer(C_Game game) {
         this.game = game;
@@ -47,13 +47,13 @@ public class C_Computer {
         switch (computerState) {
             case IDLE:
                 //choose a random time to wait, so the computer doesn't spam towers
-                until = gameTime + (rng.nextInt(5 + (int) (gameTime / 100.0)));
+                until = gameTime + (rng.nextInt(towerList.size() - getAffordable() + (int) (gameTime / 100.0)));
                 computerState = CE_ComputerState.WAITING;
                 break;
             case WAITING:
                 if (gameTime >= until) {
                     //if he's DONE WAITING, choose a tower that is in the range of the computers funds
-                    until = Math.min(towerList.size() - 1, Math.max(0, getAffordable() + (rng.nextInt(4 + (int) (gameTime / 30.0)) - 2)));
+                    until = Math.min(towerList.size() - 1, Math.max(0, getAffordable() - 1 + (rng.nextInt(1 + (int) (gameTime / 30.0)) )));
                     computerState = CE_ComputerState.SAVING;
                 }
                 break;

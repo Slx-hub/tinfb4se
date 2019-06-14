@@ -7,7 +7,7 @@ import de.codecrunch.Model3DFactory;
 public class M_BigTower extends MA_Tower {
 
     public M_BigTower() {
-        super(5, 250, 200, 3);
+        super(5, 200, 250, 3);
     }
 
     @Override

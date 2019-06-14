@@ -9,6 +9,7 @@ import java.util.List;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.model.ME_TileState;
+import de.codecrunch.model.M_Base;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_RenderBatch;
 import de.codecrunch.model.M_User;
@@ -19,6 +20,7 @@ import de.codecrunch.view.V_HUD;
 
 public class C_Game {
     private M_User user = new M_User();
+    private M_Base base = new M_Base();
     private V_HUD hud;
     private C_Computer computer = new C_Computer(this);
     private V_Game view;
@@ -47,12 +49,11 @@ public class C_Game {
             @Override
             public void run() {
                 timerCount++;
-                int amount = 5 + timerCount / 30;
-                computer.addMoney(amount);
+                int amount = 1 + timerCount / 30;
+                computer.addMoney(amount * 2);
                 user.addMoney(amount);
 
-                hud.setTime(timerCount);
-                hud.update();
+                hud.update(timerCount, user.getBalance(), base.getCurrentLife());
 
                 computer.tick(timerCount);
             }
@@ -60,7 +61,7 @@ public class C_Game {
         Timer.instance().start();
 
         computer.init(map);
-        hud = view.setup(user);
+        hud = view.setup();
     }
 
     public void placeTower(MA_Tower tower, int x, int y) {
@@ -71,6 +72,7 @@ public class C_Game {
         computer.drawMoney(tower.getPrice());
         map.getTile(x, y).setTileState(ME_TileState.OCCUPIED);
         computer.updateDistancePathCount(map);
+        tower.setOwner(computer);
         towerList.add(tower);
         registerTowerOnMap(tower, x, y);
     }
@@ -78,9 +80,9 @@ public class C_Game {
     public void buyUnit(MA_Unit unit) {
         if (unit.getCost() <= user.getBalance()) {
             user.drawMoney(unit.getCost());
-            hud.update();
             view.getUnitBatch().addElement(unit.getModel());
             unit.setPath(map.getPath().iterator());
+            unit.setOwner(user);
             unitList.add(unit);
         }
     }
@@ -93,8 +95,11 @@ public class C_Game {
     public void tick(float delta) {
         List<MA_Unit> deadUnits = new ArrayList<>();
         for (MA_Unit unit : unitList) {
-            if (unit.isDead())
+            if (unit.isDead() || unit.isDone()) {
                 deadUnits.add(unit);
+                if (unit.isDone())
+                    base.takeDamage();
+            }
             else
                 unit.tick(delta);
         }

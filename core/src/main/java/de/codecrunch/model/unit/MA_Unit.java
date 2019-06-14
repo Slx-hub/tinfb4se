@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.M_Tile;
+import de.codecrunch.model.M_User;
 import de.codecrunch.model.unit.state.MA_UnitState;
 import de.codecrunch.model.unit.state.M_UnitState_DONE;
 import de.codecrunch.model.unit.state.M_UnitState_DRIVE_FORWARD;
@@ -19,17 +20,20 @@ public abstract class MA_Unit {
     private int xPos = 0;
     private int yPos = 0;
     private int speed;
+    private int moneyPerTileReached;
     private int maxLife;
     private int currentLife;
     private M_Tile nextTile;
+    private M_User owner;
     private Iterator<M_Tile> pathIterator;
     protected ModelInstance model;
     protected MA_UnitState state = new M_UnitState_IDLE();
 
-    public MA_Unit(int speed, int maxLife) {
+    public MA_Unit(int speed, int maxLife, int moneyPerTile) {
         setSpeed(speed);
         setMaxLife(maxLife);
         setCurrentLife(maxLife);
+        moneyPerTileReached = moneyPerTile;
     }
 
     public abstract ModelInstance getModel();
@@ -64,6 +68,8 @@ public abstract class MA_Unit {
         return currentLife <= 0;
     }
 
+    public boolean isDone() {return state.isDone();}
+
     public void setCurrentLife(int currentLife) {
         if (this.maxLife < currentLife) {
             this.currentLife = maxLife;
@@ -81,9 +87,10 @@ public abstract class MA_Unit {
     }
 
     public void heal(int healing) {
-        if (currentLife == 0) {
-            setCurrentLife(0);
-        } else if (this.maxLife < (this.currentLife + healing)) {
+        if (currentLife == 0)
+            return;
+
+        if (this.maxLife < (this.currentLife + healing)) {
             setCurrentLife(this.maxLife);
         } else {
             setCurrentLife(this.currentLife + healing);
@@ -96,6 +103,10 @@ public abstract class MA_Unit {
         xPos = nextTile.xPos;
         yPos = nextTile.yPos;
         setInitialPosition();
+    }
+
+    public void setOwner(M_User user) {
+        owner = user;
     }
 
     public void tick(float delta) {
@@ -134,6 +145,8 @@ public abstract class MA_Unit {
                 state = new M_UnitState_DONE();
                 return;
             }
+
+            owner.addMoney(moneyPerTileReached);
 
             switch (nextTile.getTileState()) {
                 case PATH_LEFT:

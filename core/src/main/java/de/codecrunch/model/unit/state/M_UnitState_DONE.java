@@ -12,4 +12,9 @@ public class M_UnitState_DONE extends MA_UnitState {
     public boolean isIdle() {
         return true;
     }
+
+    @Override
+    public boolean isDone() {
+        return true;
+    }
 }

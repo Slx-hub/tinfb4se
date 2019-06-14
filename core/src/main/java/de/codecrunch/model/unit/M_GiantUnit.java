@@ -9,7 +9,7 @@ public class M_GiantUnit extends MA_Unit {
     private String modelAssetString = "units/unit.g3db";
 
     public M_GiantUnit(){
-        super(1,1500);
+        super(6,1500, 5);
     }
 
     @Override

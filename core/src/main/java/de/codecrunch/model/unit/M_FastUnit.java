@@ -6,10 +6,10 @@ import de.codecrunch.Model3DFactory;
 
 public class M_FastUnit extends MA_Unit {
 
-    private String modelAssetString = "units/unit.g3db";
+    private String modelAssetString = "units/fastUnit.g3db";
 
     public M_FastUnit(){
-        super(4,200);
+        super(25,100, 3);
     }
 
     @Override

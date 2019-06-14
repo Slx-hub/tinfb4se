@@ -7,7 +7,7 @@ import de.codecrunch.Model3DFactory;
 public class M_HealUnit extends MA_Unit {
 
     public M_HealUnit(){
-        super(2,300);
+        super(18,300, 1);
     }
 
     private String modelAssetString = "units/unit.g3db";

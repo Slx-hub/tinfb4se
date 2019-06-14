@@ -7,6 +7,7 @@ import java.util.List;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 
+import de.codecrunch.controller.C_Computer;
 import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.unit.MA_Unit;
 
@@ -17,6 +18,7 @@ public abstract class MA_Tower {
     protected ModelInstance model;
     protected ME_TowerState state = ME_TowerState.RELOAD;
     protected MA_Unit unitAimingAt;
+    private C_Computer owner;
     protected float currentWaitTime = getReloadTime();
     protected LineCoordinates laserLine = new LineCoordinates();
 
@@ -32,7 +34,7 @@ public abstract class MA_Tower {
 
     public static List<MA_Tower> getAllTowers() {
         List<MA_Tower> list = new ArrayList<>();
-        list.addAll(Arrays.asList(new M_SmallTower(), new M_MediumTower(), new M_BigTower()));
+        list.addAll(Arrays.asList(new M_SmallTower(), new M_MediumTower(), new M_BigTower(), new M_GatlingTower()));
         return list;
     }
 
@@ -41,6 +43,10 @@ public abstract class MA_Tower {
         xPos = x;
         yPos = y;
         laserLine.setStart(new Vector3(x * ME_TileState.TILE_DISTANCE, 1f, y * ME_TileState.TILE_DISTANCE));
+    }
+
+    public void setOwner(C_Computer computer) {
+        owner = computer;
     }
 
     public int getXPos() {
@@ -103,6 +109,9 @@ public abstract class MA_Tower {
 
     private void shoot() {
         unitAimingAt.takeDamage(this.getDamage());
+        if (unitAimingAt.isDead()){
+            owner.addMoney(unitAimingAt.getCost() / 3);
+        }
         laserLine.setRender(true);
         setLaserEndOnUnit();
         state = ME_TowerState.WAITFORBULLET;
