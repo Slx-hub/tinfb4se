@@ -1,7 +1,10 @@
 package de.codecrunch.controller;
 
+import com.badlogic.gdx.Gdx;
+
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.TreeSet;
 
 import de.codecrunch.model.M_ComputerInformation;
@@ -10,6 +13,7 @@ import de.codecrunch.model.tower.MA_Tower;
 
 public class C_Computer {
     private C_Game game;
+    private final Random rng = new Random();
     private M_ComputerInformation info = new M_ComputerInformation();
     public static final int MAX_RANGE = 3;
 
@@ -35,7 +39,7 @@ public class C_Computer {
     public C_Computer(C_Game game) {
         this.game = game;
 
-        // sorts the list of towers accortding to their price. this is useful for finding a suiting tower for the computers funds
+        // sorts the list of towers according to their price. this is useful for finding a suiting tower for the computers funds
         towerList.sort(C_Computer::compare);
     }
 
@@ -43,13 +47,13 @@ public class C_Computer {
         switch (computerState) {
             case IDLE:
                 //choose a random time to wait, so the computer doesn't spam towers
-                until = gameTime + (int) (Math.random() * (5 + gameTime / 100));
+                until = gameTime + (rng.nextInt(5 + (int) (gameTime / 100.0)));
                 computerState = CE_ComputerState.WAITING;
                 break;
             case WAITING:
                 if (gameTime >= until) {
                     //if he's DONE WAITING, choose a tower that is in the range of the computers funds
-                    until = Math.min(towerList.size() - 1, Math.max(0, getAffordable() + (int) (Math.random() * (4 + gameTime / 30) - 2)));
+                    until = Math.min(towerList.size() - 1, Math.max(0, getAffordable() + (rng.nextInt(4 + (int) (gameTime / 30.0)) - 2)));
                     computerState = CE_ComputerState.SAVING;
                 }
                 break;
@@ -117,7 +121,7 @@ public class C_Computer {
         Iterator<M_ComputerInformation.TowerTile> it = topTiles.get(index).iterator();
         M_ComputerInformation.TowerTile best = it.next();
         //chooses a random tile of the top tiles list (to make the placement less predictable, as top positions are the same each time for every map)
-        for (int i = (int) (topTiles.get(index).size() * 2 / 3 + Math.random() * topTiles.get(index).size() / 3); i > 0; i--)
+        for (int i = (int) (topTiles.get(index).size() * 2 / 3.0 + rng.nextInt(topTiles.get(index).size() / 3)); i > 0; i--)
             if (it.hasNext())
                 best = it.next();
 
@@ -126,7 +130,7 @@ public class C_Computer {
             game.placeTower(tower.getClass().newInstance(), best.x, best.y);
 
         } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
+            Gdx.app.error("TowerAttack", e.getMessage(), e);
         }
     }
 

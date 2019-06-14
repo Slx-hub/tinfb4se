@@ -101,9 +101,6 @@ public class TowerAttackGame extends Game {
     }
 
     public void startGame(M_Map map, String levelName) {
-        //Loads 3d Models -> May be put in loading screen later.
-        Model3DFactory.setup();
-
         game = new C_Game(this, map);
         setupScreen(SCREENID_GAME);
         game.setView(gameScreen);

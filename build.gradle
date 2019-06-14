@@ -18,8 +18,8 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
+    apply plugin: "jacoco"
     apply plugin: "org.sonarqube"
-
 
     version = '1.0'
     ext {

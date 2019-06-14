@@ -51,7 +51,7 @@ public class M_LevelSelect {
                 map = (M_Map) stream.readObject();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Gdx.app.error("TowerAttack", e.getMessage(), e);
         }
         if(map!=null){
             map.inflate();

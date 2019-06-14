@@ -10,7 +10,7 @@ import de.codecrunch.TowerAttackGame;
 
 public class V_Menu extends VA_Screen {
     private TowerAttackGame game;
-    public TextButton settings;
+    private TextButton settings;
 
     public V_Menu(TowerAttackGame game) {
         super(game);
