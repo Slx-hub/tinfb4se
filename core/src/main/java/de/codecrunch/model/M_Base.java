@@ -6,7 +6,7 @@ public class M_Base {
     private int currentLife;
 
     public M_Base(){
-        setMaxLife(1);
+        setMaxLife(20);
         setCurrentLife(this.maxLife);
     }
 
