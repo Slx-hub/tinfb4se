@@ -1,6 +1,7 @@
 package de.codecrunch.controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 
@@ -172,6 +173,7 @@ public class C_Editor {
         File file = Gdx.files.local("maps/" + levelName + ".map").file();
         map.setMapName(levelName);
         map.setPath(path.addToList(new ArrayList<>()));
+
         try {
             file.getParentFile().mkdirs();
             file.createNewFile();

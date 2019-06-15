@@ -33,7 +33,7 @@ public class M_LevelSelect {
     }
 
     public void load() {
-        File folder = Gdx.files.local("maps").file();
+        File folder = Gdx.files.local("maps/").file();
         File[] files = folder.listFiles();
         if (files != null)
             levels = Arrays.asList(files);

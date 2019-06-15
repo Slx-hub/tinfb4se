@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    archivesBaseName = "TowerAttack"
+
         lintOptions {
             abortOnError false
     }
