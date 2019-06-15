@@ -63,6 +63,7 @@ public class C_Game {
 
         computer.init(map);
         hud = view.setup();
+        view.setUnitList(unitList);
     }
 
     public void placeTower(MA_Tower tower, int x, int y) {
@@ -126,10 +127,9 @@ public class C_Game {
     }
 
     public void healUnitsInRange(M_Tile position, int range) {
-        System.out.println("Healing:");
         for (int x = Math.max(position.xPos - range, 0); x <= Math.min(position.xPos + range, M_Map.X_COUNT - 1); x++) {
             for (int y = Math.max(position.yPos - range, 0); y <= Math.min(position.yPos + range, M_Map.Y_COUNT - 1); y++) {
-                map.getTile(x, y).getUnitsInTile().forEach(unit -> unit.heal(unit.getMaxLife() / 50));
+                map.getTile(x, y).getUnitsInTile().forEach(unit -> unit.heal(unit.getMaxLife() / 20));
             }
         }
     }

@@ -15,13 +15,15 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.M_RenderBatch;
-import de.codecrunch.model.M_User;
 import de.codecrunch.model.tower.MA_Tower;
+import de.codecrunch.model.unit.MA_Unit;
 
 public class V_Game extends VA_Screen {
     private static final float CAM_DISTANCE = 45f;//44.8
@@ -36,9 +38,10 @@ public class V_Game extends VA_Screen {
     private C_Game controller;
     private PerspectiveCamera camera;
     private V_HUD vHud;
+    private List<MA_Unit> unitList = new LinkedList<>();
     private M_RenderBatch mapBatch = new M_RenderBatch();
     private Set<MA_Tower.LineCoordinates> laserLines = new HashSet<>();
-    private ShapeRenderer laserRenderer = new ShapeRenderer();
+    private ShapeRenderer lineRenderer = new ShapeRenderer();
     private M_RenderBatch towerBatch = new M_RenderBatch();
     private M_RenderBatch unitBatch = new M_RenderBatch();
     private Environment environment = new Environment();
@@ -91,6 +94,10 @@ public class V_Game extends VA_Screen {
         return unitBatch;
     }
 
+    public void setUnitList(List<MA_Unit> unitList) {
+        this.unitList = unitList;
+    }
+
     public void addLaserLine(MA_Tower.LineCoordinates laser) {
         laserLines.add(laser);
     }
@@ -112,19 +119,19 @@ public class V_Game extends VA_Screen {
         if (cameraMotion != 0)
             cameraMotion *= 0.95f;
         camera.update();
-        laserRenderer.setProjectionMatrix(camera.combined);
+        lineRenderer.setProjectionMatrix(camera.combined);
 
         mapBatch.begin(camera);
         mapBatch.renderAll(environment);
         mapBatch.end();
 
-        laserRenderer.begin(ShapeRenderer.ShapeType.Line);
+        lineRenderer.begin(ShapeRenderer.ShapeType.Line);
         Gdx.gl20.glLineWidth(5);
-        laserRenderer.setColor(1, 0, 1, 1);
+        lineRenderer.setColor(1, 0, 1, 1);
         for (MA_Tower.LineCoordinates coord : laserLines)
             if (coord.isRender())
-                laserRenderer.line(coord.getStart(), coord.getEnd());
-        laserRenderer.end();
+                lineRenderer.line(coord.getStart(), coord.getEnd());
+        lineRenderer.end();
 
         towerBatch.begin(camera);
         towerBatch.renderAll(environment);
@@ -133,6 +140,21 @@ public class V_Game extends VA_Screen {
         unitBatch.begin(camera);
         unitBatch.renderAll(environment);
         unitBatch.end();
+
+        lineRenderer.begin(ShapeRenderer.ShapeType.Line);
+        Gdx.gl20.glLineWidth(5);
+        for (MA_Unit unit : unitList) {
+            float xStart = unit.getModel().transform.getTranslation(new Vector3()).x + 3f;
+            float yStart = unit.getModel().transform.getTranslation(new Vector3()).z - 2f;
+
+            lineRenderer.setColor(0.4f, 0, 0, 1);
+            lineRenderer.line(new Vector3(xStart, 1f, yStart), new Vector3(xStart, 1f, yStart + 4));
+
+            lineRenderer.setColor(0, 0.4f, 0, 1);
+            lineRenderer.line(new Vector3(xStart, 1f, yStart), new Vector3(xStart, 1f, yStart + 4 * ((float) unit.getCurrentLife() / unit.getMaxLife())));
+        }
+        lineRenderer.end();
+
         stage.draw();
     }
 

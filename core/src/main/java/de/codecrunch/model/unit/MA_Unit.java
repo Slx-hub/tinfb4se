@@ -93,8 +93,6 @@ public abstract class MA_Unit {
         if (currentLife == 0 || this instanceof M_HealUnit)
             return;
 
-        System.out.println(this);
-
         if (this.maxLife < (this.currentLife + healing)) {
             setCurrentLife(this.maxLife);
         } else {
