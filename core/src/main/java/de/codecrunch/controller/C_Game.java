@@ -62,7 +62,7 @@ public class C_Game {
         Timer.instance().start();
 
         computer.init(map);
-        hud = view.setup();
+        hud = view.setup(base.getMaxLife());
         view.setUnitList(unitList);
     }
 

@@ -56,7 +56,7 @@ public class V_Game extends VA_Screen {
         this.game = game;
     }
 
-    public V_HUD setup() {
+    public V_HUD setup(int maxHealth) {
 
         camera = new PerspectiveCamera(
                 60,
@@ -69,7 +69,7 @@ public class V_Game extends VA_Screen {
         camera.far = 120.0f;
         camera.update();
         hudBatch.setProjectionMatrix(stage.getCamera().combined);
-        vHud = new V_HUD(controller, stage, game);
+        vHud = new V_HUD(controller, stage, game, maxHealth);
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, MAP_BRIGHTNESS, MAP_BRIGHTNESS, MAP_BRIGHTNESS, 1.0f));
         return vHud;
     }
