@@ -56,7 +56,8 @@ public class C_Game {
 
                 if(base.getCurrentLife() <= 0)
                 {
-                    view.setGameState(V_Game.GAME_LEVEL_END);
+                    view.setGameFinished();
+                    Timer.instance().clear();
                 }
                 else{
                     hud.update(timerCount, user.getBalance(), base.getCurrentLife());

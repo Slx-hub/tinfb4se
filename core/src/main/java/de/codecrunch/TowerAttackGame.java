@@ -114,6 +114,12 @@ public class TowerAttackGame extends Game {
         Gdx.input.setInputProcessor(multiplexer);
     }
 
+    public void quitGame(){
+        changeScreen(SCREENID_MENU);
+        game = null;
+        gameScreen = null;
+    }
+
 
 }
 

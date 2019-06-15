@@ -116,7 +116,7 @@ public class V_HUD {
         quitGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(2);
+                game.quitGame();
             }
         });
     }
@@ -128,7 +128,7 @@ public class V_HUD {
         backgroundPixmap.fill();
         TextureRegionDrawable backgroundDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(backgroundPixmap)));
         Pixmap fillingPixmap = new Pixmap(1, 20, Pixmap.Format.RGBA8888);
-        fillingPixmap.setColor(Color.PINK);
+        fillingPixmap.setColor(new Color(1,0,1,1));
         fillingPixmap.fill();
         TextureRegionDrawable fillingDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(fillingPixmap)));
 

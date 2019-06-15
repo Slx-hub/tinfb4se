@@ -161,8 +161,8 @@ public class C_Editor {
         dialog.text("Enter a level name:");
         dialog.getContentTable().row();
         dialog.getContentTable().add(input);
-        dialog.button("Done", true);
         dialog.button("Back", false);
+        dialog.button("Done", true);
         view.showDialog(dialog);
     }
 

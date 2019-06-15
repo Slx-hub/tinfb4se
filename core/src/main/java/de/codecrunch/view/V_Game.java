@@ -27,9 +27,6 @@ import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
 
 public class V_Game extends VA_Screen {
-    public static final int GAME_RUNNING = 1;
-    public static final int GAME_PAUSED = 2;
-    public static final int GAME_LEVEL_END = 3;
     private Texture endScreenTexture;
     private SpriteBatch endScreenBatch;
     private static final float CAM_DISTANCE = 45f;//44.8
@@ -37,13 +34,10 @@ public class V_Game extends VA_Screen {
     private static final float CAM_UPPER = 175f;//169.7
     private static final float MAP_MIDDLE = 40f;//40
     private static final float MAP_BRIGHTNESS = 1f;
-    private int gameState;
-    public int getGameState() {
-        return gameState;
-    }
+    private boolean gameFinished;
 
-    public void setGameState(int gameState) {
-        this.gameState = gameState;
+    public void setGameFinished() {
+        gameFinished = true;
     }
 
 
@@ -73,8 +67,6 @@ public class V_Game extends VA_Screen {
     }
 
     public V_HUD setup(int maxHealth) {
-        gameState = GAME_RUNNING;
-
         camera = new PerspectiveCamera(
                 60,
                 Gdx.graphics.getWidth(),
@@ -126,68 +118,62 @@ public class V_Game extends VA_Screen {
 
     @Override
     public void render(float delta) {
-        switch (gameState) {
-            case GAME_RUNNING:
-                controller.tick(delta);
-                Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-                Gdx.gl.glClearColor(0, 0, 0, 1);
-                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        if (gameFinished)
+            delta = 0;
 
-                camera.translate(cameraMotion, 0, 0);
-                limitCamera();
-                if (cameraMotion != 0)
-                    cameraMotion *= 0.95f;
-                camera.update();
-                lineRenderer.setProjectionMatrix(camera.combined);
+        controller.tick(delta);
+        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
-                mapBatch.begin(camera);
-                mapBatch.renderAll(environment);
-                mapBatch.end();
+        camera.translate(cameraMotion, 0, 0);
+        limitCamera();
+        if (cameraMotion != 0)
+            cameraMotion *= 0.95f;
+        camera.update();
+        lineRenderer.setProjectionMatrix(camera.combined);
 
-                lineRenderer.begin(ShapeRenderer.ShapeType.Line);
-                Gdx.gl20.glLineWidth(5);
-                lineRenderer.setColor(1, 0, 1, 1);
-                for (MA_Tower.LineCoordinates coord : laserLines)
-                    if (coord.isRender())
-                        lineRenderer.line(coord.getStart(), coord.getEnd());
-                lineRenderer.end();
+        mapBatch.begin(camera);
+        mapBatch.renderAll(environment);
+        mapBatch.end();
 
-                towerBatch.begin(camera);
-                towerBatch.renderAll(environment);
-                towerBatch.end();
+        lineRenderer.begin(ShapeRenderer.ShapeType.Line);
+        Gdx.gl20.glLineWidth(5);
+        lineRenderer.setColor(1, 0, 1, 1);
+        for (MA_Tower.LineCoordinates coord : laserLines)
+            if (coord.isRender())
+                lineRenderer.line(coord.getStart(), coord.getEnd());
+        lineRenderer.end();
 
-                unitBatch.begin(camera);
-                unitBatch.renderAll(environment);
-                unitBatch.end();
+        towerBatch.begin(camera);
+        towerBatch.renderAll(environment);
+        towerBatch.end();
 
-                lineRenderer.begin(ShapeRenderer.ShapeType.Line);
-                Gdx.gl20.glLineWidth(5);
-                for (MA_Unit unit : unitList) {
-                    float xStart = unit.getModel().transform.getTranslation(new Vector3()).x + 3f;
-                    float yStart = unit.getModel().transform.getTranslation(new Vector3()).z - 2f;
+        unitBatch.begin(camera);
+        unitBatch.renderAll(environment);
+        unitBatch.end();
 
-                    lineRenderer.setColor(0.4f, 0, 0, 1);
-                    lineRenderer.line(new Vector3(xStart, 1f, yStart), new Vector3(xStart, 1f, yStart + 4));
+        lineRenderer.begin(ShapeRenderer.ShapeType.Line);
+        Gdx.gl20.glLineWidth(10);
+        for (MA_Unit unit : unitList) {
+            float xStart = unit.getModel().transform.getTranslation(new Vector3()).x + 3f;
+            float yStart = unit.getModel().transform.getTranslation(new Vector3()).z - 2f;
 
-                    lineRenderer.setColor(0, 0.4f, 0, 1);
-                    lineRenderer.line(new Vector3(xStart, 1f, yStart), new Vector3(xStart, 1f, yStart + 4 * ((float) unit.getCurrentLife() / unit.getMaxLife())));
-                }
-                lineRenderer.end();
-                stage.draw();
-                break;
-            case GAME_PAUSED:
-                break;
-            case GAME_LEVEL_END:
-                this.endScreenTexture = new Texture("ui/victoryScreen.png");
-                endScreenBatch.begin();
-                endScreenBatch.draw(endScreenTexture, Gdx.graphics.getWidth()/2- (602/2), Gdx.graphics.getHeight()- 302);
-                endScreenBatch.end();
-                break;
+            lineRenderer.setColor(0.4f, 0, 0, 1);
+            lineRenderer.line(new Vector3(xStart, 1f, yStart), new Vector3(xStart, 1f, yStart + 4));
+
+            lineRenderer.setColor(0, 0.4f, 0, 1);
+            lineRenderer.line(new Vector3(xStart, 1f, yStart), new Vector3(xStart, 1f, yStart + 4 * ((float) unit.getCurrentLife() / unit.getMaxLife())));
         }
-        
-    }
+        lineRenderer.end();
+        stage.draw();
 
-    private void showEndScreen() {
+        if (gameFinished) {
+            this.endScreenTexture = new Texture("ui/victoryScreen.png");
+            endScreenBatch.begin();
+            endScreenBatch.draw(endScreenTexture, Gdx.graphics.getWidth() / 2 - (602 / 2), Gdx.graphics.getHeight() - 302);
+            endScreenBatch.end();
+        }
     }
 
     private boolean limitCamera() {

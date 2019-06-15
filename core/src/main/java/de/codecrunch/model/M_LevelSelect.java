@@ -53,9 +53,17 @@ public class M_LevelSelect {
         } catch (Exception e) {
             Gdx.app.error("TowerAttack", e.getMessage(), e);
         }
-        if(map!=null){
+        if (map != null) {
             map.inflate();
         }
         return map;
+    }
+
+    public void delete(String levelName) {
+        String fileName = levelName + ".map";
+        File file = levels.stream().filter(level -> level.getName().equals(fileName)).findAny().orElse(null);
+        if (file != null)
+            file.delete();
+        load();
     }
 }

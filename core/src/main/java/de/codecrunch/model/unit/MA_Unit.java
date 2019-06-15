@@ -142,6 +142,7 @@ public abstract class MA_Unit {
 
             if (!pathIterator.hasNext()) {
                 state = new M_UnitState_DONE();
+                setCurrentLife(0);
                 return;
             }
 

@@ -47,6 +47,10 @@ public class C_LevelSelect {
         }
     }
 
+    public void delete(String level) {
+        model.delete(level);
+        updateButtons();
+    }
 
     public void selected(String level) {
         M_Map loaded = model.loadMap(level);

@@ -18,7 +18,7 @@ public class V_GameLevelSelect extends VA_LevelSelect {
 
         TextButton back = new TextButton("Back", uiSkin);
 
-        addLevelButtons(table);
+        addLevelButtons(table,false);
         table.add(back).colspan(2);
 
         back.addListener(new ChangeListener() {

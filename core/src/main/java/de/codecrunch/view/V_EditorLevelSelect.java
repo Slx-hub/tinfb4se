@@ -20,9 +20,9 @@ public class V_EditorLevelSelect extends VA_LevelSelect {
         TextButton newLevel = new TextButton("New Level", uiSkin);
         TextButton back = new TextButton("Back", uiSkin);
 
-        table.add(newLevel).colspan(2).row();
-        addLevelButtons(table);
-        table.add(back).colspan(2);
+        table.add(newLevel).colspan(4).row();
+        addLevelButtons(table, true);
+        table.add(back).colspan(4);
 
         newLevel.addListener(new ChangeListener() {
             @Override
