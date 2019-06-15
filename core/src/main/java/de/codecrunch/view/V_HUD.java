@@ -20,6 +20,7 @@ import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.unit.M_BigUnit;
 import de.codecrunch.model.unit.M_FastUnit;
+import de.codecrunch.model.unit.M_HealUnit;
 import de.codecrunch.model.unit.M_MediumUnit;
 import de.codecrunch.model.unit.M_SmallUnit;
 
@@ -27,13 +28,13 @@ import de.codecrunch.model.unit.M_SmallUnit;
 public class V_HUD {
 
     private TowerAttackGame game;
-    private Skin buttonSkins;
     private Table buttonTable;
     private Table labelTable;
     private ImageButton buySmallUnit;
     private ImageButton buyMediumUnit;
     private ImageButton buyBigUnit;
     private ImageButton buyFastUnit;
+    private ImageButton buyHealUnit;
     private ImageButton quitGame;
     private String baseHealthDesc = "Base Health: ";
     private Label baseHealth;
@@ -43,7 +44,6 @@ public class V_HUD {
     private Label resources;
 
     public V_HUD(C_Game controller, Stage stage, TowerAttackGame game) {
-        buttonSkins = new Skin(Gdx.files.internal("skins/neon/neon-ui.json"));
         buildButtons(controller);
         buildTopTable(controller);
         buildBottomTable(controller);
@@ -61,10 +61,11 @@ public class V_HUD {
         buttonTable = new Table();
         buttonTable.bottom();
         buttonTable.setFillParent(true);
-        buttonTable.add(buySmallUnit).size(150, 150).left().padBottom(10).padLeft(10);
-        buttonTable.add(buyFastUnit).size(150, 150).left().padBottom(10).padLeft(10);
-        buttonTable.add(buyMediumUnit).size(150, 150).left().padBottom(10).padLeft(10);
-        buttonTable.add(buyBigUnit).size(150, 150).left().padBottom(10).padLeft(10);
+        buttonTable.add(buySmallUnit).size(100, 100).left().padBottom(10).padLeft(10);
+        buttonTable.add(buyMediumUnit).size(100, 100).left().padBottom(10).padLeft(10);
+        buttonTable.add(buyFastUnit).size(100, 100).left().padBottom(10).padLeft(10);
+        buttonTable.add(buyHealUnit).size(100, 100).left().padBottom(10).padLeft(10);
+        buttonTable.add(buyBigUnit).size(100, 100).left().padBottom(10).padLeft(10);
     }
 
     private void buildButtons(C_Game controller) {
@@ -72,6 +73,7 @@ public class V_HUD {
         buyFastUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyFastUnitButton.png")))));
         buyMediumUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyMediumUnitButton.png")))));
         buyBigUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyBigUnitButton.png")))));
+        buyHealUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyHealUnitButton.png")))));
         quitGame = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/quitButton.png")))));
 
         buySmallUnit.addListener(new ChangeListener() {
@@ -99,6 +101,12 @@ public class V_HUD {
                 controller.buyUnit(new M_BigUnit());
             }
         });
+        buyHealUnit.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                controller.buyUnit(new M_HealUnit());
+            }
+        });
         quitGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -113,7 +121,7 @@ public class V_HUD {
         labelTable = new Table();
         labelTable.setBackground(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/topBarBackground.png")))));
         labelTable.top().left();
-        labelTable.defaults().uniformX().pad(10,0,0,90);
+        labelTable.defaults().uniformX().pad(3,0,0,90);
         labelTable.setFillParent(true);
         labelTable.add(worldTimer);
         labelTable.add(resources);

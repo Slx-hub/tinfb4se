@@ -5,9 +5,9 @@ import com.badlogic.gdx.math.Vector3;
 
 import java.util.Iterator;
 
+import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.M_Tile;
-import de.codecrunch.model.M_User;
 import de.codecrunch.model.unit.state.MA_UnitState;
 import de.codecrunch.model.unit.state.M_UnitState_DONE;
 import de.codecrunch.model.unit.state.M_UnitState_DRIVE_FORWARD;
@@ -17,15 +17,13 @@ import de.codecrunch.model.unit.state.M_UnitState_ROTATE_RIGHT;
 
 public abstract class MA_Unit {
 
-    private int xPos = 0;
-    private int yPos = 0;
     private int speed;
     private int moneyPerTileReached;
     private int maxLife;
     private int currentLife;
-    private M_Tile nextTile;
-    private M_User owner;
     private Iterator<M_Tile> pathIterator;
+    protected C_Game game;
+    protected M_Tile currentTile;
     protected ModelInstance model;
     protected MA_UnitState state = new M_UnitState_IDLE();
 
@@ -80,15 +78,22 @@ public abstract class MA_Unit {
 
     public void takeDamage(int damage) {
         if (this.currentLife < damage) {
-            setCurrentLife(0);
+            die();
         } else {
             setCurrentLife(this.currentLife - damage);
         }
     }
 
+    private void die() {
+        setCurrentLife(0);
+        currentTile.unitLeft(this);
+    }
+
     public void heal(int healing) {
-        if (currentLife == 0)
+        if (currentLife == 0 || this instanceof M_HealUnit)
             return;
+
+        System.out.println(this);
 
         if (this.maxLife < (this.currentLife + healing)) {
             setCurrentLife(this.maxLife);
@@ -99,14 +104,12 @@ public abstract class MA_Unit {
 
     public void setPath(Iterator<M_Tile> iterator) {
         this.pathIterator = iterator;
-        nextTile = pathIterator.next();
-        xPos = nextTile.xPos;
-        yPos = nextTile.yPos;
+        currentTile = pathIterator.next();
         setInitialPosition();
     }
 
-    public void setOwner(M_User user) {
-        owner = user;
+    public void setGame(C_Game game) {
+        this.game = game;
     }
 
     public void tick(float delta) {
@@ -114,11 +117,11 @@ public abstract class MA_Unit {
     }
 
     public int getXTile() {
-        return xPos;
+        return currentTile.xPos;
     }
 
     public int getYTile() {
-        return yPos;
+        return currentTile.yPos;
     }
 
     public void move(float delta) {
@@ -132,23 +135,21 @@ public abstract class MA_Unit {
                 return;
             }
 
-            //next tile (temporary fix)
-            if (!state.isIdle())
-                nextTile = pathIterator.next();
+            currentTile.unitLeft(this);
 
-            //update position and notify towers unit has arrived
-            xPos = nextTile.xPos;
-            yPos = nextTile.yPos;
-            nextTile.unitEntered(this);
+            if (!state.isIdle())
+                currentTile = pathIterator.next();
+
+            currentTile.unitEntered(this);
 
             if (!pathIterator.hasNext()) {
                 state = new M_UnitState_DONE();
                 return;
             }
 
-            owner.addMoney(moneyPerTileReached);
+            tileReached();
 
-            switch (nextTile.getTileState()) {
+            switch (currentTile.getTileState()) {
                 case PATH_LEFT:
                     state = new M_UnitState_ROTATE_LEFT();
                     break;
@@ -161,8 +162,12 @@ public abstract class MA_Unit {
         }
     }
 
+    protected void tileReached() {
+        game.yieldUnitMoney(moneyPerTileReached);
+    }
+
     private void setInitialPosition() {
-        model.transform.setTranslation(nextTile.xPos * ME_TileState.TILE_DISTANCE, 0f, nextTile.yPos * ME_TileState.TILE_DISTANCE);
-        model.transform.rotate(Vector3.Y, nextTile.getTileRotation() - 90f);
+        model.transform.setTranslation(currentTile.xPos * ME_TileState.TILE_DISTANCE, 0f, currentTile.yPos * ME_TileState.TILE_DISTANCE);
+        model.transform.rotate(Vector3.Y, currentTile.getTileRotation() - 90f);
     }
 }

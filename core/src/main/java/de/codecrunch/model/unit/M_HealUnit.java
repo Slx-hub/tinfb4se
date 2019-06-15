@@ -6,15 +6,15 @@ import de.codecrunch.Model3DFactory;
 
 public class M_HealUnit extends MA_Unit {
 
-    public M_HealUnit(){
-        super(18,300, 1);
+    public M_HealUnit() {
+        super(18, 200, 1);
     }
 
-    private String modelAssetString = "units/unit.g3db";
+    private String modelAssetString = "units/healUnit.g3db";
 
     @Override
     public int getCost() {
-        return 70;
+        return 90;
     }
 
     @Override
@@ -24,8 +24,14 @@ public class M_HealUnit extends MA_Unit {
         return model;
     }
 
+    @Override
+    protected void tileReached() {
+        super.tileReached();
+        game.healUnitsInRange(currentTile, 1);
+    }
+
     // this Unit should drop a Heal fountain when killed... no idea how to implement that yet... maybe by just replacing it?
-    private void dropHealFountain(){
+    private void dropHealFountain() {
         M_HealFountain healFountain = new M_HealFountain();
     }
 }

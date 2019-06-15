@@ -12,6 +12,7 @@ import de.codecrunch.model.ME_TileState;
 import de.codecrunch.model.M_Base;
 import de.codecrunch.model.M_Map;
 import de.codecrunch.model.M_RenderBatch;
+import de.codecrunch.model.M_Tile;
 import de.codecrunch.model.M_User;
 import de.codecrunch.model.tower.MA_Tower;
 import de.codecrunch.model.unit.MA_Unit;
@@ -82,7 +83,7 @@ public class C_Game {
             user.drawMoney(unit.getCost());
             view.getUnitBatch().addElement(unit.getModel());
             unit.setPath(map.getPath().iterator());
-            unit.setOwner(user);
+            unit.setGame(this);
             unitList.add(unit);
         }
     }
@@ -99,8 +100,7 @@ public class C_Game {
                 deadUnits.add(unit);
                 if (unit.isDone())
                     base.takeDamage();
-            }
-            else
+            } else
                 unit.tick(delta);
         }
         for (MA_Unit unit : deadUnits)
@@ -117,6 +117,19 @@ public class C_Game {
                 if (map.getTile(ix, iy).getTileState().getGroup() == ME_TileState.ME_TileStateGroup.PATH) {
                     map.getTile(ix, iy).registerTower(tower);
                 }
+            }
+        }
+    }
+
+    public void yieldUnitMoney(int amount) {
+        user.addMoney(amount);
+    }
+
+    public void healUnitsInRange(M_Tile position, int range) {
+        System.out.println("Healing:");
+        for (int x = Math.max(position.xPos - range, 0); x <= Math.min(position.xPos + range, M_Map.X_COUNT - 1); x++) {
+            for (int y = Math.max(position.yPos - range, 0); y <= Math.min(position.yPos + range, M_Map.Y_COUNT - 1); y++) {
+                map.getTile(x, y).getUnitsInTile().forEach(unit -> unit.heal(unit.getMaxLife() / 50));
             }
         }
     }
