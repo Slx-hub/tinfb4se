@@ -54,7 +54,14 @@ public class C_Game {
                 computer.addMoney(amount * 2);
                 user.addMoney(amount);
 
-                hud.update(timerCount, user.getBalance(), base.getCurrentLife());
+                if(base.getCurrentLife() <= 0)
+                {
+                    view.setGameState(V_Game.GAME_LEVEL_END);
+                }
+                else{
+                    hud.update(timerCount, user.getBalance(), base.getCurrentLife());
+                }
+
 
                 computer.tick(timerCount);
             }
