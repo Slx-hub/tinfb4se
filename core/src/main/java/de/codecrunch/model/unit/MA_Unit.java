@@ -86,7 +86,9 @@ public abstract class MA_Unit {
 
     private void die() {
         setCurrentLife(0);
-        currentTile.unitLeft(this);
+        if(currentTile!=null) {
+            currentTile.unitLeft(this);
+        }
     }
 
     public void heal(int healing) {

@@ -14,7 +14,7 @@ public class M_FastUnitTest {
 
     @Before
     public void initialization(){
-        unit = new M_HealUnit();
+        unit = new M_FastUnit();
         speed = unit.getSpeed();
         maxLife = unit.getMaxLife();
     }
