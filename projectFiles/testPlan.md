@@ -93,7 +93,8 @@ n/a
 #### 5.2.12	Installation Testing
 n/a
 #### 5.2.13 User Acceptance Testing
-UAT as so called Beta-Tests with a few users testing the game in the current state to play it before release and give constructive feedback aswell as bug reports or balancing problems.
+UAT as so called pre-Alpha-Tests with a few users testing the game in the current state to play it before release and give constructive feedback. A conclusion of these Tests can be found [here](https://de.surveymonkey.com/stories/SM-CQQ75H9V/).
+
 ## 6.	Entry and Exit Criteria
 ### 6.1	Test Plan
 #### 6.1.1	Test Plan Entry Criteria
