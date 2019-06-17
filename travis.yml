@@ -7,6 +7,13 @@ android:
     - android-22
     - sys-img-armeabi-v7a-android-22
 
+addons:
+  sonarcloud:
+    organization: "slaxxxx-github" # the key of the org you chose at step #3
+    token:
+      secure: "07330331709bf2b98e256c455067a8bf0d1ba5af" # encrypted value of your token
 script:
+  # other script steps might be done before running the actual analysis
   - echo "starting script"
   - ./gradlew clean build
+  - sonar-scanner
