@@ -6,7 +6,7 @@ import de.codecrunch.Model3DFactory;
 
 public class M_GiantUnit extends MA_Unit {
 
-    private String modelAssetString = "units/unit.g3db";
+    private String modelAssetString = "units/giantUnit.g3db";
 
     public M_GiantUnit(){
         super(6,1500, 5);
@@ -14,7 +14,7 @@ public class M_GiantUnit extends MA_Unit {
 
     @Override
     public int getCost() {
-        return 200;
+        return 500;
     }
 
     @Override

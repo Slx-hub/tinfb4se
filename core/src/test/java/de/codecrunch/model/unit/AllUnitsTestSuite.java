@@ -7,7 +7,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({M_BigUnitTest.class,
         M_FastUnitTest.class,
         M_GiantUnitTest.class,
-        M_HealFountainTest.class,
         M_HealUnitTest.class,
         M_MediumUnitTest.class,
         M_SmallUnitTest.class})

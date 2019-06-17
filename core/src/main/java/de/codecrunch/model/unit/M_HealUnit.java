@@ -29,9 +29,4 @@ public class M_HealUnit extends MA_Unit {
         super.tileReached();
         game.healUnitsInRange(currentTile, 1);
     }
-
-    // this Unit should drop a Heal fountain when killed... no idea how to implement that yet... maybe by just replacing it?
-    private void dropHealFountain() {
-        M_HealFountain healFountain = new M_HealFountain();
-    }
 }
