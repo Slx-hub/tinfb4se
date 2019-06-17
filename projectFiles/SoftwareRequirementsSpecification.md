@@ -174,4 +174,5 @@ tbd
 
 # <a name="4. Supporting Information">4. Supporting Information</a>
 
-n/a
+[GitHub Repository](https://github.com/SlaxXxX/tinfb4se) - The up-to-date source Code of our projects
+[CodeCrunch Blog](https://tinfb4se.wordpress.com/) - News regarding our project
