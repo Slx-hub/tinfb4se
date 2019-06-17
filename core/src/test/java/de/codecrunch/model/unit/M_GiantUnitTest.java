@@ -14,7 +14,7 @@ public class M_GiantUnitTest {
 
     @Before
     public void initialization(){
-        unit = new M_HealUnit();
+        unit = new M_GiantUnit();
         speed = unit.getSpeed();
         maxLife = unit.getMaxLife();
     }

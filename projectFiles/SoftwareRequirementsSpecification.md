@@ -174,4 +174,6 @@ tbd
 
 # <a name="4. Supporting Information">4. Supporting Information</a>
 
-n/a
+[GitHub Repository](https://github.com/SlaxXxX/tinfb4se) - The up-to-date source Code of our projects
+</br>[CodeCrunch Blog](https://tinfb4se.wordpress.com/) - News regarding our project
+</br>[Releases](https://github.com/SlaxXxX/tinfb4se/releases) - All the release-versions we publiched our game till now

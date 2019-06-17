@@ -110,36 +110,13 @@ public class M_HealUnitTest {
     }
 
     @Test
-    public void heal_overheal_CurrentLifeShouldBeMaxLife(){
-        int expected = maxLife;
+    public void heal_healUnitShouldNotBeHealed_LifeShouldRemainSame_balancingUnitWouldBeOP(){
+        int expected = 1;
 
         unit.setCurrentLife(1);
-        unit.heal(maxLife+1);
+        unit.heal(2);
         int actual = unit.getCurrentLife();
 
         assertEquals(expected,actual);
     }
-
-    @Test
-    public void heal_heal_currentLifeShouldBeOneLowerThanMaxLife(){
-        int expected = maxLife-1;
-
-        unit.setCurrentLife(1);
-        unit.heal(maxLife-2);
-        int actual = unit.getCurrentLife();
-
-        assertEquals(expected,actual);
-    }
-
-    @Test
-    public void heal_healDeadDoesNotRevive_currentLifeShouldBeZero(){
-        int expected = 0;
-
-        unit.setCurrentLife(0);
-        unit.heal(1);
-        int actual = unit.getCurrentLife();
-
-        assertEquals(expected,actual);
-    }
-
 }

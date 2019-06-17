@@ -22,6 +22,7 @@ import de.codecrunch.TowerAttackGame;
 import de.codecrunch.controller.C_Game;
 import de.codecrunch.model.unit.M_BigUnit;
 import de.codecrunch.model.unit.M_FastUnit;
+import de.codecrunch.model.unit.M_GiantUnit;
 import de.codecrunch.model.unit.M_HealUnit;
 import de.codecrunch.model.unit.M_MediumUnit;
 import de.codecrunch.model.unit.M_SmallUnit;
@@ -39,6 +40,7 @@ public class V_HUD {
     private ImageButton buyBigUnit;
     private ImageButton buyFastUnit;
     private ImageButton buyHealUnit;
+    private ImageButton buyGiantUnit;
     private ImageButton quitGame;
     private String baseHealthDesc = "Base Health: ";
     private Label baseHealth;
@@ -72,6 +74,7 @@ public class V_HUD {
         buttonTable.add(buyFastUnit).size(100, 100).left().padBottom(10).padLeft(10);
         buttonTable.add(buyHealUnit).size(100, 100).left().padBottom(10).padLeft(10);
         buttonTable.add(buyBigUnit).size(100, 100).left().padBottom(10).padLeft(10);
+        buttonTable.add(buyGiantUnit).size(100, 100).left().padBottom(10).padLeft(10);
     }
 
     private void buildButtons(C_Game controller) {
@@ -80,6 +83,7 @@ public class V_HUD {
         buyMediumUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyMediumUnitButton.png")))));
         buyBigUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyBigUnitButton.png")))));
         buyHealUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyHealUnitButton.png")))));
+        buyGiantUnit = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/buyGiantUnitButton.png")))));
         quitGame = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("ui/quitButton.png")))));
 
         buySmallUnit.addListener(new ChangeListener() {
@@ -111,6 +115,12 @@ public class V_HUD {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 controller.buyUnit(new M_HealUnit());
+            }
+        });
+        buyGiantUnit.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                controller.buyUnit(new M_GiantUnit());
             }
         });
         quitGame.addListener(new ChangeListener() {
