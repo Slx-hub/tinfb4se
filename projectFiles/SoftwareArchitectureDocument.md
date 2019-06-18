@@ -44,10 +44,6 @@ We solved it by just passing all controller calls coming from the framework over
 
 [UCD]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/OverallUseCaseDiagram.png "Use Case Diagram"
 
-### 4.1 Use-Case Realization
-N.a
-
-
 ## 5. Logical View
 
 ### 5.1 Overview
@@ -55,7 +51,7 @@ As we started our project with the MVC architecture in mind, we agreed to a nami
 For example every class starting with V_ is part of the view etc.
 This "tag" also contains information about the type of class, like A for abstract and E for enum.
 
-Meeing of the "tags" used in the class-diagram:
+Meaning of the "tags" used in the class-diagram:
 * M_ : Model
 * V_ : View
 * C_ : Controller
@@ -65,10 +61,33 @@ Meeing of the "tags" used in the class-diagram:
 ![alt text][ClassDiagram]
 
 [ClassDiagram]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/ClassDiagram.png "Class Diagram"
+(Click image for full sise)
 
 ### 5.2	Architecturally Significant Design Packages
-N.a
+The diagrams below are all part of the class-diagram you can find in 5.1. We decided to cut the whole class-diagram into those pieces to make it less complicated to understand because the whole thing is really huge. The tags mentioned in 5.1 apply to those diagrams aswell. 
+</br> this one shows the stuff around our mvc architecture to make everything work together witch the libGDX framework:
 
+![alt text][ClassDiagramCollapsed]
+
+[ClassDiagramCollapsed]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/ClassDiagram_collapsed.png "Class Diagram Collapsed"
+
+This diagram shows only our models:
+
+![alt text][ClassDiagramModel]
+
+[ClassDiagramModel]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/ClassDiagram_model.png "Class Diagram Model"
+
+In this one you can see our views:
+
+![alt text][ClassDiagramView]
+
+[ClassDiagramView]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/ClassDiagram_view.png "Class Diagram View"
+
+Here you can see our controllers:
+
+![alt text][ClassDiagramController]
+
+[ClassDiagramController]: https://github.com/SlaxXxX/tinfb4se/blob/master/projectFiles/ClassDiagram_controller.png "Class Diagram Controller"
 
 ## 6. Process View 
 N.a
@@ -92,7 +111,7 @@ N.a
 
 
 ## 10. Size and Performance
-N.a
+The performance of the application will be affected by the number of towers and units that are currentl on the map and how powerful the hardware in use is. However the application was tested using very poor hardware and no flaws were found.
 
 
 ## 11. Quality
