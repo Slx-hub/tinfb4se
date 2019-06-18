@@ -42,7 +42,7 @@ public abstract class MA_Tower {
         if (x < 0 || y < 0) return;
         xPos = x;
         yPos = y;
-        laserLine.setStart(new Vector3(x * ME_TileState.TILE_DISTANCE, 2f, y * ME_TileState.TILE_DISTANCE));
+        laserLine.setStart(new Vector3(x * ME_TileState.TILE_DISTANCE, 6f, y * ME_TileState.TILE_DISTANCE));
     }
 
     public void setOwner(C_Computer computer) {

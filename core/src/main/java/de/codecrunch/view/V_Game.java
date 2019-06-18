@@ -29,10 +29,10 @@ import de.codecrunch.model.unit.MA_Unit;
 public class V_Game extends VA_Screen {
     private Texture endScreenTexture;
     private SpriteBatch endScreenBatch;
-    private static final float CAM_DISTANCE = 45f;//44.8
-    private static final float CAM_LOWER = 8.5f;//20.3
-    private static final float CAM_UPPER = 175f;//169.7
-    private static final float MAP_MIDDLE = 40f;//40
+    private static final float CAM_DISTANCE = 45f;//45f
+    private static final float CAM_LOWER = 8.5f;//8.5f
+    private static final float CAM_UPPER = 175f;//175f
+    private static final float MAP_MIDDLE = 40f;//40f
     private static final float MAP_BRIGHTNESS = 1f;
     private boolean gameFinished;
 
@@ -75,7 +75,7 @@ public class V_Game extends VA_Screen {
         camera.direction.set(0.0001f, -1f, 0f);
         camera.position.set(CAM_LOWER, CAM_DISTANCE, MAP_MIDDLE);
         camera.near = 0.1f;
-        camera.far = 120.0f;
+        camera.far = 150.0f;
         camera.update();
         hudBatch.setProjectionMatrix(stage.getCamera().combined);
         vHud = new V_HUD(controller, stage, game, maxHealth);
