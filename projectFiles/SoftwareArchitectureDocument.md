@@ -115,4 +115,4 @@ The performance of the application will be affected by the number of towers and 
 
 
 ## 11. Quality
-N.a
+In order to maximize the efficiency of the development process for our project we are using Travis CI as a continous integration tool. With every commit to any branch, as well as periodically every day, a Travis CI build is triggered to run unit tests, in addition of doing a sonarcloud analysis on the project's source code. This way every project contributer is aware of the current integrity of the project's codebase, allowing for faster project iteration and thus making it easier to reach the project's goals.
