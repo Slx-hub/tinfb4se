@@ -34,7 +34,7 @@ The following Chapters describe our vision for the project, the requirements for
 
 # <a name="2. Overall Description">2. Overall Description</a>
 
-Tower Attack will be a game in the Tower-Defense genre. In contrast to other games of the Tower-Defense genre you won’t place the turrets to hold your base against incoming enemy waves but try to carry your minions through the towers placed by the computer enemy. The goal is to traverse the enemy base by manipulating the preset path and upgrading the capabilities of your pawns. Tower Attack will be developed in Java as an application that can run on both, Android and any desktop-based Java runtime environment. 
+Tower Attack will be a game in the Tower-Defense genre. In contrast to other games of the Tower-Defense genre you won’t place the turrets to hold your base against incoming enemy waves but try to carry your minions through the towers placed by the computer enemy. The goal is to traverse the enemy base by sending your pawns along the preset path in a way they survive. Both, the player and the computer enemy, have a continuous income. In addition to this the units generate income while being alive and on their way towards the enemys base. The comuper enemy gains additional income by killing the units the player send. Tower Attack will be developed in Java as an application that can run on both, Android and any desktop-based Java runtime environment. 
 
 ![alt text][UCD]
 
@@ -130,11 +130,11 @@ Any OS that is capable of running a Java Runtime Environment.
 
 ## <a name="3.6 Design Constraints">3.6 Design Constraints</a>
 
-The application has to be developed in Java as an application that can run on both, Android and any desktop-based Java runtime environment. 
+The application has to be developed in Java as an application that can run on both, Android and any desktop-based Java runtime environment. In addition to this a architecture called model-view-controller has to be used.
 
 ## <a name="3.7 On-line User Documentation and Help System Requirements">3.7 On-line User Documentation and Help System Requirements</a>
 
-tbd
+We try to make the our application as intuitive and easy to understand and use as possible. Nevertheless you can find further information regarding our project in our [blog](https://tinfb4se.wordpress.com/).
 
 ## <a name="3.8 Purchased Components">3.8 Purchased Components</a>
 
@@ -142,35 +142,33 @@ n/a
 
 ## <a name="3.9 Interfaces">3.9 Interfaces</a>
 
-tbd
-
 ### <a name="3.9.1 User Interfaces">3.9.1 User Interfaces</a>
 
-tbd
+n/a
 
 ### <a name="3.9.2 Hardware Interfaces">3.9.2 Hardware Interfaces</a>
 
-tbd
+n/a
 
 ### <a name="3.9.3 Software Interfaces">3.9.3 Software Interfaces</a>
 
-tbd
+n/a
 
 ### <a name="3.9.4 Communications Interfaces">3.9.4 Communications Interfaces</a>
 
-tbd
+n/a
 
 ## <a name="3.10 Licensing Requirements">3.10 Licensing Requirements</a>
 
-tbd
+n/a
 
 ## <a name="3.11 Legal, Copyright, and Other Notices">3.11 Legal, Copyright, and Other Notices</a>
 
-tbd
+n/a
 
 ## <a name="3.12 Applicable Standards">3.12 Applicable Standards</a>
 
-tbd
+n/a
 
 # <a name="4. Supporting Information">4. Supporting Information</a>
 
